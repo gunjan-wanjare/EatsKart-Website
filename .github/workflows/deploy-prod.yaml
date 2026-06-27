@@ -43,7 +43,7 @@ jobs:
       - name: Verify dist folder
         run: |
           ls -la
-          ls -la dist
+          ls -la build
 
       - name: Deploy to S3
         run: |
