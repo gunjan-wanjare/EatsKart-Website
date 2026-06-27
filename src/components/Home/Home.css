@@ -30,9 +30,9 @@
   }
 
   .home .categories {
-    margin-top: calc(var(--vector-height) * -0.52);
-    padding-top: calc(var(--vector-height) * 0.1 + 1.25rem);
-    padding-bottom: clamp(0.75rem, 2vw, 1rem);
+    margin-top: -300px;
+    padding-top: calc(var(--vector-height) * 0.08 + 0.75rem);
+    padding-bottom: clamp(1.5rem, 5vw, 2.25rem);
   }
 }
 
@@ -42,8 +42,8 @@
   }
 
   .home .categories {
-    margin-top: calc(var(--vector-height) * -0.48);
-    padding-top: calc(var(--vector-height) * 0.12 + 1rem);
-    padding-bottom: 0.75rem;
+    margin-top: -300px;
+    padding-top: calc(var(--vector-height) * 0.06 + 0.625rem);
+    padding-bottom: 2rem;
   }
 }
