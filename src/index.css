@@ -47,7 +47,8 @@ body {
   max-width: 100%;
 }
 
-body.nav-open {
+body.nav-open,
+body.modal-open {
   overflow: hidden;
 }
 
