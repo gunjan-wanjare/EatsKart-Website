@@ -1,0 +1,49 @@
+/* Vector 22 aspect: 1800 × 794 */
+.home {
+  --vector-ratio: calc(794 / 1800);
+  --vector-height: calc(100vw * var(--vector-ratio));
+  --hero-taco-overlap: clamp(5.5rem, 14vw, 10rem);
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.home .categories {
+  margin-top: calc(var(--vector-height) * -0.72);
+  padding-top: calc(var(--vector-height) * 0.08 + 1.5rem);
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .home {
+    --hero-taco-overlap: clamp(4rem, 12vw, 8rem);
+  }
+
+  .home .categories {
+    margin-top: calc(var(--vector-height) * -0.68);
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    --hero-taco-overlap: 2rem;
+  }
+
+  .home .categories {
+    margin-top: calc(var(--vector-height) * -0.52);
+    padding-top: calc(var(--vector-height) * 0.1 + 1.25rem);
+    padding-bottom: clamp(0.75rem, 2vw, 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    --hero-taco-overlap: 1.25rem;
+  }
+
+  .home .categories {
+    margin-top: calc(var(--vector-height) * -0.48);
+    padding-top: calc(var(--vector-height) * 0.12 + 1rem);
+    padding-bottom: 0.75rem;
+  }
+}

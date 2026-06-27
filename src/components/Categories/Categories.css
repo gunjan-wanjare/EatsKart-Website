@@ -1,0 +1,210 @@
+.categories {
+  --cat-icon: clamp(110px, 12vw, 140px);
+  --cat-gap: clamp(2.25rem, 4.5vw, 4rem);
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 3;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.categories__header {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+  padding-top: 0;
+}
+
+.categories__subtitle {
+  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-size: clamp(13px, 1.05vw, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: clamp(1px, 0.12vw, 1.7px);
+  margin: 0 0 0.625rem;
+  max-width: 448px;
+  background: linear-gradient(90deg, #e96421 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.categories__title {
+  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-size: clamp(1.5rem, 3.2vw, 2.125rem);
+  font-weight: 500;
+  color: var(--color-white);
+  margin: 0;
+  letter-spacing: 0;
+  line-height: 1.3;
+  max-width: 100%;
+}
+
+/* Auto-scrolling marquee */
+.categories__marquee {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  padding-top: 0.25rem;
+}
+
+.categories__track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cat-gap);
+  width: max-content;
+  animation: categories-marquee 40s linear infinite;
+  padding: 0.5rem 0 0.75rem;
+  will-change: transform;
+}
+
+.categories__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes categories-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.categories__item {
+  flex: 0 0 var(--cat-icon);
+  width: var(--cat-icon);
+  min-width: var(--cat-icon);
+}
+
+.categories__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.categories__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--cat-icon);
+  height: var(--cat-icon);
+}
+
+.categories__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.categories__name {
+  display: block;
+  width: 100%;
+  max-width: var(--cat-icon);
+  font-size: clamp(0.8125rem, 1vw, 0.875rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  text-align: center;
+  line-height: 1.25;
+  /* Prevent long labels (e.g. South Indian) from overlapping neighbours */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+  hyphens: none;
+  min-height: 2.5em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .categories__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding-left: var(--container-pad);
+    padding-right: var(--container-pad);
+    gap: 1.75rem;
+  }
+
+  .categories__marquee {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1024px) {
+  .categories {
+    --cat-icon: clamp(100px, 11vw, 130px);
+    --cat-gap: clamp(2rem, 5vw, 3rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .categories {
+    --cat-icon: clamp(96px, 24vw, 112px);
+    --cat-gap: clamp(2rem, 6vw, 2.75rem);
+    position: relative;
+    z-index: 4;
+  }
+
+  .categories__header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .categories__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .categories__title {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  .categories__marquee {
+    padding-top: 0.5rem;
+  }
+
+  .categories__track {
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories {
+    --cat-icon: clamp(92px, 26vw, 108px);
+    --cat-gap: 2rem;
+  }
+
+  .categories__header {
+    margin-bottom: 1rem;
+  }
+
+  .categories__name {
+    font-size: 0.8125rem;
+    min-height: 2.6em;
+  }
+}
+
+@media (max-width: 360px) {
+  .categories {
+    --cat-icon: 88px;
+    --cat-gap: 1.75rem;
+  }
+
+  .categories__name {
+    font-size: 0.75rem;
+  }
+}
