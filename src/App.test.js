@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 test('renders hero heading', () => {
@@ -21,4 +21,14 @@ test('renders app promo section', () => {
 test('renders footer', () => {
   render(<App />);
   expect(screen.getByText(/2024 eatskart/i)).toBeInTheDocument();
+});
+
+test('shows coming soon popup when anchor link is clicked', () => {
+  render(<App />);
+
+  fireEvent.click(screen.getAllByRole('link', { name: 'Careers' })[0]);
+
+  expect(screen.getByRole('dialog')).toBeInTheDocument();
+  expect(screen.getByText('Page Coming Soon')).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Careers' })).toBeInTheDocument();
 });
