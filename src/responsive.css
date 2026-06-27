@@ -1,0 +1,65 @@
+/* Shared responsive foundation — desktop defaults unchanged; rules below only refine smaller viewports */
+
+:root {
+  --bp-xl: 1280px;
+  --bp-lg: 1024px;
+  --bp-md: 768px;
+  --bp-sm: 480px;
+  --bp-xs: 360px;
+
+  --touch-min: 44px;
+  --safe-inline: env(safe-area-inset-left, 0px);
+  --safe-inline-end: env(safe-area-inset-right, 0px);
+}
+
+.container {
+  padding-left: max(var(--container-pad), var(--safe-inline));
+  padding-right: max(var(--container-pad), var(--safe-inline-end));
+}
+
+/* Prevent flex/grid children from forcing horizontal scroll */
+.app,
+.app main,
+section {
+  min-width: 0;
+}
+
+/* Touch-friendly interactive targets on coarse pointers */
+@media (pointer: coarse) {
+  .header__hamburger,
+  .header__location,
+  .header__link,
+  .hero__search-btn,
+  .restaurants__nav-btn,
+  .app-promo__store-btn,
+  .app-promo__learn,
+  .footer__social a {
+    min-height: var(--touch-min);
+  }
+
+  .header__link {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Large desktops — cap excessive padding only */
+@media (min-width: 1600px) {
+  :root {
+    --container-pad: 5rem;
+  }
+}
+
+/* Shared section subtitle scaling */
+@media (max-width: 768px) {
+  .section-subtitle {
+    font-size: clamp(0.75rem, 3.2vw, 0.875rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
