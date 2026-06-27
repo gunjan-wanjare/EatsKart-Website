@@ -228,7 +228,9 @@
   }
 
   .hero__vector {
+    height: 403px;
     margin-top: -1rem;
+    object-fit: cover;
   }
 }
 
