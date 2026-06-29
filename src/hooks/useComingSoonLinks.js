@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { IMPLEMENTED_ROUTES } from '../constants/routes';
 
 function formatPageName(href, linkText) {
   if (linkText) return linkText;
@@ -24,12 +23,8 @@ function shouldShowComingSoon(anchor) {
 
   if (href.startsWith('#')) {
     const id = href.slice(1);
+    if (id.startsWith('legal-')) return false;
     if (id && document.getElementById(id)) return false;
-  }
-
-  if (href.startsWith('/')) {
-    const path = href.split('?')[0].split('#')[0];
-    if (IMPLEMENTED_ROUTES.has(path)) return false;
   }
 
   return href.startsWith('#') || href.startsWith('/');

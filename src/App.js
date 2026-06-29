@@ -1,32 +1,20 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Restaurants from './components/Restaurants/Restaurants';
 import AppPromo from './components/AppPromo/AppPromo';
 import Footer from './components/Footer/Footer';
 import ComingSoonModal from './components/ComingSoonModal/ComingSoonModal';
-import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
-import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
-import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
+import LegalModal from './components/LegalModal/LegalModal';
 import useComingSoonLinks from './hooks/useComingSoonLinks';
+import useLegalModal from './hooks/useLegalModal';
 import './App.css';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
-
-function HomePage() {
+function App() {
   const { isOpen, pageName, closeModal } = useComingSoonLinks();
+  const { activePage, closeLegal } = useLegalModal();
 
   return (
-    <>
+    <div className="app">
       <Header />
       <main>
         <Home />
@@ -37,56 +25,8 @@ function HomePage() {
         </div>
       </main>
       <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
-    </>
-  );
-}
-
-function LegalPageLayout({ children }) {
-  return (
-    <>
-      <Header />
-      <main>
-        {children}
-        <Footer />
-      </main>
-    </>
-  );
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/terms-and-conditions"
-            element={(
-              <LegalPageLayout>
-                <TermsAndConditions />
-              </LegalPageLayout>
-            )}
-          />
-          <Route
-            path="/privacy-policy"
-            element={(
-              <LegalPageLayout>
-                <PrivacyPolicy />
-              </LegalPageLayout>
-            )}
-          />
-          <Route
-            path="/refund-policy"
-            element={(
-              <LegalPageLayout>
-                <RefundPolicy />
-              </LegalPageLayout>
-            )}
-          />
-        </Routes>
-      </div>
-    </BrowserRouter>
+      <LegalModal activePage={activePage} onClose={closeLegal} />
+    </div>
   );
 }
 

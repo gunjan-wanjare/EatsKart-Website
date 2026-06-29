@@ -1,5 +1,5 @@
 import './Footer.css';
-import { LEGAL_LINKS } from '../../constants/routes';
+import { getLegalModalHref, LEGAL_LINKS } from '../../constants/routes';
 
 const exploreLinks = ['Restaurants', 'Popular Cuisines', 'Offers & Deals', 'New Arrivals'];
 
@@ -54,7 +54,7 @@ function Footer() {
             {LEGAL_LINKS.map((link, index) => (
               <span key={link.label} className="footer__legal-item">
                 {index > 0 && <span className="footer__legal-sep" aria-hidden="true">-</span>}
-                <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                <a href={getLegalModalHref(link.modalId)}>{link.label}</a>
               </span>
             ))}
           </div>
