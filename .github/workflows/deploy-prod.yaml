@@ -50,6 +50,42 @@ jobs:
           aws s3 sync build/ s3://${{ vars.AWS_S3_BUCKET }}/ \
             --delete
 
+      - name: Configure CloudFront SPA error responses
+        run: |
+          DIST_ID="${{ secrets.AWS_CLOUDFRONT_ID }}"
+          ETAG=$(aws cloudfront get-distribution-config --id "$DIST_ID" --query 'ETag' --output text)
+          aws cloudfront get-distribution-config --id "$DIST_ID" --query 'DistributionConfig' > /tmp/dist-config.json
+
+          python3 -c "
+          import json
+          with open('/tmp/dist-config.json') as f:
+              config = json.load(f)
+          config['CustomErrorResponses'] = {
+              'Quantity': 2,
+              'Items': [
+                  {
+                      'ErrorCode': 403,
+                      'ResponsePagePath': '/index.html',
+                      'ResponseCode': '200',
+                      'ErrorCachingMinTTL': 0
+                  },
+                  {
+                      'ErrorCode': 404,
+                      'ResponsePagePath': '/index.html',
+                      'ResponseCode': '200',
+                      'ErrorCachingMinTTL': 0
+                  }
+              ]
+          }
+          with open('/tmp/dist-config.json', 'w') as f:
+              json.dump(config, f)
+          "
+
+          aws cloudfront update-distribution \
+            --id "$DIST_ID" \
+            --if-match "$ETAG" \
+            --distribution-config file:///tmp/dist-config.json
+
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
@@ -59,4 +95,4 @@ jobs:
       - name: Deployment summary
         run: |
           echo "# Deployment Successful" >> $GITHUB_STEP_SUMMARY
-          echo "- Static files deployed from dist/" >> $GITHUB_STEP_SUMMARY
+          echo "- Static files deployed from build/" >> $GITHUB_STEP_SUMMARY
