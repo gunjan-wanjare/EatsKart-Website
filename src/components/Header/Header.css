@@ -118,7 +118,7 @@
     opacity: 0;
     pointer-events: none;
     transition: transform 0.25s ease, opacity 0.25s ease;
-    box-shadow: 0 8px 24px rgba(6, 5, 58, 0.08);
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
   }
 
   .header__nav--open {

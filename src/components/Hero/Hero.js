@@ -58,7 +58,7 @@ function Hero() {
       </div>
 
       <img
-        src="/Vector%2022.png"
+        src="/vector/Vector%2022.png"
         alt=""
         className="hero__vector"
         aria-hidden="true"
