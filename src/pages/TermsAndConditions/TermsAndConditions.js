@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import '../legal/LegalPage.css';
 
 const eligibilityItems = [
@@ -57,12 +56,16 @@ const forceMajeureItems = [
   { icon: '⚡', label: 'Power Outages' },
 ];
 
-function TermsAndConditions() {
+function TermsAndConditions({ onClose }) {
   return (
     <article className="legal-page">
       <div className="container legal-page__inner">
         <nav className="legal-page__breadcrumb" aria-label="Breadcrumb">
-          <Link to="/">Home</Link>
+          {onClose ? (
+            <button type="button" className="legal-page__breadcrumb-btn" onClick={onClose}>Home</button>
+          ) : (
+            <a href="/">Home</a>
+          )}
           <span aria-hidden="true">/</span>
           <span>Terms and Conditions</span>
         </nav>

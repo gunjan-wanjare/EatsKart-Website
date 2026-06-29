@@ -33,7 +33,18 @@
   transition: color 0.2s;
 }
 
-.legal-page__breadcrumb a:hover {
+.legal-page__breadcrumb-btn {
+  padding: 0;
+  font: inherit;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+
+.legal-page__breadcrumb a:hover,
+.legal-page__breadcrumb-btn:hover {
   color: var(--color-orange);
 }
 

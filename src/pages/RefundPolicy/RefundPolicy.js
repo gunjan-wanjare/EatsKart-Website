@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import '../legal/LegalPage.css';
 
 const restaurantCancellationReasons = [
@@ -45,12 +44,16 @@ const walletTerms = [
   { icon: '❌', title: 'Non-Refundable', text: 'Promotional offers and reward points are generally non-refundable unless otherwise explicitly stated.' },
 ];
 
-function RefundPolicy() {
+function RefundPolicy({ onClose }) {
   return (
     <article className="legal-page">
       <div className="container legal-page__inner">
         <nav className="legal-page__breadcrumb" aria-label="Breadcrumb">
-          <Link to="/">Home</Link>
+          {onClose ? (
+            <button type="button" className="legal-page__breadcrumb-btn" onClick={onClose}>Home</button>
+          ) : (
+            <a href="/">Home</a>
+          )}
           <span aria-hidden="true">/</span>
           <span>Refund Policy</span>
         </nav>
