@@ -1,17 +1,76 @@
 /* Figma: Bw Gradual DEMO 900, 226.27px @ 1920, line-height 95% */
 .app-promo {
-  --promo-maroon: #4a0e0e;
+  --promo-maroon: #8b1a1a;
   --promo-headline: min(226.27px, 6.784844vw);
 
   position: relative;
   background-color: var(--color-orange);
-  background-image:
-    radial-gradient(ellipse 90% 70% at 82% 22%, rgba(130, 22, 8, 0.48) 0%, transparent 58%),
-    radial-gradient(ellipse 78% 62% at 18% 78%, rgba(105, 16, 5, 0.4) 0%, transparent 52%),
-    radial-gradient(ellipse 50% 42% at 52% 50%, rgba(145, 28, 10, 0.18) 0%, transparent 48%);
   overflow: hidden;
   max-width: 100%;
   padding: clamp(2.5rem, 5vw, 4.5rem) 0 0;
+  margin-bottom: 0;
+}
+
+.app-promo__vectors {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: min(72%, 920px);
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-promo__vector {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* Layered behind phone/headline — left zone only (Figma artboard) */
+.app-promo__vector--17 {
+  top: -10%;
+  left: -12%;
+  width: 105%;
+  transform: rotate(-16deg);
+  transform-origin: 40% 70%;
+}
+
+.app-promo__vector--20 {
+  bottom: -8%;
+  left: -6%;
+  width: 78%;
+  transform: rotate(-5deg);
+  transform-origin: 60% 0%;
+}
+
+.app-promo__vector--16 {
+  top: 4%;
+  left: -4%;
+  width: 48%;
+  transform: rotate(6deg);
+  transform-origin: 50% 100%;
+}
+
+.app-promo__vector--15 {
+  top: -6%;
+  left: 18%;
+  width: 62%;
+  transform: rotate(-10deg);
+  transform-origin: 0% 90%;
+}
+
+.app-promo__vector--18 {
+  bottom: 12%;
+  left: 28%;
+  width: 34%;
+  transform: rotate(165deg);
+  transform-origin: 50% 0%;
 }
 
 .app-promo__layout {
@@ -41,12 +100,14 @@
   margin: 0;
   padding: 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .app-promo__headline-hungry,
 .app-promo__headline-white {
   display: block;
+  font-family: inherit;
+  font-weight: 900;
 }
 
 .app-promo__headline-hungry {
@@ -69,7 +130,7 @@
   width: min(500px, 36vw);
   max-width: 100%;
   height: auto;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
 }
 
@@ -79,6 +140,8 @@
   justify-content: center;
   color: var(--color-white);
   padding: clamp(1rem, 2vw, 2rem) 0;
+  position: relative;
+  z-index: 2;
 }
 
 .app-promo__title {
@@ -159,6 +222,45 @@
     padding-top: clamp(2rem, 6vw, 3rem);
   }
 
+  .app-promo__vectors {
+    width: 100%;
+    max-width: none;
+    height: 58%;
+    bottom: auto;
+  }
+
+  .app-promo__vector {
+    opacity: 0.42;
+  }
+
+  .app-promo__vector--17 {
+    top: -6%;
+    left: -18%;
+    width: 95%;
+  }
+
+  .app-promo__vector--20 {
+    bottom: -4%;
+    left: -10%;
+    width: 70%;
+  }
+
+  .app-promo__vector--16 {
+    top: 8%;
+    left: -8%;
+    width: 45%;
+  }
+
+  .app-promo__vector--15 {
+    top: -2%;
+    left: 10%;
+    width: 55%;
+  }
+
+  .app-promo__vector--18 {
+    display: none;
+  }
+
   .app-promo__layout {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -197,6 +299,19 @@
 @media (max-width: 480px) {
   .app-promo {
     --promo-headline: clamp(2.25rem, 12vw, 3.25rem);
+  }
+
+  .app-promo__vectors {
+    height: 52%;
+  }
+
+  .app-promo__vector {
+    opacity: 0.38;
+  }
+
+  .app-promo__vector--15,
+  .app-promo__vector--16 {
+    display: none;
   }
 
   .app-promo__left {

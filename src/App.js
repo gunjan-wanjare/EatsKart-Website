@@ -16,9 +16,11 @@ function App() {
       <main>
         <Home />
         <Restaurants />
-        <AppPromo />
+        <div className="promo-footer">
+          <AppPromo />
+          <Footer />
+        </div>
       </main>
-      <Footer />
       <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
     </div>
   );

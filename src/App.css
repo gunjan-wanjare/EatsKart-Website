@@ -13,3 +13,14 @@
   max-width: 100%;
   min-width: 0;
 }
+
+.promo-footer {
+  background-color: var(--color-orange);
+  overflow: hidden;
+  isolation: isolate;
+  width: 100%;
+}
+
+.promo-footer .footer {
+  margin-top: -2px;
+}

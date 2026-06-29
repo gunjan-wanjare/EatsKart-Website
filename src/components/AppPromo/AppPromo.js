@@ -1,8 +1,27 @@
 import './AppPromo.css';
 
+const PROMO_VECTORS = [
+  { src: '/vector/Vector%2015.png', className: 'app-promo__vector--15' },
+  { src: '/vector/Vector%2016.png', className: 'app-promo__vector--16' },
+  { src: '/vector/Vector%2017.png', className: 'app-promo__vector--17' },
+  { src: '/vector/Vector%2018.png', className: 'app-promo__vector--18' },
+  { src: '/vector/Vector%2020.png', className: 'app-promo__vector--20' },
+];
+
 function AppPromo() {
   return (
     <section className="app-promo" aria-labelledby="app-promo-heading">
+      <div className="app-promo__vectors" aria-hidden="true">
+        {PROMO_VECTORS.map((vector) => (
+          <img
+            key={vector.className}
+            src={vector.src}
+            alt=""
+            className={`app-promo__vector ${vector.className}`}
+          />
+        ))}
+      </div>
+
       <div className="container app-promo__layout">
         <div className="app-promo__left">
           <h2 id="app-promo-heading" className="app-promo__headline">
