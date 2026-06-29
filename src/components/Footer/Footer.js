@@ -29,20 +29,8 @@ function Footer() {
         <div className="footer__col footer__contact">
           <h4 className="footer__heading">Visit &amp; Contact</h4>
           <ul className="footer__contact-list">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.75" />
-                <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.75" />
-              </svg>
-              <span>Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.75" />
-                <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-              </svg>
-              <a href="mailto:hello@eatskart.com">hello@eatskart.com</a>
-            </li>
+            <li><span>Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India</span></li>
+            <li><a href="mailto:hello@eatskart.com">hello@eatskart.com</a></li>
           </ul>
         </div>
       </div>

@@ -17,11 +17,12 @@
 }
 
 .footer__tagline {
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-semibold);
+  font-size: 0.8rem;
+  font-weight: bold;
   color: var(--color-red);
   margin: -0.5rem 0 0.625rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .footer__logo-img {
