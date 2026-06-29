@@ -43,7 +43,7 @@ function Header() {
         </button>
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
-          <button type="button" className="header__location">
+          {/* <button type="button" className="header__location">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" className="header__pin-fill" />
               <circle cx="12" cy="9" r="2.5" fill="white" />
@@ -52,10 +52,10 @@ function Header() {
             <svg className="header__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </button>
+          </button> */}
 
           <div className="header__links">
-            <a href="#careers" className="header__link" onClick={closeMenu}>Careers</a>
+            {/* <a href="#careers" className="header__link" onClick={closeMenu}>Careers</a> */}
             <a href="#contact" className="header__link" onClick={closeMenu}>Contact Us</a>
           </div>
         </nav>
