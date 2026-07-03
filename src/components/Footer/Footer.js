@@ -11,7 +11,7 @@ function Footer() {
           <a href="/" className="footer__logo" aria-label="EatsKart home">
             <img src="/images/eatskart-logo.png" alt="eatskart" className="footer__logo-img" />
           </a>
-          <p className="footer__tagline">A YAKA Brand</p>
+          <p className="footer__tagline">A <strong>YAKA</strong> Brand</p>
           <p className="footer__desc">
             Fast delivery. Fresh food. Endless cravings. Discover the best restaurants around you with EatsKart.
           </p>

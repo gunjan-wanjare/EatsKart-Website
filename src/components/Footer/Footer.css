@@ -18,11 +18,14 @@
 
 .footer__tagline {
   font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: var(--font-weight-regular);
   color: var(--color-red);
   margin: -0.5rem 0 0.625rem;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+}
+
+.footer__tagline strong {
+  font-weight: var(--font-weight-bold);
 }
 
 .footer__logo-img {
