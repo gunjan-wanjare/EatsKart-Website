@@ -1,4 +1,4 @@
-/* Figma: Bw Gradual DEMO 900, 226.27px @ 1920, line-height 95% */
+/* Figma: 226.27px @ 1920, line-height 95% */
 .app-promo {
   --promo-maroon: #8b1a1a;
   --promo-headline: min(226.27px, 6.784844vw);
@@ -90,9 +90,9 @@
 }
 
 .app-promo__headline {
-  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-family: var(--font-family);
   font-size: var(--promo-headline);
-  font-weight: 900;
+  font-weight: var(--font-weight-extrabold);
   font-style: normal;
   line-height: 0.95;
   letter-spacing: 0;
@@ -107,7 +107,7 @@
 .app-promo__headline-white {
   display: block;
   font-family: inherit;
-  font-weight: 900;
+  font-weight: var(--font-weight-extrabold);
 }
 
 .app-promo__headline-hungry {
@@ -145,7 +145,7 @@
 }
 
 .app-promo__title {
-  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-family: var(--font-family);
   font-size: clamp(1.125rem, 1.55vw, 24px);
   font-weight: 700;
   margin: 0 0 0.875rem;
