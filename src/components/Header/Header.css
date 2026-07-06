@@ -50,7 +50,28 @@
 .header__links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.header__yaka-brand {
+  display: block;
+  height: 36px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  object-position: right center;
+  flex-shrink: 0;
+}
+
+.header__yaka-brand--mobile {
+  display: none;
+}
+
+.header__actions {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .header__link {
@@ -90,13 +111,27 @@
   }
 
   .header__links {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
   .header__inner {
     height: 72px;
+  }
+
+  .header__actions {
+    display: flex;
+  }
+
+  .header__yaka-brand--mobile {
+    display: block;
+    height: 32px;
+    max-width: 88px;
+  }
+
+  .header__nav .header__yaka-brand {
+    display: none;
   }
 
   .header__hamburger {
@@ -162,6 +197,15 @@
   .header__link {
     font-size: 1rem;
     padding: 0.25rem 0;
+  }
+
+  .header__yaka-brand--mobile {
+    height: 28px;
+    max-width: 80px;
+  }
+
+  .header__actions {
+    gap: 0.375rem;
   }
 }
 
