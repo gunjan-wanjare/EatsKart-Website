@@ -12,7 +12,7 @@
 }
 
 .restaurants__title {
-  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-family: var(--font-family);
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 700;
   color: var(--color-navy);

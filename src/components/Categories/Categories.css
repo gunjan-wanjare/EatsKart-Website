@@ -20,7 +20,7 @@
 }
 
 .categories__subtitle {
-  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-family: var(--font-family);
   font-size: clamp(13px, 1.05vw, 16px);
   font-weight: 500;
   line-height: 1.35;
@@ -31,7 +31,7 @@
 }
 
 .categories__title {
-  font-family: 'Bw Gradual DEMO', var(--font-family);
+  font-family: var(--font-family);
   font-size: clamp(1.5rem, 3.2vw, 2.125rem);
   font-weight: 500;
   color: var(--color-white);
