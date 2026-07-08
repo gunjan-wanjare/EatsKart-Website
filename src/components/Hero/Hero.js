@@ -11,6 +11,7 @@ function Hero() {
   return (
     <section className="hero">
       <div className="container hero__content">
+        <span id="brand-slot-hero" className="hero__brand-slot" aria-hidden="true" />
         <div className="hero__text">
           <h1 className="hero__title">
             <span className="hero__title-bold">Cravings Don&apos;t Wait.</span>

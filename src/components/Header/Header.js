@@ -17,16 +17,36 @@ function Logo() {
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     document.body.classList.toggle('nav-open', menuOpen);
     return () => document.body.classList.remove('nav-open');
   }, [menuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrolled(scrollTop > 20);
+      setProgress(height > 0 ? scrollTop / height : 0);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="header">
+    <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
+      <div
+        className="header__progress"
+        style={{ transform: `scaleX(${progress})` }}
+      />
       <div className="container header__inner">
         <Logo />
 
@@ -34,9 +54,10 @@ function Header() {
           <div className="header__links">
             <a href="#contact" className="header__link" onClick={closeMenu}>Contact Us</a>
             <img
+              id="brand-slot-header"
               src="/images/yaka-brand-logo.png"
               alt="A YAKA Brand"
-              className="header__yaka-brand"
+              className="header__yaka-brand header__yaka-brand--slot"
               width={120}
               height={90}
             />

@@ -1,0 +1,20 @@
+.brand-mark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  pointer-events: none;
+  will-change: transform, width;
+}
+
+.brand-mark__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .brand-mark {
+    display: none;
+  }
+}

@@ -25,6 +25,21 @@
   padding-bottom: 1rem;
 }
 
+.hero__brand-slot {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  width: 100px;
+  height: 70px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero__brand-slot {
+    display: none;
+  }
+}
+
 .hero__title {
   font-family: var(--font-family);
   font-size: clamp(2.375rem, 4.6vw, 62px);
