@@ -3,6 +3,26 @@
   top: 0;
   z-index: 100;
   background: var(--color-bg-hero);
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.header--scrolled {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: 0 6px 24px rgba(26, 26, 26, 0.08);
+}
+
+.header__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-red);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .header__inner {
@@ -61,6 +81,10 @@
   object-fit: contain;
   object-position: right center;
   flex-shrink: 0;
+}
+
+.header__yaka-brand--slot {
+  opacity: 0;
 }
 
 .header__yaka-brand--mobile {

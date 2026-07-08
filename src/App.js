@@ -1,3 +1,5 @@
+import Preloader from './components/Preloader/Preloader';
+import BrandMark from './components/BrandMark/BrandMark';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Restaurants from './components/Restaurants/Restaurants';
@@ -15,7 +17,9 @@ function App() {
 
   return (
     <div className="app">
+      <Preloader />
       <Header />
+      <BrandMark />
       <main>
         <Home />
         <Restaurants />
