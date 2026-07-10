@@ -5,8 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(circle at 50% 42%, #ffffff 0%, #fdf6f5 45%, #f4eeee 100%);
+  background: #ffffff;
   opacity: 1;
   transition: opacity 0.7s ease, visibility 0.7s ease;
 }
@@ -19,11 +18,10 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(231, 31, 31, 0.14) 0%,
-    rgba(231, 31, 31, 0.05) 40%,
-    transparent 70%
+    rgba(231, 31, 31, 0.1) 0%,
+    rgba(231, 31, 31, 0.04) 38%,
+    transparent 68%
   );
-  filter: blur(6px);
   pointer-events: none;
   transform: translateY(-6%);
 }
