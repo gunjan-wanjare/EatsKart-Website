@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
+import { LEGAL_PATHS } from '../constants/routes';
+
+const LEGAL_ROUTE_PATHS = new Set(Object.values(LEGAL_PATHS));
 
 function formatPageName(href, linkText) {
   if (linkText) return linkText;
@@ -20,6 +23,7 @@ function shouldShowComingSoon(anchor) {
   if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
   if (href === '/' || href === '#') return false;
   if (/^https?:\/\//i.test(href)) return false;
+  if (LEGAL_ROUTE_PATHS.has(href)) return false;
 
   if (href.startsWith('#')) {
     const id = href.slice(1);
