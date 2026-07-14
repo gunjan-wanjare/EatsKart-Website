@@ -1,37 +1,27 @@
-import Preloader from './components/Preloader/Preloader';
-import BrandMark from './components/BrandMark/BrandMark';
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Restaurants from './components/Restaurants/Restaurants';
-import AppPromo from './components/AppPromo/AppPromo';
-import Footer from './components/Footer/Footer';
-import ComingSoonModal from './components/ComingSoonModal/ComingSoonModal';
-import LegalModal from './components/LegalModal/LegalModal';
-import useComingSoonLinks from './hooks/useComingSoonLinks';
-import useLegalModal from './hooks/useLegalModal';
+import HomePage from './pages/HomePage/HomePage';
+import LegalStandalone from './pages/legal/LegalStandalone';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
+import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
+import { LEGAL_PATHS } from './constants/routes';
 import './App.css';
 
 function App() {
-  const { isOpen, pageName, closeModal } = useComingSoonLinks();
-  const { activePage, closeLegal } = useLegalModal();
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
 
-  return (
-    <div className="app">
-      <Preloader />
-      <Header />
-      <BrandMark />
-      <main>
-        <Home />
-        <Restaurants />
-        <div className="promo-footer">
-          <AppPromo />
-          <Footer />
-        </div>
-      </main>
-      <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
-      <LegalModal activePage={activePage} onClose={closeLegal} />
-    </div>
-  );
+  if (path === LEGAL_PATHS['privacy-policy']) {
+    return <LegalStandalone Page={PrivacyPolicy} title="Privacy Policy" />;
+  }
+
+  if (path === LEGAL_PATHS['terms-and-conditions']) {
+    return <LegalStandalone Page={TermsAndConditions} title="Terms & Conditions" />;
+  }
+
+  if (path === LEGAL_PATHS['refund-policy']) {
+    return <LegalStandalone Page={RefundPolicy} title="Refund Policy" />;
+  }
+
+  return <HomePage />;
 }
 
 export default App;

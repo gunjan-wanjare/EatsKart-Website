@@ -4,6 +4,12 @@ export const LEGAL_MODAL_IDS = new Set([
   'refund-policy',
 ]);
 
+export const LEGAL_PATHS = {
+  'privacy-policy': '/privacypolicy',
+  'terms-and-conditions': '/termsconditions',
+  'refund-policy': '/refundpolicy',
+};
+
 export const LEGAL_LINKS = [
   { label: 'Privacy Policy', modalId: 'privacy-policy' },
   { label: 'Terms & Conditions', modalId: 'terms-and-conditions' },
@@ -12,4 +18,8 @@ export const LEGAL_LINKS = [
 
 export function getLegalModalHref(modalId) {
   return `#legal-${modalId}`;
+}
+
+export function getLegalPath(modalId) {
+  return LEGAL_PATHS[modalId] || '/';
 }

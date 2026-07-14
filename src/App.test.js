@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
 test('renders hero heading', () => {
@@ -20,15 +20,26 @@ test('renders app promo section', () => {
 
 test('renders footer', () => {
   render(<App />);
-  expect(screen.getByText(/2024 eatskart/i)).toBeInTheDocument();
+  expect(screen.getByText(/2026 eatskart/i)).toBeInTheDocument();
 });
 
-test('shows coming soon popup when anchor link is clicked', () => {
+test('renders privacy policy page from url', () => {
+  window.history.pushState({}, '', '/privacy-policy');
   render(<App />);
+  expect(screen.getByRole('heading', { name: /privacy policy/i })).toBeInTheDocument();
+  window.history.pushState({}, '', '/');
+});
 
-  fireEvent.click(screen.getAllByRole('link', { name: 'Careers' })[0]);
+test('renders terms page from url', () => {
+  window.history.pushState({}, '', '/terms-and-conditions');
+  render(<App />);
+  expect(screen.getByRole('heading', { name: /terms and conditions/i })).toBeInTheDocument();
+  window.history.pushState({}, '', '/');
+});
 
-  expect(screen.getByRole('dialog')).toBeInTheDocument();
-  expect(screen.getByText('Page Coming Soon')).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: 'Careers' })).toBeInTheDocument();
+test('renders refund policy page from url', () => {
+  window.history.pushState({}, '', '/refund-policy');
+  render(<App />);
+  expect(screen.getByRole('heading', { name: /refund policy/i })).toBeInTheDocument();
+  window.history.pushState({}, '', '/');
 });
