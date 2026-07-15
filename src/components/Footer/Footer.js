@@ -29,7 +29,13 @@ function Footer() {
         <div className="footer__col footer__contact">
           <h4 className="footer__heading">Visit &amp; Contact</h4>
           <ul className="footer__contact-list">
-            <li><span>Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India</span></li>
+            <li>
+              <span className="footer__address">
+                Sattva Knowledge City,<br />
+                Hi-Tech City, 500081,<br />
+                Telangana, India
+              </span>
+            </li>
             <li><a href="mailto:hello@eatskart.com">hello@eatskart.com</a></li>
           </ul>
         </div>
