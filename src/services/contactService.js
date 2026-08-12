@@ -1,5 +1,8 @@
 // const apiUrl = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1/contact';
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// CRA only exposes REACT_APP_-prefixed vars to the browser bundle.
+// scripts/sync-env.js mirrors NEXT_PUBLIC_API_URL (the value you edit in .env)
+// into REACT_APP_API_URL on every `npm start` / `npm run build`.
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const CONTACT_BRAND = 'eatskart';
 const REQUEST_TIMEOUT_MS = 15000;
