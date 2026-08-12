@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { CONTACT_PATH } from '../../constants/routes';
 import './Header.css';
 
 function Logo() {
@@ -52,7 +53,7 @@ function Header() {
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
           <div className="header__links">
-            <a href="#contact" className="header__link" onClick={closeMenu}>Contact Us</a>
+            <a href={CONTACT_PATH} className="header__link" onClick={closeMenu}>Contact Us</a>
             <img
               id="brand-slot-header"
               src="/images/yaka-brand-logo.png"

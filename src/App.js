@@ -3,7 +3,8 @@ import LegalStandalone from './pages/legal/LegalStandalone';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
-import { LEGAL_PATHS } from './constants/routes';
+import ContactPage from './pages/ContactPage/ContactPage';
+import { CONTACT_PATH, LEGAL_PATHS } from './constants/routes';
 import './App.css';
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
 
   if (path === LEGAL_PATHS['refund-policy']) {
     return <LegalStandalone Page={RefundPolicy} title="Refund Policy" />;
+  }
+
+  if (path === CONTACT_PATH) {
+    return <LegalStandalone Page={ContactPage} title="Contact Us" />;
   }
 
   return <HomePage />;

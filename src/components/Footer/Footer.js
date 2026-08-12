@@ -1,5 +1,5 @@
 import './Footer.css';
-import { getLegalModalHref, LEGAL_LINKS } from '../../constants/routes';
+import { CONTACT_PATH, getLegalModalHref, LEGAL_LINKS } from '../../constants/routes';
 
 const exploreLinks = ['Restaurants', 'Popular Cuisines', 'Offers & Deals', 'New Arrivals'];
 
@@ -37,6 +37,7 @@ function Footer() {
               </span>
             </li>
             <li><a href="mailto:hello@eatskart.com">hello@eatskart.com</a></li>
+            <li><a href={CONTACT_PATH}>Send us a message</a></li>
           </ul>
         </div>
       </div>
