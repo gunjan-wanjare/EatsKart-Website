@@ -1,4 +1,6 @@
-const CONTACT_API_URL = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1/contact';
+// const apiUrl = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1/contact';
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 const CONTACT_BRAND = 'eatskart';
 const REQUEST_TIMEOUT_MS = 15000;
 
@@ -8,7 +10,7 @@ export async function submitContactForm({ fullName, email, subject, description 
 
   let response;
   try {
-    response = await fetch(CONTACT_API_URL, {
+    response = await fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
