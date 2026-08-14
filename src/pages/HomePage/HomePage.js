@@ -1,14 +1,13 @@
-import Preloader from '../../components/Preloader/Preloader';
-import BrandMark from '../../components/BrandMark/BrandMark';
-import Header from '../../components/Header/Header';
-import Home from '../../components/Home/Home';
-import Restaurants from '../../components/Restaurants/Restaurants';
-import AppPromo from '../../components/AppPromo/AppPromo';
-import Footer from '../../components/Footer/Footer';
-import ComingSoonModal from '../../components/ComingSoonModal/ComingSoonModal';
-import LegalModal from '../../components/LegalModal/LegalModal';
-import useComingSoonLinks from '../../hooks/useComingSoonLinks';
-import useLegalModal from '../../hooks/useLegalModal';
+import Preloader from "../../components/Preloader/Preloader";
+import Header from "../../components/Header/Header";
+import Home from "../../components/Home/Home";
+import Restaurants from "../../components/Restaurants/Restaurants";
+import AppPromo from "../../components/AppPromo/AppPromo";
+import Footer from "../../components/Footer/Footer";
+import ComingSoonModal from "../../components/ComingSoonModal/ComingSoonModal";
+import LegalModal from "../../components/LegalModal/LegalModal";
+import useComingSoonLinks from "../../hooks/useComingSoonLinks";
+import useLegalModal from "../../hooks/useLegalModal";
 
 function HomePage() {
   const { isOpen, pageName, closeModal } = useComingSoonLinks();
@@ -17,8 +16,7 @@ function HomePage() {
   return (
     <div className="app">
       <Preloader />
-      <Header />
-      <BrandMark />
+      <Header theme="hero" />
       <main>
         <Home />
         <Restaurants />
@@ -27,7 +25,11 @@ function HomePage() {
           <Footer />
         </div>
       </main>
-      <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
+      <ComingSoonModal
+        isOpen={isOpen}
+        pageName={pageName}
+        onClose={closeModal}
+      />
       <LegalModal activePage={activePage} onClose={closeLegal} />
     </div>
   );

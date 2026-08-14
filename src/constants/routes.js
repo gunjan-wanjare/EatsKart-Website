@@ -10,6 +10,8 @@ export const LEGAL_PATHS = {
   'refund-policy': '/refundpolicy',
 };
 
+export const CORPORATE_PATH = '/corporate';
+
 export const LEGAL_LINKS = [
   { label: 'Privacy Policy', modalId: 'privacy-policy' },
   { label: 'Terms & Conditions', modalId: 'terms-and-conditions' },

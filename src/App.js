@@ -1,9 +1,10 @@
 import HomePage from './pages/HomePage/HomePage';
+import CorporatePage from './pages/CorporatePage/CorporatePage';
 import LegalStandalone from './pages/legal/LegalStandalone';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
-import { LEGAL_PATHS } from './constants/routes';
+import { LEGAL_PATHS, CORPORATE_PATH } from './constants/routes';
 import './App.css';
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
 
   if (path === LEGAL_PATHS['refund-policy']) {
     return <LegalStandalone Page={RefundPolicy} title="Refund Policy" />;
+  }
+
+  if (path === CORPORATE_PATH) {
+    return <CorporatePage />;
   }
 
   return <HomePage />;

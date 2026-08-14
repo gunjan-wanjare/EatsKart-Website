@@ -1,9 +1,46 @@
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import restaurants from '../../data/restaurants';
 import './Restaurants.css';
 
 function Restaurants() {
   const scrollRef = useRef(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const updateNavState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const hasOverflow = maxScroll > 2;
+
+    if (!hasOverflow) {
+      setCanPrev(false);
+      setCanNext(false);
+      return;
+    }
+
+    setCanPrev(el.scrollLeft > 2);
+    setCanNext(el.scrollLeft < maxScroll - 2);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    updateNavState();
+    el.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
+
+    const resizeObserver = new ResizeObserver(updateNavState);
+    resizeObserver.observe(el);
+
+    return () => {
+      el.removeEventListener('scroll', updateNavState);
+      window.removeEventListener('resize', updateNavState);
+      resizeObserver.disconnect();
+    };
+  }, [updateNavState]);
 
   const scroll = (direction) => {
     const grid = scrollRef.current;
@@ -16,18 +53,54 @@ function Restaurants() {
       <div className="container">
         <div className="restaurants__header">
           <div className="restaurants__headings">
-            <p className="section-subtitle section-subtitle--dark">Top rated for you in your location</p>
+            <p className="restaurants__subtitle">Something for every appetite.</p>
             <h2 className="restaurants__title">Restaurants near me</h2>
           </div>
           <div className="restaurants__nav">
-            <button type="button" className="restaurants__nav-btn" onClick={() => scroll(-1)} aria-label="Previous restaurants">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <button
+              type="button"
+              className={`restaurants__nav-btn${canPrev ? ' restaurants__nav-btn--active' : ''}`}
+              onClick={() => scroll(-1)}
+              disabled={!canPrev}
+              aria-label="Previous restaurants"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
-            <button type="button" className="restaurants__nav-btn" onClick={() => scroll(1)} aria-label="Next restaurants">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <button
+              type="button"
+              className={`restaurants__nav-btn${canNext ? ' restaurants__nav-btn--active' : ''}`}
+              onClick={() => scroll(1)}
+              disabled={!canNext}
+              aria-label="Next restaurants"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 18l6-6-6-6"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </div>
@@ -39,16 +112,45 @@ function Restaurants() {
               <li key={restaurant.id} className="restaurants__item">
                 <article className="restaurants__card">
                   <div className="restaurants__image-wrap">
-                    <img src={restaurant.image} alt={restaurant.name} className="restaurants__image" loading="lazy" />
+                    <img
+                      src={restaurant.image}
+                      alt={restaurant.name}
+                      className="restaurants__image"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="restaurants__info">
                     <div className="restaurants__info-top">
-                      <h3 className="restaurants__name">{restaurant.name}</h3>
-                      <span className="restaurants__rating">{restaurant.rating} ★</span>
+                      <h3
+                        className="restaurants__name"
+                        style={{
+                          color: '#1F1F1F',
+                          WebkitTextFillColor: '#1F1F1F',
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {restaurant.name}
+                      </h3>
+                      <span className="restaurants__rating">
+                        {restaurant.rating}
+                        <span className="restaurants__rating-star" aria-hidden="true">
+                          ★
+                        </span>
+                      </span>
                     </div>
-                    <p className="restaurants__reviews">{restaurant.reviews}</p>
+                    <p
+                      className="restaurants__price"
+                      style={{
+                        color: '#1F1F1F',
+                        WebkitTextFillColor: '#1F1F1F',
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      }}
+                    >
+                      {restaurant.priceForTwo}
+                    </p>
                     <div className="restaurants__meta">
-                      <span className="restaurants__cuisine">{restaurant.cuisine}</span>
+                      <span className="restaurants__location">{restaurant.location}</span>
                       <span className="restaurants__distance">{restaurant.distance}</span>
                     </div>
                   </div>

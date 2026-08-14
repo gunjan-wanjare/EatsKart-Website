@@ -1,5 +1,5 @@
 .categories {
-  --cat-icon: clamp(110px, 12vw, 140px);
+  --cat-icon: clamp(90px, 10vw, 115px);
   --cat-gap: clamp(2.25rem, 4.5vw, 4rem);
 
   position: absolute;
@@ -9,14 +9,15 @@
   z-index: 3;
   overflow-x: clip;
   max-width: 100%;
+  background-color: var(--color-white);
 }
 
 .categories__header {
   position: relative;
   z-index: 1;
-  text-align: left;
-  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
-  padding-top: 0;
+  text-align: center;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .categories__subtitle {
@@ -25,20 +26,26 @@
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: clamp(1px, 0.12vw, 1.7px);
-  margin: 0 0 0.625rem;
+  margin: 0 auto 0.625rem;
   max-width: 448px;
-  color: var(--color-white);
+  text-align: center;
+  background: linear-gradient(90deg, #e96421 0%, #06053a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .categories__title {
   font-family: var(--font-family);
   font-size: clamp(1.5rem, 3.2vw, 2.125rem);
-  font-weight: 500;
-  color: var(--color-white);
-  margin: 0;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 auto;
   letter-spacing: 0;
   line-height: 1.3;
   max-width: 100%;
+  text-align: center;
 }
 
 /* Auto-scrolling marquee */
@@ -48,7 +55,7 @@
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  padding-top: 0.25rem;
+  padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 .categories__track {
@@ -84,7 +91,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -108,9 +115,10 @@
   display: block;
   width: 100%;
   max-width: var(--cat-icon);
-  font-size: clamp(0.8125rem, 1vw, 0.875rem);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-white);
+  font-family: 'Plus Jakarta Sans', var(--font-family);
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  font-weight: 500;
+  color: #131313;
   text-align: center;
   line-height: 1.25;
   /* Prevent long labels (e.g. South Indian) from overlapping neighbours */
@@ -140,14 +148,15 @@
 
 @media (max-width: 1024px) {
   .categories {
-    --cat-icon: clamp(100px, 11vw, 130px);
+    --cat-icon: clamp(82px, 9.5vw, 105px);
     --cat-gap: clamp(2rem, 5vw, 3rem);
+    position: relative;
   }
 }
 
 @media (max-width: 768px) {
   .categories {
-    --cat-icon: clamp(88px, 22vw, 110px);
+    --cat-icon: clamp(74px, 19vw, 92px);
     --cat-gap: clamp(1.5rem, 5vw, 2.25rem);
     position: relative;
     z-index: 4;
@@ -159,7 +168,7 @@
   }
 
   .categories__inner {
-    margin-top: -50px;
+    margin-top: 0;
   }
 
   .categories__subtitle {
@@ -188,7 +197,7 @@
 
 @media (max-width: 480px) {
   .categories {
-    --cat-icon: clamp(82px, 24vw, 96px);
+    --cat-icon: clamp(70px, 21vw, 84px);
     --cat-gap: 1.5rem;
   }
 
@@ -206,18 +215,22 @@
   }
 
   .categories__name {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     min-height: 2.6em;
+  }
+
+  .categories__track {
+    animation-duration: 50s;
   }
 }
 
 @media (max-width: 360px) {
   .categories {
-    --cat-icon: 78px;
+    --cat-icon: 68px;
     --cat-gap: 1.25rem;
   }
 
   .categories__name {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 }

@@ -15,12 +15,14 @@ test('renders restaurants section', () => {
 
 test('renders app promo section', () => {
   render(<App />);
-  expect(screen.getByAltText(/hungry\? we've got you/i)).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: /discover eatskart, your food your way/i })
+  ).toBeInTheDocument();
 });
 
 test('renders footer', () => {
   render(<App />);
-  expect(screen.getByText(/2026 eatskart/i)).toBeInTheDocument();
+  expect(screen.getByText(/2024 eatskart/i)).toBeInTheDocument();
 });
 
 test('renders privacy policy page from url', () => {

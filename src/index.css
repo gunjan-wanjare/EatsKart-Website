@@ -10,13 +10,13 @@
   --color-orange: #e71f1f;
   --color-orange-dark: #e71f1f;
   --color-white: #ffffff;
-  --color-bg-hero: #ffffff;
+  --color-bg-hero: #ec1421;
   --color-text: #1a1a1a;
   --color-text-muted: #6b6b6b;
   --color-border: #e8e8e8;
   --color-green: #28a745;
   --color-footer-bg: #000000;
-  --color-placeholder: #9aa0b8;
+  --color-placeholder: #677287;
 
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
@@ -35,6 +35,7 @@ html {
   max-width: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  font-family: var(--font-family);
 }
 
 body {
@@ -60,8 +61,14 @@ img {
   display: block;
 }
 
-button {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
+}
+
+button {
   cursor: pointer;
 }
 

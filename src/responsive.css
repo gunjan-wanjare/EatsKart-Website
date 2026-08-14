@@ -20,8 +20,24 @@
 /* Prevent flex/grid children from forcing horizontal scroll */
 .app,
 .app main,
-section {
+section,
+.container,
+.footer__shell,
+.restaurants__grid-wrap,
+.app-promo__layout,
+.hero__content,
+.hero__text {
   min-width: 0;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.hero__food {
+  max-width: none;
 }
 
 /* Touch-friendly interactive targets on coarse pointers */
@@ -29,6 +45,7 @@ section {
   .header__hamburger,
   .header__location,
   .header__link,
+  .header__btn,
   .hero__search-btn,
   .restaurants__nav-btn,
   .app-promo__store-btn,
@@ -58,16 +75,36 @@ section {
   }
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+  }
+}
+
 /* Shared section subtitle scaling */
 @media (max-width: 768px) {
+  :root {
+    --container-pad: clamp(1rem, 4.5vw, 1.5rem);
+  }
+
   .section-subtitle {
     font-size: clamp(0.75rem, 3.2vw, 0.875rem);
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --container-pad: 1rem;
+  }
+
   .section-subtitle {
     font-size: 0.75rem;
     margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --container-pad: 0.875rem;
   }
 }

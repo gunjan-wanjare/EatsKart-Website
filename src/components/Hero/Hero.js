@@ -1,38 +1,153 @@
-import './Hero.css';
+import "./Hero.css";
 
-const AVATARS = [
-  '/images/avatar-1.jpg',
-  '/images/avatar-2.jpg',
-  '/images/avatar-3.jpg',
-  '/images/avatar-4.jpg',
+const FOODS = [
+  {
+    src: "/images/hero/burger.png",
+    alt: "Cheeseburger",
+    className: "hero__food--burger",
+  },
+  {
+    src: "/images/hero/fries.png",
+    alt: "French fries",
+    className: "hero__food--fries",
+  },
+  {
+    src: "/images/hero/cake.png",
+    alt: "Chocolate cake",
+    className: "hero__food--cake",
+  },
+  {
+    src: "/images/hero/noodles.png",
+    alt: "Noodles",
+    className: "hero__food--noodles",
+  },
+];
+
+const FEATURES = [
+  {
+    title: "Fast Delivery",
+    subtitle: "On time, every time",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M4 16V8h7.5l1.2 3H19v5h-1.1"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <circle
+          cx="7.2"
+          cy="16.8"
+          r="1.7"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <circle
+          cx="16.5"
+          cy="16.8"
+          r="1.7"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M12.5 8v3H19"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "10,000+ Dishes",
+    subtitle: "For every mood",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M4.5 13.5c.8-2.2 2.6-3.5 5-3.5 1.8 0 2.7.8 3.4 2.2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7 16.8c.4.7 1.2 1.2 2.2 1.2 1.5 0 2.4-1 2.4-2.3 0-2.3-2.4-2.4-3.6-3.6"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M14.2 8.2h2.4l.7 8.4h-3.8l.7-8.4z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M13.8 10.4h3.2M15.4 6.8v1.4"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Top Rated",
+    subtitle: "Loved by thousands",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 3.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L12 15.5 7.4 17.9l.9-5.2L4.5 9.1l5.2-.8L12 3.6z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
 ];
 
 function Hero() {
   return (
     <section className="hero">
+      <div className="hero__foods" aria-hidden="true">
+        {FOODS.map((food) => (
+          <img
+            key={food.className}
+            src={food.src}
+            alt=""
+            className={`hero__food ${food.className}`}
+          />
+        ))}
+      </div>
+
       <div className="container hero__content">
-        <span id="brand-slot-hero" className="hero__brand-slot" aria-hidden="true" />
         <div className="hero__text">
           <h1 className="hero__title">
-            <span className="hero__title-bold">Cravings Don&apos;t Wait.</span>
-            <br />
-            <span className="hero__title-medium">Neither Do We.</span>
+            <span className="hero__title-line hero__title-line--bold">
+              Cravings Don&apos;t Wait.
+            </span>
+            <span className="hero__title-line hero__title-line--medium">
+              Neither Do We.
+            </span>
           </h1>
-
-          <div className="hero__trust">
-            <div className="hero__trust-row">
-              <span className="hero__trust-number">
-                <span className="hero__trust-number-accent">45</span>
-                <span className="hero__trust-number-suffix">K+</span>
-              </span>
-              <div className="hero__avatars">
-                {AVATARS.map((src, i) => (
-                  <img key={src} src={src} alt="" className="hero__avatar" style={{ zIndex: AVATARS.length - i }} />
-                ))}
-              </div>
-            </div>
-            <span className="hero__trust-label">People Trust EatsKart</span>
-          </div>
 
           <form className="hero__search" onSubmit={(e) => e.preventDefault()}>
             <input
@@ -41,29 +156,53 @@ function Hero() {
               placeholder="Search for restaurant, item or more"
               aria-label="Search for restaurant, item or more"
             />
-            <button type="submit" className="hero__search-btn" aria-label="Search">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <button
+              type="submit"
+              className="hero__search-btn"
+              aria-label="Search"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="white"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </form>
-        </div>
 
-        <div className="hero__image-wrap">
-          <img
-            src="/hero.png"
-            alt="Delicious tacos with fresh toppings"
-            className="hero__image"
-          />
+          <ul className="hero__features">
+            {FEATURES.map((feature) => (
+              <li key={feature.title} className="hero__feature">
+                <span className="hero__feature-icon">{feature.icon}</span>
+                <span className="hero__feature-copy">
+                  <span className="hero__feature-title">{feature.title}</span>
+                  <span className="hero__feature-subtitle">
+                    {feature.subtitle}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      <img
-        src="/vector/Vector%2022.png"
-        alt=""
-        className="hero__vector"
-        aria-hidden="true"
-      />
+      <div className="hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0 72C120 28 240 12 360 40C480 68 540 108 660 96C780 84 840 28 960 36C1080 44 1140 92 1260 88C1340 85 1400 62 1440 48V120H0V72Z"
+            fill="#ffffff"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
