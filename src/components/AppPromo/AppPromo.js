@@ -6,7 +6,7 @@ function AppPromo() {
       <div className="container app-promo__layout">
         <div className="app-promo__content">
           <h2 id="app-promo-heading" className="app-promo__title">
-            <span className="app-promo__title-accent">Discover</span> EatsKart,
+            <span className="app-promo__title-accent">Discover EatsKart,</span>
             <br />
             your food your way
           </h2>
@@ -28,11 +28,8 @@ function AppPromo() {
               </span>
             </a>
             <a href="#google-play" className="app-promo__store-btn">
-              <svg width="20" height="22" viewBox="0 0 512 512" aria-hidden="true">
-                <path fill="#EA4335" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" />
-                <path fill="#FBBC04" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z" />
-                <path fill="#4285F4" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z" />
-                <path fill="#34A853" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+              <svg width="20" height="22" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
+                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
               </svg>
               <span>
                 <small>GET IT ON</small>
@@ -43,9 +40,16 @@ function AppPromo() {
 
           <a href="#learn-more" className="app-promo__learn">
             Learn More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg
+              className="app-promo__learn-arrow"
+              width="6"
+              height="9"
+              viewBox="0 0 10 14"
+              fill="none"
+              aria-hidden="true"
+            >
               <path
-                d="M5 12h14M13 6l6 6-6 6"
+                d="M2 1.5L7.5 7L2 12.5"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"

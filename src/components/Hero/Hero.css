@@ -217,26 +217,32 @@
   }
 
   .hero__search {
-    width: min(100%, 520px);
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .hero__search-input {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .hero__food--burger {
-    top: 10%;
-    width: min(280px, 30vw);
+    top: 8%;
+    left: -4%;
+    width: min(200px, 22vw);
+    opacity: 0.55;
   }
 
-  .hero__food--fries {
-    width: min(200px, 22vw);
+  .hero__food--fries,
+  .hero__food--noodles {
+    display: none;
   }
 
   .hero__food--cake {
-    top: 12%;
-    right: 3%;
-    width: min(160px, 17vw);
-  }
-
-  .hero__food--noodles {
-    width: min(300px, 32vw);
+    top: 10%;
+    right: -2%;
+    width: min(140px, 15vw);
+    opacity: 0.55;
   }
 
   .hero__features {
@@ -263,20 +269,7 @@
   }
 
   .hero__food--burger,
-  .hero__food--cake {
-    top: 18%;
-    opacity: 0.95;
-  }
-
-  .hero__food--burger {
-    width: min(180px, 36vw);
-  }
-
-  .hero__food--cake {
-    width: min(130px, 26vw);
-    right: 4%;
-  }
-
+  .hero__food--cake,
   .hero__food--fries,
   .hero__food--noodles {
     display: none;
@@ -295,15 +288,16 @@
   }
 
   .hero__features {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
-    row-gap: 1rem;
+    row-gap: 0.875rem;
   }
 
   .hero__feature {
-    flex: 1 1 calc(50% - 0.75rem);
+    flex: none;
     max-width: none;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero__wave svg {

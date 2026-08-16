@@ -1,7 +1,14 @@
 .corp-hero {
   position: relative;
-  background:
-    radial-gradient(58% 70% at 50% 48%, #4a1418 0%, #22090c 42%, #0d0607 100%);
+  background-color: #1f1f1f;
+  background-image:
+    radial-gradient(
+      ellipse 52% 48% at 50% 58%,
+      #4e171c 0%,
+      #3a1c1e 28%,
+      #2a1f20 55%,
+      #1f1f1f 100%
+    );
   overflow: hidden;
   max-width: 100%;
 }
@@ -13,6 +20,12 @@
   pointer-events: none;
 }
 
+/* Same horizontal bounds as navbar (.container) */
+.corp-hero__foods-inner {
+  position: relative;
+  height: 100%;
+}
+
 .corp-hero__food {
   position: absolute;
   height: auto;
@@ -22,23 +35,23 @@
 }
 
 .corp-hero__food--burger {
-  top: 46%;
-  left: 5%;
-  width: min(168px, 13.5vw);
-  transform: rotate(-8deg);
+  top: 42%;
+  left: 0;
+  width: min(140px, 11.5vw);
+  transform: translateY(-50%) rotate(-8deg);
 }
 
-.corp-hero__food--fries {
-  top: 7%;
-  right: 7%;
-  width: min(128px, 10.5vw);
-  transform: rotate(18deg);
+.corp-hero__food--sandwich {
+  top: 8%;
+  right: 0;
+  width: min(110px, 9vw);
+  transform: rotate(16deg);
 }
 
-.corp-hero__food--cake {
-  bottom: 11%;
-  right: 16%;
-  width: min(118px, 10vw);
+.corp-hero__food--tart {
+  bottom: 14%;
+  right: 8%;
+  width: min(98px, 8.5vw);
   transform: rotate(8deg);
 }
 
@@ -102,10 +115,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 0 1.6rem;
+  height: 44px;
+  padding: 0 1.15rem;
+  min-width: 0;
   border-radius: 10px;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: var(--font-weight-semibold);
   white-space: nowrap;
   transition: background 0.2s, border-color 0.2s;
@@ -154,20 +168,21 @@
 
   .corp-hero__food--burger {
     top: 44%;
-    left: 2%;
-    width: min(140px, 16vw);
+    width: min(100px, 12vw);
+    opacity: 0.7;
   }
 
-  .corp-hero__food--fries {
+  .corp-hero__food--sandwich {
     top: 8%;
-    right: 3%;
-    width: min(110px, 12vw);
+    width: min(80px, 9vw);
+    opacity: 0.7;
   }
 
-  .corp-hero__food--cake {
-    bottom: 12%;
-    right: 10%;
-    width: min(100px, 11vw);
+  .corp-hero__food--tart {
+    bottom: 14%;
+    right: 4%;
+    width: min(72px, 8vw);
+    opacity: 0.7;
   }
 }
 
@@ -182,23 +197,23 @@
   }
 
   .corp-hero__food--burger {
-    top: 38%;
+    top: auto;
+    bottom: 22%;
     left: -2%;
-    width: min(110px, 24vw);
-    opacity: 0.85;
+    width: min(72px, 16vw);
+    opacity: 0.35;
+    transform: rotate(-8deg);
   }
 
-  .corp-hero__food--fries {
-    top: 8%;
+  .corp-hero__food--sandwich {
+    top: 6%;
     right: -2%;
-    width: min(90px, 18vw);
-    opacity: 0.85;
+    width: min(60px, 12vw);
+    opacity: 0.35;
   }
 
-  .corp-hero__food--cake {
-    right: 8%;
-    bottom: 12%;
-    width: min(85px, 16vw);
+  .corp-hero__food--tart {
+    display: none;
   }
 
   .corp-hero__wave svg {
@@ -219,17 +234,18 @@
     font-size: 0.9rem;
   }
 
-  .corp-hero__food--fries,
-  .corp-hero__food--cake {
+  .corp-hero__food--sandwich,
+  .corp-hero__food--tart {
     display: none;
   }
 
   .corp-hero__food--burger {
     top: auto;
-    bottom: 18%;
-    left: -8%;
-    width: min(90px, 26vw);
-    opacity: 0.5;
+    bottom: 12%;
+    left: 0;
+    width: min(72px, 22vw);
+    opacity: 0.28;
+    transform: rotate(-8deg);
   }
 
   .corp-hero__actions {

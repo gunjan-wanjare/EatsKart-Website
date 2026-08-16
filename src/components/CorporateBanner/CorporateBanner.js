@@ -8,13 +8,13 @@ const FOODS = [
   },
   {
     src: '/images/corporate/hotdog.png',
-    alt: 'French fries',
-    className: 'corp-hero__food--fries',
+    alt: 'Sandwich',
+    className: 'corp-hero__food--sandwich',
   },
   {
-    src: '/images/corporate/cupcake.png',
-    alt: 'Chocolate cake',
-    className: 'corp-hero__food--cake',
+    src: '/images/corporate/39.png',
+    alt: 'Dessert tart',
+    className: 'corp-hero__food--tart',
   },
 ];
 
@@ -22,14 +22,16 @@ function CorporateBanner() {
   return (
     <section className="corp-hero">
       <div className="corp-hero__foods" aria-hidden="true">
-        {FOODS.map((food) => (
-          <img
-            key={food.className}
-            src={food.src}
-            alt=""
-            className={`corp-hero__food ${food.className}`}
-          />
-        ))}
+        <div className="container corp-hero__foods-inner">
+          {FOODS.map((food) => (
+            <img
+              key={food.className}
+              src={food.src}
+              alt=""
+              className={`corp-hero__food ${food.className}`}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="container corp-hero__content">

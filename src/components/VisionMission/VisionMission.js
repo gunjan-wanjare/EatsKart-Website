@@ -61,7 +61,7 @@ function VisionMission() {
             {ITEMS.map((item) => (
               <div key={item.title} className="vision-mission__item">
                 <span className="vision-mission__icon">{item.icon}</span>
-                <div>
+                <div className="vision-mission__item-body">
                   <h3 className="vision-mission__item-title">{item.title}</h3>
                   <p className="vision-mission__item-text">{item.text}</p>
                 </div>

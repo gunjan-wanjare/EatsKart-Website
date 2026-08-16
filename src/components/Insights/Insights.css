@@ -1,5 +1,5 @@
 .insights {
-  background: #ffffff;
+  background: #FFFFFF;
   padding: clamp(3.5rem, 7vw, 5.5rem) 0;
 }
 
@@ -9,21 +9,30 @@
 }
 
 .insights__label {
+display: inline-block;
   font-family: var(--font-family);
   font-size: 0.875rem;
-  font-weight: 700;
-  color: #b0202f;
-  margin: 0 0 0.55rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.7rem;
+  background: linear-gradient(90deg, #ec1420 0%, #06053a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .insights__title {
-  font-family: var(--font-family);
-  font-size: clamp(1.5rem, 3vw, 2.125rem);
+font-family: var(--font-family);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
   font-weight: 700;
-  color: #000000;
-  margin: 0;
+  color: #1a1a1a;
+  margin: 0 auto;
   letter-spacing: -0.02em;
   line-height: 1.3;
+  white-space: nowrap;
+  max-width: none;
 }
 
 .insights__grid {
@@ -48,7 +57,7 @@
 .insights__image-wrap {
   border-radius: 10px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 6;
   margin-bottom: 0.9rem;
 }
 
@@ -61,25 +70,24 @@
 
 .insights__category {
   font-family: var(--font-family);
-  font-size: 0.6875rem;
-  font-weight: 700;
+  font-size: 0.575rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #b0202f;
+  color: #EC1420;
   margin: 0 0.35rem 0.45rem;
 }
 
 .insights__card-title {
   font-family: var(--font-family);
-  font-size: 1rem;
-  font-weight: 700;
-  color: #000000;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111827;
   line-height: 1.35;
   margin: 0 0.35rem 1.1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .insights__footer {
@@ -93,16 +101,16 @@
 
 .insights__date {
   font-family: var(--font-family);
-  font-size: 0.8125rem;
+  font-size: 0.7125rem;
   font-weight: 400;
   color: #6b6b6b;
 }
 
 .insights__link {
   font-family: var(--font-family);
-  font-size: 0.8125rem;
+  font-size: 0.7125rem;
   font-weight: 600;
-  color: #b0202f;
+  color: #EC1420;
   white-space: nowrap;
 }
 
@@ -110,7 +118,25 @@
   text-decoration: underline;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .insights__title {
+    white-space: normal;
+  }
+
+  .insights__grid {
+    gap: 1rem;
+  }
+
+  .insights__card-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
   .insights__grid {
     grid-template-columns: 1fr;
     max-width: 28rem;

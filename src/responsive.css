@@ -26,7 +26,18 @@ section,
 .restaurants__grid-wrap,
 .app-promo__layout,
 .hero__content,
-.hero__text {
+.hero__text,
+.vision-mission__inner,
+.vision-mission__copy,
+.corp-stats__inner,
+.timeline__list,
+.timeline__item,
+.the-engine__grid,
+.get-in-touch__inner,
+.insights__grid,
+.delivering__grid,
+.about-eatskart__grid,
+.corp-hero__content {
   min-width: 0;
 }
 
@@ -36,7 +47,8 @@ video {
   max-width: 100%;
 }
 
-.hero__food {
+.hero__food,
+.corp-hero__food {
   max-width: none;
 }
 
@@ -44,13 +56,12 @@ video {
 @media (pointer: coarse) {
   .header__hamburger,
   .header__location,
-  .header__link,
+  .header__nav-link,
   .header__btn,
   .hero__search-btn,
   .restaurants__nav-btn,
   .app-promo__store-btn,
   .app-promo__learn,
-  .footer__social-link,
   .footer__links a,
   .footer__legal a,
   .footer__contact-list a {
@@ -62,7 +73,8 @@ video {
     align-items: center;
   }
 
-  .header__link {
+  .header__nav-link,
+  .header__location {
     display: inline-flex;
     align-items: center;
   }

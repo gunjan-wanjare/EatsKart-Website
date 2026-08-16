@@ -37,20 +37,22 @@ function Timeline() {
           <h2 className="timeline__title">From an idea to a growing food ecosystem.</h2>
         </div>
 
-        <div className="timeline__rail">
-          <span className="timeline__line" aria-hidden="true" />
-          <ol className="timeline__list">
-            {MILESTONES.map((item) => (
-              <li key={item.year} className="timeline__item">
+        <ol className="timeline__list">
+          {MILESTONES.map((item, index) => (
+            <li key={item.year} className="timeline__item">
+              <div className="timeline__node">
+                {index > 0 ? <span className="timeline__dot" aria-hidden="true" /> : null}
                 <p className="timeline__year">{item.year}</p>
-                <span className="timeline__dot" aria-hidden="true" />
-                <h3 className="timeline__item-title">{item.title}</h3>
-                <p className="timeline__item-text">{item.text}</p>
-              </li>
-            ))}
-          </ol>
-          <span className="timeline__end-dot" aria-hidden="true" />
-        </div>
+                <span className="timeline__seg" aria-hidden="true" />
+                {index === MILESTONES.length - 1 ? (
+                  <span className="timeline__end-dot" aria-hidden="true" />
+                ) : null}
+              </div>
+              <h3 className="timeline__item-title">{item.title}</h3>
+              <p className="timeline__item-text">{item.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
