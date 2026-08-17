@@ -54,7 +54,6 @@ video {
 
 /* Touch-friendly interactive targets on coarse pointers */
 @media (pointer: coarse) {
-  .header__hamburger,
   .header__location,
   .header__nav-link,
   .header__btn,
@@ -91,6 +90,10 @@ video {
   :root {
     --container-pad: clamp(1.25rem, 4vw, 2.5rem);
   }
+
+  h1, h2, h3, p {
+    overflow-wrap: break-word;
+  }
 }
 
 /* Shared section subtitle scaling */
@@ -101,6 +104,20 @@ video {
 
   .section-subtitle {
     font-size: clamp(0.75rem, 3.2vw, 0.875rem);
+  }
+
+  .hero__content,
+  .hero__text,
+  .corp-hero__content,
+  .categories__header,
+  .app-promo__content,
+  .app-promo__visual {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .app-promo__layout {
+    justify-items: center;
   }
 }
 

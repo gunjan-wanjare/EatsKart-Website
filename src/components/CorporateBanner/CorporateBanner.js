@@ -51,11 +51,8 @@ function CorporateBanner() {
         </p>
 
         <div className="corp-hero__actions">
-          <a href="/" className="corp-hero__btn corp-hero__btn--solid">
+          <a href="#about" className="corp-hero__btn corp-hero__btn--solid">
             Explore EatsKart
-          </a>
-          <a href="#partner-with-us" className="corp-hero__btn corp-hero__btn--ghost">
-            Partner with us
           </a>
         </div>
       </div>

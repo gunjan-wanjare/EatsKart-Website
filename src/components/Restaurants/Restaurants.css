@@ -9,6 +9,7 @@
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  min-width: 0;
 }
 
 .restaurants__subtitle {
@@ -33,6 +34,7 @@
   margin: 0;
   letter-spacing: 0;
   line-height: 1.2;
+  max-width: 100%;
 }
 
 .restaurants__nav {
@@ -246,40 +248,40 @@
   }
 
   .restaurants__header {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     margin-bottom: 1.25rem;
   }
 
+  .restaurants__subtitle,
+  .restaurants__title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .restaurants__nav {
-    display: flex;
-  }
-
-  .restaurants__grid-wrap {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin: 0 calc(-1 * var(--container-pad));
-    padding: 0 var(--container-pad) 0.35rem;
-    scroll-padding-inline: var(--container-pad);
-  }
-
-  .restaurants__grid-wrap::-webkit-scrollbar {
     display: none;
   }
 
+  .restaurants__grid-wrap {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+
   .restaurants__grid {
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+    gap: 1.25rem;
   }
 
   .restaurants__item {
-    flex: 0 0 min(270px, 42vw);
-    width: min(270px, 42vw);
-    scroll-snap-align: start;
+    width: 100%;
+    flex: none;
   }
 
   .restaurants__card,
@@ -301,7 +303,8 @@
 
   .restaurants__header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -310,15 +313,12 @@
     font-size: clamp(1.375rem, 5.5vw, 1.5rem);
   }
 
-  .restaurants__nav-btn {
-    width: 48px;
-    height: 48px;
+  .restaurants__nav {
     display: none;
   }
 
   .restaurants__item {
-    flex: 0 0 min(260px, 82vw);
-    width: min(260px, 82vw);
+    width: 100%;
   }
 
   .restaurants__image-wrap {
@@ -340,10 +340,5 @@
 @media (max-width: 360px) {
   .restaurants__header {
     gap: 0.35rem;
-  }
-
-  .restaurants__item {
-    flex: 0 0 85vw;
-    width: 85vw;
   }
 }

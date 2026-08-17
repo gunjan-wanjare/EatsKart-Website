@@ -106,9 +106,27 @@
 }
 
 @media (max-width: 768px) {
+  .the-engine__header {
+    text-align: center;
+    max-width: 36rem;
+    margin-inline: auto;
+    margin-bottom: clamp(1.85rem, 3.5vw, 2.6rem);
+  }
+
   .the-engine__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 0.75rem;
+    max-width: 28rem;
+    margin-inline: auto;
+  }
+
+  .the-engine__title {
+    font-size: clamp(1.75rem, 6vw, 2.15rem);
+  }
+
+  .the-engine__card:last-child {
+    grid-column: auto;
+    max-width: none;
   }
 }
 
@@ -119,6 +137,11 @@
 
   .the-engine__grid {
     grid-template-columns: 1fr;
+  }
+
+  .the-engine__card:last-child {
+    grid-column: auto;
+    max-width: none;
   }
 
   .the-engine__title {

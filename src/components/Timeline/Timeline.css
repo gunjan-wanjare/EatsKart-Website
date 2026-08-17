@@ -141,13 +141,31 @@
 }
 
 @media (max-width: 768px) {
+  .timeline__header {
+    text-align: center;
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
   .timeline__list {
     grid-template-columns: 1fr;
     row-gap: 1.75rem;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .timeline__item {
+    align-items: center;
+    text-align: center;
   }
 
   .timeline__node {
+    justify-content: center;
     margin-bottom: 0.75rem;
+  }
+
+  .timeline__item-text {
+    margin-inline: auto;
   }
 }
 

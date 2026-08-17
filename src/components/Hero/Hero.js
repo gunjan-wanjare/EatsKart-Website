@@ -125,8 +125,22 @@ const FEATURES = [
 ];
 
 function Hero() {
+  const heroMask = `url(${process.env.PUBLIC_URL}/images/hero/Exclude.png)`;
+
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{
+        WebkitMaskImage: heroMask,
+        maskImage: heroMask,
+        WebkitMaskSize: '100% 100%',
+        maskSize: '100% 100%',
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center bottom',
+        maskPosition: 'center bottom',
+      }}
+    >
       <div className="hero__foods" aria-hidden="true">
         {FOODS.map((food) => (
           <img
@@ -151,7 +165,7 @@ function Hero() {
 
           <form className="hero__search" onSubmit={(e) => e.preventDefault()}>
             <input
-              type="search"
+              type="text"
               className="hero__search-input"
               placeholder="Search for restaurant, item or more"
               aria-label="Search for restaurant, item or more"
@@ -193,15 +207,6 @@ function Hero() {
             ))}
           </ul>
         </div>
-      </div>
-
-      <div className="hero__wave" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0 72C120 28 240 12 360 40C480 68 540 108 660 96C780 84 840 28 960 36C1080 44 1140 92 1260 88C1340 85 1400 62 1440 48V120H0V72Z"
-            fill="#ffffff"
-          />
-        </svg>
       </div>
     </section>
   );

@@ -186,6 +186,10 @@
     font-size: clamp(1.75rem, 3.2vw, 2.4rem);
   }
 
+  .vision-mission__intro {
+    max-width: 100%;
+  }
+
   .vision-mission__figure {
     width: min(100%, 40vw, 28rem);
     transform: translate(-1.5rem, -3rem);
@@ -213,12 +217,26 @@
   }
 
   .vision-mission__copy {
-    max-width: 100%;
+    max-width: 36rem;
+    width: 100%;
+    margin-inline: auto;
     padding-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .vision-mission__intro {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vision-mission__list {
+    width: 100%;
+    max-width: 22rem;
+    text-align: left;
   }
 
   .vision-mission__visual {

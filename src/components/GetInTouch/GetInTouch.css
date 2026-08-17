@@ -245,25 +245,43 @@
   .get-in-touch__form-card {
     max-width: none;
   }
+
+  .get-in-touch__field input,
+  .get-in-touch__field textarea {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
   .get-in-touch__inner {
     grid-template-columns: 1fr;
     row-gap: 1.75rem;
+    max-width: 28rem;
+    margin-inline: auto;
+  }
+
+  .get-in-touch__left {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .get-in-touch__title {
     max-width: none;
     margin-bottom: 1.5rem;
+    margin-inline: auto;
   }
 
   .get-in-touch__info {
     max-width: none;
+    text-align: left;
+    width: 100%;
   }
 
   .get-in-touch__form-card {
     margin-left: 0;
+    margin-inline: auto;
+    width: 100%;
   }
 }
 

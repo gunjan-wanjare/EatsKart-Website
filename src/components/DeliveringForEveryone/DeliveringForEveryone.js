@@ -33,18 +33,6 @@ function DeliveringForEveryone() {
             </li>
           ))}
         </ul>
-
-        <div className="delivering__cta-wrap">
-          <a href="#partner-with-us" className="delivering__cta">
-            Become an EatsKart Partner
-            <img
-              src="/vecto/Arrow/Vector.svg"
-              alt=""
-              className="delivering__cta-arrow"
-              aria-hidden="true"
-            />
-          </a>
-        </div>
       </div>
     </section>
   );

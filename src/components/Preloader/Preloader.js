@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import './Preloader.css';
 
+let hasShownPreloader = false;
+
 function Preloader() {
   const [leaving, setLeaving] = useState(false);
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(hasShownPreloader);
 
   useEffect(() => {
+    if (hasShownPreloader) return undefined;
+
     document.body.classList.add('preloader-active');
 
     const leaveTimer = setTimeout(() => setLeaving(true), 2000);
     const doneTimer = setTimeout(() => {
+      hasShownPreloader = true;
       setDone(true);
       document.body.classList.remove('preloader-active');
     }, 2700);

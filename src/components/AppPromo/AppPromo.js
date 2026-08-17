@@ -8,7 +8,7 @@ function AppPromo() {
           <h2 id="app-promo-heading" className="app-promo__title">
             <span className="app-promo__title-accent">Discover EatsKart,</span>
             <br />
-            your food your way
+            <span className="app-promo__title-rest">your food your way</span>
           </h2>
 
           <p className="app-promo__desc">

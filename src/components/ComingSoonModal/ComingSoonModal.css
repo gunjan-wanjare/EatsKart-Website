@@ -1,3 +1,17 @@
+.coming-soon-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: min(88dvh, 100%);
+  overflow-y: auto;
+  padding: clamp(2rem, 5vw, 2.75rem);
+  text-align: center;
+  background: var(--color-white);
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(26, 26, 26, 0.2);
+  animation: coming-soon-slide-up 0.25s ease;
+}
+
 .coming-soon-modal__backdrop {
   position: fixed;
   inset: 0;
@@ -5,22 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: max(1.25rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
   background: rgba(26, 26, 26, 0.55);
   backdrop-filter: blur(4px);
   animation: coming-soon-fade-in 0.2s ease;
-}
-
-.coming-soon-modal {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  padding: clamp(2rem, 5vw, 2.75rem);
-  text-align: center;
-  background: var(--color-white);
-  border-radius: 20px;
-  box-shadow: 0 24px 64px rgba(26, 26, 26, 0.2);
-  animation: coming-soon-slide-up 0.25s ease;
 }
 
 .coming-soon-modal__close {

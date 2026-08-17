@@ -189,11 +189,23 @@
 @media (max-width: 768px) {
   .corp-hero__content {
     min-height: auto;
-    padding: 4.5rem 0 5rem;
+    padding: 5.75rem 0 5rem;
   }
 
   .corp-hero__title {
     font-size: clamp(1.75rem, 6vw, 2.5rem);
+    overflow-wrap: break-word;
+  }
+
+  .corp-hero__desc {
+    max-width: 38rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .corp-hero__actions {
+    justify-content: center;
+    margin-inline: auto;
   }
 
   .corp-hero__food--burger {
@@ -223,7 +235,7 @@
 
 @media (max-width: 480px) {
   .corp-hero__content {
-    padding: 3.5rem 0 4.25rem;
+    padding: 4.75rem 0 4.25rem;
   }
 
   .corp-hero__title {

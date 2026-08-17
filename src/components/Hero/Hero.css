@@ -1,12 +1,13 @@
 .hero {
   --hero-red: #ec1421;
   position: relative;
-  background: var(--hero-red);
+  background-color: var(--hero-red);
   overflow: hidden;
   max-width: 100%;
   z-index: 2;
-  min-height: clamp(700px, 86vh, 820px);
+  min-height: clamp(calc(632px + 2rem), calc(77vh + 2rem), calc(752px + 2rem));
   padding-top: 120px;
+  padding-bottom: clamp(3.5rem, 7vw, 5.5rem);
 }
 
 .hero__foods {
@@ -30,15 +31,15 @@
 }
 
 .hero__food--fries {
-  bottom: 15%;
-  left: 8%;
-  width: min(310px, 23vw);
+  bottom: 12%;
+  left: 9%;
+  width: min(270px, 22vw);
 }
 
 .hero__food--cake {
-  top: 10%;
+  top: 17%;
   right: 10%;
-  width: min(230px, 18vw);
+  width: min(210px, 16vw);
 }
 
 .hero__food--noodles {
@@ -53,9 +54,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(clamp(640px, 86vh, 820px) - 80px - 96px);
+  min-height: calc(clamp(calc(584px + 2rem), calc(77vh + 2rem), calc(752px + 2rem)) - 80px - 72px);
   padding-top: 1.25rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2.75rem;
 }
 
 .hero__text {
@@ -80,7 +81,7 @@
 }
 
 .hero__title-line--bold {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero__title-line--medium {
@@ -109,6 +110,22 @@
   color: var(--color-text);
   background: transparent;
   min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hero__search-input::-webkit-search-cancel-button,
+.hero__search-input::-webkit-search-decoration,
+.hero__search-input::-webkit-search-results-button,
+.hero__search-input::-webkit-search-results-decoration,
+.hero__search-input::-ms-clear,
+.hero__search-input::-ms-reveal {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none !important;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .hero__search-input::placeholder {
@@ -182,29 +199,13 @@
   line-height: 1.3;
 }
 
-.hero__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  z-index: 3;
-  line-height: 0;
-  pointer-events: none;
-}
-
-.hero__wave svg {
-  display: block;
-  width: 100%;
-  height: 96px;
-}
-
 @media (max-width: 1024px) {
   .hero {
-    min-height: 640px;
+    min-height: calc(600px + 1.5rem);
   }
 
   .hero__content {
-    min-height: calc(640px - 80px - 80px);
+    min-height: calc(600px + 1.5rem - 80px - 65px);
   }
 
   .hero__text {
@@ -246,8 +247,17 @@
   }
 
   .hero__features {
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .hero__feature {
+    width: auto;
+    max-width: 11rem;
   }
 }
 
@@ -255,17 +265,20 @@
   .hero {
     min-height: auto;
     padding-top: 72px;
+    padding-bottom: 1.5rem;
   }
 
   .hero__content {
     min-height: auto;
-    padding-top: 2.25rem;
-    padding-bottom: 3.25rem;
+    align-items: stretch;
+    padding-top: 1.75rem;
+    padding-bottom: 1.25rem;
   }
 
   .hero__text {
     width: 100%;
     max-width: 100%;
+    text-align: center;
   }
 
   .hero__food--burger,
@@ -276,43 +289,77 @@
   }
 
   .hero__title {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
-    margin-bottom: 1.25rem;
+    font-size: clamp(1.85rem, 7.2vw, 2.35rem);
+    margin-bottom: 1.35rem;
+    line-height: 1.15;
   }
 
   .hero__search {
     width: 100%;
-    max-width: 420px;
-    min-height: 50px;
-    margin-bottom: 1.5rem;
+    max-width: 100%;
+    min-height: 52px;
+    margin: 0 0 1.5rem;
+  }
+
+  .hero__search-input {
+    font-size: 16px;
+    text-align: left;
   }
 
   .hero__features {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    row-gap: 0.875rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    justify-content: stretch;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    gap: 0.5rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    row-gap: 0.5rem;
   }
 
   .hero__feature {
     flex: none;
-    max-width: none;
+    flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    gap: 0.4rem;
+    text-align: center;
+    margin: 0;
   }
 
-  .hero__wave svg {
-    height: 64px;
+  .hero__feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero__feature-copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero__feature-title {
+    font-size: 0.75rem;
+  }
+
+  .hero__feature-subtitle {
+    font-size: 0.625rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
     padding-top: 64px;
+    padding-bottom: 1.25rem;
   }
 
   .hero__content {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
   }
 
   .hero__food--burger,
@@ -321,19 +368,23 @@
   }
 
   .hero__title {
-    font-size: clamp(1.5rem, 7vw, 1.875rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.6rem, 7.5vw, 1.95rem);
+    margin-bottom: 1.15rem;
   }
 
   .hero__search {
     width: 100%;
-    max-width: none;
-    min-height: 48px;
+    max-width: 100%;
+    min-height: 50px;
     padding: 4px 4px 4px 1rem;
-    margin-bottom: 1.35rem;
+    margin: 0 0 1.25rem;
   }
 
   .hero__search-input {
+    font-size: 16px;
+  }
+
+  .hero__search-input::placeholder {
     font-size: 13px;
   }
 
@@ -343,25 +394,27 @@
   }
 
   .hero__features {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.875rem;
-  }
-
-  .hero__feature {
-    flex: none;
-    max-width: none;
-    justify-content: flex-start;
-    padding-left: 0.5rem;
+    gap: 0.35rem;
+    padding-top: 1rem;
   }
 
   .hero__feature-icon {
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
   }
 
-  .hero__wave svg {
-    height: 48px;
+  .hero__feature-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero__feature-title {
+    font-size: 0.7rem;
+  }
+
+  .hero__feature-subtitle {
+    font-size: 0.6rem;
+    line-height: 1.25;
   }
 }
 
