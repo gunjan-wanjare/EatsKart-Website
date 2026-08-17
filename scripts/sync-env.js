@@ -23,10 +23,13 @@ function parseEnvFile(filePath) {
 const envValues = parseEnvFile(path.join(ROOT, '.env'));
 const localPath = path.join(ROOT, '.env.local');
 const localValues = parseEnvFile(localPath);
-const sourceValue = localValues[SOURCE_VAR] || envValues[SOURCE_VAR];
+// process.env takes priority so platform-set variables (e.g. Vercel project
+// settings) work even though .env/.env.local are gitignored and never reach
+// the build there.
+const sourceValue = process.env[SOURCE_VAR] || localValues[SOURCE_VAR] || envValues[SOURCE_VAR];
 
 if (!sourceValue) {
-  console.warn(`[sync-env] ${SOURCE_VAR} not found in .env — skipping ${TARGET_VAR} sync.`);
+  console.warn(`[sync-env] ${SOURCE_VAR} not found in .env or process.env — skipping ${TARGET_VAR} sync.`);
   process.exit(0);
 }
 
