@@ -33,7 +33,7 @@ function CorporatePage() {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app" id="top">
       <Preloader />
       <Header variant="corporate" />
       <main>

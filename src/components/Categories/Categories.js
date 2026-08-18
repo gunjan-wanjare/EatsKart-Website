@@ -5,7 +5,7 @@ const MARQUEE_ITEMS = [...categories, ...categories];
 
 function Categories() {
   return (
-    <section className="categories">
+    <section className="categories" id="popular-cuisines">
       <div className="container categories__inner">
         <div className="categories__header">
           <p className="categories__subtitle">Because Every Mood Deserves Great Food</p>

@@ -1,7 +1,12 @@
 import './Footer.css';
 import { getLegalModalHref } from '../../constants/routes';
 
-const exploreLinks = ['Restaurants', 'Popular Cuisines', 'Offers & Deals', 'New Arrivals'];
+const exploreLinks = [
+  { label: 'Restaurants', href: '#restaurants' },
+  { label: 'Popular Cuisines', href: '#popular-cuisines' },
+  { label: 'Offers & Deals', href: '#top' },
+  { label: 'New Arrivals', href: '#top' },
+];
 
 const legalLinks = [
   { label: 'Privacy', modalId: 'privacy-policy' },
@@ -67,8 +72,8 @@ function Footer() {
             <h4 className="footer__heading">Explore</h4>
             <ul className="footer__links">
               {exploreLinks.map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}>{link}</a>
+                <li key={link.label}>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>

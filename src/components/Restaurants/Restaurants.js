@@ -49,7 +49,7 @@ function Restaurants() {
   };
 
   return (
-    <section className="restaurants">
+    <section className="restaurants" id="restaurants">
       <div className="container">
         <div className="restaurants__header">
           <div className="restaurants__headings">

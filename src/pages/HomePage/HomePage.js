@@ -14,7 +14,7 @@ function HomePage() {
   const { activePage, closeLegal } = useLegalModal();
 
   return (
-    <div className="app">
+    <div className="app" id="top">
       <Preloader />
       <Header theme="hero" />
       <main>

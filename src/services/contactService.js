@@ -3,9 +3,9 @@
 // into REACT_APP_API_URL on every `npm start` / `npm run build`, but that only
 // works locally — Vercel's build never sees the gitignored .env file, so
 // REACT_APP_API_URL is undefined there unless set in the Vercel dashboard.
-// Falling back to the known endpoint keeps the deployed build working either way.
-const DEFAULT_API_URL = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1/contact';
-const apiUrl = process.env.REACT_APP_API_URL || DEFAULT_API_URL;
+// Falling back to the known base URL keeps the deployed build working either way.
+const DEFAULT_API_URL = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1';
+const apiUrl = (process.env.REACT_APP_API_URL || DEFAULT_API_URL).replace(/\/$/, '');
 
 const CONTACT_BRAND = 'eatskart';
 const REQUEST_TIMEOUT_MS = 15000;
@@ -23,7 +23,7 @@ export async function submitContactForm({
 
   let response;
   try {
-    response = await fetch(apiUrl, {
+    response = await fetch(`${apiUrl}/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
