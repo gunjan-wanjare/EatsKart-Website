@@ -181,8 +181,10 @@ function Hero() {
                 className="hero__search-input"
                 placeholder="Search for restaurant, item or more"
                 aria-label="Search for restaurant, item or more"
+                role="combobox"
+                aria-autocomplete="list"
                 aria-expanded={showResults}
-                aria-controls="hero-search-results"
+                aria-controls={showResults ? 'hero-search-results' : undefined}
                 autoComplete="off"
                 value={query}
                 onChange={(event) => {
