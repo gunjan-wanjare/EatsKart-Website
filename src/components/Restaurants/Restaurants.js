@@ -43,9 +43,16 @@ function Restaurants() {
   }, [updateNavState]);
 
   const scroll = (direction) => {
-    const grid = scrollRef.current;
-    if (!grid) return;
-    grid.scrollBy({ left: direction * grid.clientWidth * 0.9, behavior: 'smooth' });
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    const item = scroller.querySelector('.restaurants__item');
+    const list = scroller.querySelector('.restaurants__grid');
+    if (!item) return;
+
+    const gap = list ? parseFloat(getComputedStyle(list).columnGap) || 0 : 0;
+    const amount = item.getBoundingClientRect().width + gap;
+    scroller.scrollBy({ left: direction * amount, behavior: 'smooth' });
   };
 
   return (

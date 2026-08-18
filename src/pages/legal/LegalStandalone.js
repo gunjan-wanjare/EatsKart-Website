@@ -4,13 +4,13 @@ import Footer from '../../components/Footer/Footer';
 import LegalModal from '../../components/LegalModal/LegalModal';
 import useLegalModal from '../../hooks/useLegalModal';
 
-const DEFAULT_TITLE = "EatsKart — Cravings Don't Wait";
+const DEFAULT_TITLE = "eatskart — Cravings Don't Wait";
 
 function LegalStandalone({ Page, title }) {
   const { activePage, closeLegal } = useLegalModal();
 
   useEffect(() => {
-    document.title = `${title} — EatsKart`;
+    document.title = `${title} — eatskart`;
     window.scrollTo(0, 0);
 
     return () => {

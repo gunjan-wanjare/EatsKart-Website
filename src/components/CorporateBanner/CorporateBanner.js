@@ -46,13 +46,13 @@ function CorporateBanner() {
         </h1>
 
         <p className="corp-hero__desc">
-          EatsKart is a technology-driven food delivery platform connecting people, restaurants
+          eatskart is a technology-driven food delivery platform connecting people, restaurants
           and delivery partners through a simpler, faster and more rewarding food experience.
         </p>
 
         <div className="corp-hero__actions">
           <a href="#about" className="corp-hero__btn corp-hero__btn--solid">
-            Explore EatsKart
+            Explore eatskart
           </a>
         </div>
       </div>

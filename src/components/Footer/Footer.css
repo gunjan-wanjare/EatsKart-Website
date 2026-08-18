@@ -1,7 +1,7 @@
 .footer {
   --footer-red: #EC1420;
-  --footer-text: #222222;
-  --footer-muted: #5a5a5a;
+  --footer-text: #111827;
+  --footer-muted: #000000;
   --footer-line: #e5e5e5;
 
   background: #ffffff;
@@ -170,9 +170,9 @@
 
 .footer__copy {
   font-family: 'Plus Jakarta Sans', var(--font-family);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 400;
-  color: var(--footer-muted);
+  color: #000000;
   margin: 0;
   line-height: 1.4;
 }
@@ -192,17 +192,17 @@
 }
 
 .footer__legal-sep {
-  color: var(--footer-muted);
-  font-size: 0.8125rem;
+  color: #000000;
+  font-size: 0.75rem;
   user-select: none;
   line-height: 1;
 }
 
 .footer__legal a {
   font-family: 'Plus Jakarta Sans', var(--font-family);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 400;
-  color: var(--footer-muted);
+  color: #000000;
   transition: color 0.2s;
   line-height: 1.4;
 }
@@ -334,6 +334,6 @@
 
   .footer__copy,
   .footer__legal a {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
   }
 }

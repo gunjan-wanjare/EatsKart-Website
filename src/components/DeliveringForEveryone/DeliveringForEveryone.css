@@ -16,14 +16,17 @@
 }
 
 .delivering__label {
-display: inline-block;
-  font-family: var(--font-family);
-  font-size: 0.875rem;
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', var(--font-family);
+  font-size: 20px;
   font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
+  font-style: normal;
+  line-height: 120%;
+  letter-spacing: 2px;
+  text-align: center;
   margin: 0 0 0.7rem;
-  background: linear-gradient(90deg, #ec1420 0%, #06053a 100%);
+  padding-bottom: 0.1em;
+  background: linear-gradient(90deg, #EC1420 0%, #06053A 100.3%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -136,6 +139,12 @@ display: inline-block;
 }
 
 @media (max-width: 768px) {
+  .delivering__label {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    max-width: 100%;
+  }
+
   .delivering__header {
     text-align: center;
     max-width: 36rem;

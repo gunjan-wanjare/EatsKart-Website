@@ -92,10 +92,10 @@ function GetInTouch() {
           <h2 className="get-in-touch__title">Let&apos;s build something together.</h2>
 
           <div className="get-in-touch__info">
-            <p className="get-in-touch__info-name">EatsKart Headquarters</p>
+            <p className="get-in-touch__info-name">eatskart Headquarters</p>
             <p className="get-in-touch__info-label">Corporate Office</p>
             <p className="get-in-touch__info-text">
-              EatsKart Technologies, 123 Food Street, Jubilee Hills, Hyderabad, Telangana 500033,
+              eatskart Technologies, 123 Food Street, Jubilee Hills, Hyderabad, Telangana 500033,
               India
             </p>
             <p className="get-in-touch__info-label">Email</p>

@@ -50,7 +50,7 @@ function Footer() {
       <div className="container footer__shell">
         <div className="footer__inner">
           <div className="footer__brand">
-            <a href="/" className="footer__logo" aria-label="EatsKart home">
+            <a href="/" className="footer__logo" aria-label="eatskart home">
               <img
                 src="/images/footer-pin.png"
                 alt=""
@@ -64,7 +64,7 @@ function Footer() {
             </p>
             <p className="footer__desc">
               Fast delivery. Fresh food. Endless cravings. Discover the best restaurants around you
-              with EatsKart.
+              with eatskart.
             </p>
           </div>
 

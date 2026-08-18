@@ -27,7 +27,7 @@ function getActiveCorporateHref() {
 
 function Logo() {
   return (
-    <a href="/" className="header__logo" aria-label="EatsKart home">
+    <a href="/" className="header__logo" aria-label="eatskart home">
       <img
         src="/images/eatskart-logo.png"
         alt="eatskart"

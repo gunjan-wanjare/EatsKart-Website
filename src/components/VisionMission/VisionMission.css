@@ -85,22 +85,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.32);
   background: transparent;
   color: #ffffff;
   line-height: 0;
-  padding: 8px;
+  padding: 7px;
   box-sizing: border-box;
 }
 
 .vision-mission__icon svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .vision-mission__item-body {

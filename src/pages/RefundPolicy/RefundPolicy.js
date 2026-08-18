@@ -20,7 +20,7 @@ const refundEligibleSituations = [
   'Non-delivery of confirmed and paid orders',
   'Delivery of incorrect items not matching the order',
   'Missing items from the delivered order',
-  'Verified quality issues confirmed by EatsKart upon review',
+  'Verified quality issues confirmed by eatskart upon review',
 ];
 
 const nonRefundableSituations = [
@@ -62,7 +62,7 @@ function RefundPolicy({ onClose }) {
           <p className="section-subtitle">Legal</p>
           <h1 className="legal-hero__title">Refund Policy</h1>
           <p className="legal-hero__desc">
-            Understand how cancellations and refunds work on EatsKart, including eligibility, timelines, and how to
+            Understand how cancellations and refunds work on eatskart, including eligibility, timelines, and how to
             raise a dispute.
           </p>
           <p className="legal-hero__updated">Last updated: June 2026</p>
@@ -103,9 +103,9 @@ function RefundPolicy({ onClose }) {
 
           <section className="legal-section">
             <p className="legal-section__label">Section 03</p>
-            <h2 className="legal-section__title">Cancellation by EatsKart</h2>
+            <h2 className="legal-section__title">Cancellation by eatskart</h2>
             <div className="legal-section__body">
-              <p>EatsKart reserves the right to cancel orders in the following situations:</p>
+              <p>eatskart reserves the right to cancel orders in the following situations:</p>
               <div className="legal-cards legal-cards--2">
                 {eatskartCancellationReasons.map((item) => (
                   <div key={item.title} className="legal-card">
@@ -129,7 +129,7 @@ function RefundPolicy({ onClose }) {
                 ))}
               </ul>
               <p>
-                Refund approval is subject to thorough review and verification by EatsKart. Claims must be supported
+                Refund approval is subject to thorough review and verification by eatskart. Claims must be supported
                 with relevant evidence such as photos or order screenshots.
               </p>
             </div>
@@ -222,7 +222,7 @@ function RefundPolicy({ onClose }) {
                 <p className="legal-contact__brand">Contact Support</p>
                 <a href="mailto:hello@eatskart.com" className="legal-contact__email">hello@eatskart.com</a>
                 <p>
-                  EatsKart – A YAKA Brand, Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India
+                  eatskart – A YAKA Brand, Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India
                 </p>
               </div>
             </div>

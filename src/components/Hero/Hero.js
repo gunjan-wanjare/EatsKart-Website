@@ -1,131 +1,142 @@
-import "./Hero.css";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import categories from '../../data/categories';
+import restaurants from '../../data/restaurants';
+import './Hero.css';
 
 const FOODS = [
   {
-    src: "/images/hero/burger.png",
-    alt: "Cheeseburger",
-    className: "hero__food--burger",
+    src: '/images/hero/burger.png',
+    alt: 'Cheeseburger',
+    className: 'hero__food--burger',
   },
   {
-    src: "/images/hero/fries.png",
-    alt: "French fries",
-    className: "hero__food--fries",
+    src: '/images/hero/fries.png',
+    alt: 'French fries',
+    className: 'hero__food--fries',
   },
   {
-    src: "/images/hero/cake.png",
-    alt: "Chocolate cake",
-    className: "hero__food--cake",
+    src: '/images/hero/cake.png',
+    alt: 'Chocolate cake',
+    className: 'hero__food--cake',
   },
   {
-    src: "/images/hero/noodles.png",
-    alt: "Noodles",
-    className: "hero__food--noodles",
+    src: '/images/hero/noodles.png',
+    alt: 'Noodles',
+    className: 'hero__food--noodles',
   },
 ];
 
 const FEATURES = [
   {
-    title: "Fast Delivery",
-    subtitle: "On time, every time",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M4 16V8h7.5l1.2 3H19v5h-1.1"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-        <circle
-          cx="7.2"
-          cy="16.8"
-          r="1.7"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <circle
-          cx="16.5"
-          cy="16.8"
-          r="1.7"
-          stroke="currentColor"
-          strokeWidth="1.7"
-        />
-        <path
-          d="M12.5 8v3H19"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    title: 'Fast Delivery',
+    subtitle: 'On time, every time',
+    icon: '/vector/delivery.svg',
   },
   {
-    title: "10,000+ Dishes",
-    subtitle: "For every mood",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M4.5 13.5c.8-2.2 2.6-3.5 5-3.5 1.8 0 2.7.8 3.4 2.2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M7 16.8c.4.7 1.2 1.2 2.2 1.2 1.5 0 2.4-1 2.4-2.3 0-2.3-2.4-2.4-3.6-3.6"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14.2 8.2h2.4l.7 8.4h-3.8l.7-8.4z"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M13.8 10.4h3.2M15.4 6.8v1.4"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    title: '10,000+ Dishes',
+    subtitle: 'For every mood',
+    icon: '/vector/dishes.svg',
   },
   {
-    title: "Top Rated",
-    subtitle: "Loved by thousands",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M12 3.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L12 15.5 7.4 17.9l.9-5.2L4.5 9.1l5.2-.8L12 3.6z"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    title: 'Top Rated',
+    subtitle: 'Loved by thousands',
+    icon: '/vector/Star 1.svg',
   },
 ];
 
+const uniqueRestaurants = restaurants.filter(
+  (restaurant, index, list) =>
+    list.findIndex((item) => item.name.toLowerCase() === restaurant.name.toLowerCase()) === index
+);
+
+function matchesQuery(value, query) {
+  return value.toLowerCase().includes(query);
+}
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function Hero() {
   const heroMask = `url(${process.env.PUBLIC_URL}/images/hero/Exclude.png)`;
+  const searchRef = useRef(null);
+  const [query, setQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const trimmedQuery = query.trim().toLowerCase();
+
+  const results = useMemo(() => {
+    if (!trimmedQuery) {
+      return { categories: [], restaurants: [] };
+    }
+
+    return {
+      categories: categories.filter((category) => matchesQuery(category.name, trimmedQuery)),
+      restaurants: uniqueRestaurants.filter(
+        (restaurant) =>
+          matchesQuery(restaurant.name, trimmedQuery) ||
+          matchesQuery(restaurant.location, trimmedQuery)
+      ),
+    };
+  }, [trimmedQuery]);
+
+  const hasQuery = trimmedQuery.length > 0;
+  const hasResults = results.categories.length > 0 || results.restaurants.length > 0;
+  const showResults = isOpen && hasQuery;
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!searchRef.current?.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const clearSearch = () => {
+    setQuery('');
+    setIsOpen(false);
+  };
+
+  const navigateTo = (id) => {
+    clearSearch();
+    scrollToId(id);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!hasQuery) return;
+
+    setIsOpen(true);
+
+    if (results.restaurants.length === 1 && results.categories.length === 0) {
+      navigateTo('restaurants');
+      return;
+    }
+
+    if (results.categories.length === 1 && results.restaurants.length === 0) {
+      navigateTo('popular-cuisines');
+    }
+  };
+
+  const selectCategory = () => {
+    navigateTo('popular-cuisines');
+  };
+
+  const selectRestaurant = () => {
+    navigateTo('restaurants');
+  };
 
   return (
     <section
@@ -163,45 +174,102 @@ function Hero() {
             </span>
           </h1>
 
-          <form className="hero__search" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="text"
-              className="hero__search-input"
-              placeholder="Search for restaurant, item or more"
-              aria-label="Search for restaurant, item or more"
-            />
-            <button
-              type="submit"
-              className="hero__search-btn"
-              aria-label="Search"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
+          <div className="hero__search-wrap" ref={searchRef}>
+            <form className="hero__search" onSubmit={handleSubmit} role="search">
+              <input
+                type="text"
+                className="hero__search-input"
+                placeholder="Search for restaurant, item or more"
+                aria-label="Search for restaurant, item or more"
+                aria-expanded={showResults}
+                aria-controls="hero-search-results"
+                autoComplete="off"
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setIsOpen(true);
+                }}
+                onFocus={() => {
+                  if (trimmedQuery) setIsOpen(true);
+                }}
+              />
+              <button type="submit" className="hero__search-btn" aria-label="Search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="white"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </form>
+
+            {showResults && (
+              <div
+                id="hero-search-results"
+                className="hero__search-results"
+                role="listbox"
+                aria-label="Search results"
               >
-                <path
-                  d="M5 12h14M13 6l6 6-6 6"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </form>
+                {hasResults ? (
+                  <>
+                    {results.categories.length > 0 && (
+                      <div className="hero__search-group">
+                        <p className="hero__search-group-label">Categories</p>
+                        {results.categories.map((category) => (
+                          <button
+                            key={category.id}
+                            type="button"
+                            className="hero__search-item"
+                            onClick={selectCategory}
+                          >
+                            <img src={category.image} alt="" className="hero__search-thumb" />
+                            <span className="hero__search-item-copy">
+                              <span className="hero__search-item-title">{category.name}</span>
+                              <span className="hero__search-item-meta">Category</span>
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    {results.restaurants.length > 0 && (
+                      <div className="hero__search-group">
+                        <p className="hero__search-group-label">Restaurants</p>
+                        {results.restaurants.map((restaurant) => (
+                          <button
+                            key={restaurant.id}
+                            type="button"
+                            className="hero__search-item"
+                            onClick={selectRestaurant}
+                          >
+                            <img src={restaurant.image} alt="" className="hero__search-thumb" />
+                            <span className="hero__search-item-copy">
+                              <span className="hero__search-item-title">{restaurant.name}</span>
+                              <span className="hero__search-item-meta">{restaurant.location}</span>
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <p className="hero__search-empty">No matching restaurants or categories.</p>
+                )}
+              </div>
+            )}
+          </div>
 
           <ul className="hero__features">
-            {FEATURES.map((feature) => (
-              <li key={feature.title} className="hero__feature">
-                <span className="hero__feature-icon">{feature.icon}</span>
+            {FEATURES.map(({ title, subtitle, icon }) => (
+              <li key={title} className="hero__feature">
+                <span className="hero__feature-icon">
+                  <img src={icon} alt="" width={20} height={20} aria-hidden="true" />
+                </span>
                 <span className="hero__feature-copy">
-                  <span className="hero__feature-title">{feature.title}</span>
-                  <span className="hero__feature-subtitle">
-                    {feature.subtitle}
-                  </span>
+                  <span className="hero__feature-title">{title}</span>
+                  <span className="hero__feature-subtitle">{subtitle}</span>
                 </span>
               </li>
             ))}

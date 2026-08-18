@@ -17,14 +17,14 @@ import LegalModal from "../../components/LegalModal/LegalModal";
 import useComingSoonLinks from "../../hooks/useComingSoonLinks";
 import useLegalModal from "../../hooks/useLegalModal";
 
-const DEFAULT_TITLE = "EatsKart — Cravings Don't Wait";
+const DEFAULT_TITLE = "eatskart — Cravings Don't Wait";
 
 function CorporatePage() {
   const { isOpen, pageName, closeModal } = useComingSoonLinks();
   const { activePage, closeLegal } = useLegalModal();
 
   useEffect(() => {
-    document.title = "Corporate — EatsKart";
+    document.title = "Corporate — eatskart";
     window.scrollTo(0, 0);
 
     return () => {

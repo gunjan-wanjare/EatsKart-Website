@@ -10,7 +10,7 @@ const STATS = [
 
 function CorporateStats() {
   return (
-    <section className="corp-stats" aria-label="EatsKart in numbers">
+    <section className="corp-stats" aria-label="eatskart in numbers">
       <div className="container corp-stats__inner">
         {STATS.map((stat) => (
           <div key={stat.label} className="corp-stats__item">

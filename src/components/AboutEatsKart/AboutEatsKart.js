@@ -17,7 +17,7 @@ const CARDS = [
     title: 'For Delivery Partners',
     desc: 'Create flexible earning opportunities with technology that keeps every delivery moving safely.',
     image: '/images/about/delivery.png',
-    alt: 'EatsKart delivery partner with red bag and helmet',
+    alt: 'eatskart delivery partner with red bag and helmet',
   },
 ];
 
@@ -26,12 +26,12 @@ function AboutEatsKart() {
     <section className="about-eatskart" id="about">
       <div className="container">
         <div className="about-eatskart__header">
-          <p className="about-eatskart__label">About EatsKart</p>
+          <p className="about-eatskart__label">About eatskart</p>
           <h2 className="about-eatskart__title">
             More than food delivery. We&apos;re building a food ecosystem.
           </h2>
           <p className="about-eatskart__desc">
-            EatsKart brings customers, restaurants and delivery partners together on one connected
+            eatskart brings customers, restaurants and delivery partners together on one connected
             platform. From discovering your next favourite meal to getting it delivered to your
             doorstep, we use technology to make every step easier.
           </p>

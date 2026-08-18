@@ -45,16 +45,9 @@ function ChartIcon() {
   );
 }
 
-function LayersIcon() {
+function EngineIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <img src="/vector/engine.svg" alt="" width={18} height={18} aria-hidden="true" />
   );
 }
 
@@ -82,7 +75,7 @@ const CARDS = [
   {
     title: 'Scalable Infrastructure',
     text: 'Handling million daily orders securely with high availability cloud architecture.',
-    icon: <LayersIcon />,
+    icon: <EngineIcon />,
   },
 ];
 

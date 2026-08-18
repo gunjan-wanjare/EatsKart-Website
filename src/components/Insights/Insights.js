@@ -5,7 +5,7 @@ const STORIES = [
     image: "/images/insights/image.png",
     alt: "Aerial view of a city with a river and bridges",
     category: "Company News",
-    title: "EatsKart reaches milestone city coverage expansion",
+    title: "eatskart reaches milestone city coverage expansion",
     date: "Jan 12, 2026",
     href: "#news-city-coverage",
   },
@@ -33,7 +33,7 @@ function Insights() {
       <div className="container">
         <div className="insights__header">
           <p className="insights__label">Insights</p>
-          <h2 className="insights__title">What&apos;s happening at EatsKart</h2>
+          <h2 className="insights__title">What&apos;s happening at eatskart</h2>
         </div>
 
         <ul className="insights__grid">

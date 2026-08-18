@@ -100,7 +100,7 @@ function PrivacyPolicy({ onClose }) {
           <p className="section-subtitle">Legal</p>
           <h1 className="legal-hero__title">Privacy Policy</h1>
           <p className="legal-hero__desc">
-            This policy explains how EatsKart collects, uses, and protects your personal information when you use our
+            This policy explains how eatskart collects, uses, and protects your personal information when you use our
             platform and services.
           </p>
           <p className="legal-hero__updated">Last updated: June 2026</p>
@@ -112,14 +112,14 @@ function PrivacyPolicy({ onClose }) {
             <h2 className="legal-section__title">Introduction</h2>
             <div className="legal-section__body">
               <p>
-                Welcome to EatsKart, a food ordering and delivery platform operated by EatsKart (a YAKA brand), having
+                Welcome to eatskart, a food ordering and delivery platform operated by eatskart (a YAKA brand), having
                 its registered office at Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India (&quot;Firm&quot;,
                 &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;).
               </p>
               <p>
                 This Privacy Policy describes how we collect, use, process, store, and protect your personal information
-                when you access or use the EatsKart mobile application, website, products, and services. By accessing or
-                using EatsKart, you consent to the collection and use of your information in accordance with this Privacy
+                when you access or use the eatskart mobile application, website, products, and services. By accessing or
+                using eatskart, you consent to the collection and use of your information in accordance with this Privacy
                 Policy.
               </p>
             </div>
@@ -313,7 +313,7 @@ function PrivacyPolicy({ onClose }) {
             <h2 className="legal-section__title">Third-Party Services</h2>
             <div className="legal-section__body">
               <p>
-                EatsKart may integrate with third-party providers including payment gateways, logistics providers, and
+                eatskart may integrate with third-party providers including payment gateways, logistics providers, and
                 analytics services. Such third-party providers maintain their own privacy policies, which govern the
                 collection and use of your information by those providers. We encourage you to review the privacy
                 policies of all third-party services you interact with.
@@ -326,7 +326,7 @@ function PrivacyPolicy({ onClose }) {
             <h2 className="legal-section__title">Children&apos;s Privacy</h2>
             <div className="legal-section__body">
               <p>
-                EatsKart is not intended for individuals below the age of 18 years. We do not knowingly collect personal
+                eatskart is not intended for individuals below the age of 18 years. We do not knowingly collect personal
                 information from minors. If we become aware that a minor has provided us with personal information, we
                 will take steps to delete such information promptly.
               </p>
@@ -340,7 +340,7 @@ function PrivacyPolicy({ onClose }) {
               <p>
                 We reserve the right to modify this Privacy Policy at any time. Updated versions shall become effective
                 upon publication on our platform. We encourage you to periodically review this Privacy Policy to stay
-                informed about how we are protecting your information. Your continued use of EatsKart after any changes
+                informed about how we are protecting your information. Your continued use of eatskart after any changes
                 constitutes your acceptance of the updated Privacy Policy.
               </p>
             </div>
@@ -351,7 +351,7 @@ function PrivacyPolicy({ onClose }) {
             <h2 className="legal-section__title">Contact Information</h2>
             <div className="legal-section__body">
               <div className="legal-contact">
-                <p className="legal-contact__brand">EatsKart – A YAKA Brand</p>
+                <p className="legal-contact__brand">eatskart – A YAKA Brand</p>
                 <p>Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India</p>
                 <a href="mailto:hello@eatskart.com" className="legal-contact__email">hello@eatskart.com</a>
               </div>

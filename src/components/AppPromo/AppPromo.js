@@ -6,14 +6,14 @@ function AppPromo() {
       <div className="container app-promo__layout">
         <div className="app-promo__content">
           <h2 id="app-promo-heading" className="app-promo__title">
-            <span className="app-promo__title-accent">Discover EatsKart,</span>
+            <span className="app-promo__title-accent">Discover eatskart,</span>
             <br />
             <span className="app-promo__title-rest">your food your way</span>
           </h2>
 
           <p className="app-promo__desc">
             Explore top-rated restaurants, discover new cuisines, track your order in real time,
-            and enjoy fast, reliable delivery right to your doorstep. EatsKart makes every meal
+            and enjoy fast, reliable delivery right to your doorstep. eatskart makes every meal
             convenient, delicious, and just a few taps away.
           </p>
 
@@ -62,7 +62,7 @@ function AppPromo() {
         <div className="app-promo__visual">
           <img
             src="/images/promo/phone-mockup.png"
-            alt="EatsKart app on phone with burger, sandwich and dessert"
+            alt="eatskart app on phone with burger, sandwich and dessert"
             className="app-promo__phone"
           />
         </div>

@@ -18,7 +18,7 @@ const pricingItems = [
   { title: 'Product Charges', text: 'Base cost of the food items as set by the restaurant partner.' },
   { title: 'Delivery Charges', text: 'Fee for delivery services based on distance and demand.' },
   { title: 'Packaging Charges', text: 'Cost of packaging materials charged by the restaurant.' },
-  { title: 'Platform Fees', text: 'Service fee charged by EatsKart for facilitating the order.' },
+  { title: 'Platform Fees', text: 'Service fee charged by eatskart for facilitating the order.' },
   { title: 'Convenience Fees', text: 'Additional convenience charge for platform services.' },
   { title: 'Applicable Taxes', text: 'GST and other statutory taxes as applicable.' },
 ];
@@ -31,7 +31,7 @@ const deliveryDelays = [
 ];
 
 const ipItems = [
-  'EatsKart Brand & Name',
+  'eatskart Brand & Name',
   'Logos & Trademarks',
   'Software & Code',
   'UI/UX Designs',
@@ -74,7 +74,7 @@ function TermsAndConditions({ onClose }) {
           <p className="section-subtitle">Legal</p>
           <h1 className="legal-hero__title">Terms and Conditions</h1>
           <p className="legal-hero__desc">
-            Please read these terms carefully before using the EatsKart platform. By accessing or using our services,
+            Please read these terms carefully before using the eatskart platform. By accessing or using our services,
             you agree to be bound by the conditions outlined below.
           </p>
           <p className="legal-hero__updated">Last updated: June 2026</p>
@@ -86,12 +86,12 @@ function TermsAndConditions({ onClose }) {
             <h2 className="legal-section__title">Acceptance of Terms</h2>
             <div className="legal-section__body">
               <p>
-                By accessing or using EatsKart, you agree to be legally bound by these Terms and Conditions and all
+                By accessing or using eatskart, you agree to be legally bound by these Terms and Conditions and all
                 applicable laws and regulations. If you do not agree with any provision contained herein, you must
                 immediately discontinue your use of the platform.
               </p>
               <p>
-                These Terms constitute a legally binding agreement between you and EatsKart (a YAKA brand). Continued
+                These Terms constitute a legally binding agreement between you and eatskart (a YAKA brand). Continued
                 use of the platform constitutes ongoing acceptance of these Terms.
               </p>
             </div>
@@ -101,14 +101,14 @@ function TermsAndConditions({ onClose }) {
             <p className="legal-section__label">Section 02</p>
             <h2 className="legal-section__title">Nature of Services</h2>
             <div className="legal-section__body">
-              <p>EatsKart is a technology platform facilitating:</p>
+              <p>eatskart is a technology platform facilitating:</p>
               <ul className="legal-list">
                 {serviceItems.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <p>
-                EatsKart does not prepare food and is not responsible for food preparation standards, quality, hygiene,
+                eatskart does not prepare food and is not responsible for food preparation standards, quality, hygiene,
                 or safety maintained by restaurant partners.
               </p>
             </div>
@@ -118,7 +118,7 @@ function TermsAndConditions({ onClose }) {
             <p className="legal-section__label">Section 03</p>
             <h2 className="legal-section__title">User Eligibility</h2>
             <div className="legal-section__body">
-              <p>To use EatsKart, users must:</p>
+              <p>To use eatskart, users must:</p>
               <div className="legal-cards legal-cards--3">
                 {eligibilityItems.map((item) => (
                   <div key={item.title} className="legal-card">
@@ -140,7 +140,7 @@ function TermsAndConditions({ onClose }) {
                 <li>Maintaining the confidentiality of their account credentials</li>
                 <li>Securing login details and preventing unauthorised access</li>
                 <li>All activities, orders, and transactions conducted through their accounts</li>
-                <li>Promptly notifying EatsKart of any unauthorised use or security breach</li>
+                <li>Promptly notifying eatskart of any unauthorised use or security breach</li>
               </ul>
             </div>
           </section>
@@ -149,7 +149,7 @@ function TermsAndConditions({ onClose }) {
             <p className="legal-section__label">Section 05</p>
             <h2 className="legal-section__title">Orders and Acceptance</h2>
             <div className="legal-section__body">
-              <p>All orders placed through EatsKart are subject to:</p>
+              <p>All orders placed through eatskart are subject to:</p>
               <ul className="legal-list">
                 <li>Acceptance by the concerned restaurant partner</li>
                 <li>Product and menu item availability at the time of order</li>
@@ -157,7 +157,7 @@ function TermsAndConditions({ onClose }) {
                 <li>Successful payment authorisation</li>
               </ul>
               <p>
-                EatsKart reserves the right to cancel any order where circumstances require, including but not limited
+                eatskart reserves the right to cancel any order where circumstances require, including but not limited
                 to fraud detection, system errors, or restaurant unavailability.
               </p>
             </div>
@@ -167,7 +167,7 @@ function TermsAndConditions({ onClose }) {
             <p className="legal-section__label">Section 06</p>
             <h2 className="legal-section__title">Pricing</h2>
             <div className="legal-section__body">
-              <p>Prices displayed on EatsKart may include the following components:</p>
+              <p>Prices displayed on eatskart may include the following components:</p>
               <div className="legal-cards legal-cards--2">
                 {pricingItems.map((item) => (
                   <div key={item.title} className="legal-card legal-card--compact">
@@ -186,7 +186,7 @@ function TermsAndConditions({ onClose }) {
             <p className="legal-section__label">Section 07</p>
             <h2 className="legal-section__title">Payments</h2>
             <div className="legal-section__body">
-              <p>Payments on EatsKart are processed through authorised payment gateways. EatsKart shall not be liable for:</p>
+              <p>Payments on eatskart are processed through authorised payment gateways. eatskart shall not be liable for:</p>
               <ul className="legal-list">
                 <li>Banking system failures or outages</li>
                 <li>Payment gateway interruptions or downtime</li>
@@ -245,7 +245,7 @@ function TermsAndConditions({ onClose }) {
             <h2 className="legal-section__title">Intellectual Property</h2>
             <div className="legal-section__body">
               <p>
-                All intellectual property rights relating to EatsKart, including but not limited to:
+                All intellectual property rights relating to eatskart, including but not limited to:
               </p>
               <div className="legal-tags">
                 {ipItems.map((item) => (
@@ -253,7 +253,7 @@ function TermsAndConditions({ onClose }) {
                 ))}
               </div>
               <p>
-                remain the exclusive property of EatsKart (a YAKA brand). No rights, licences, or ownership interests are
+                remain the exclusive property of eatskart (a YAKA brand). No rights, licences, or ownership interests are
                 transferred to users by virtue of using the platform. Unauthorised reproduction or commercial use is
                 strictly prohibited.
               </p>
@@ -265,7 +265,7 @@ function TermsAndConditions({ onClose }) {
             <h2 className="legal-section__title">Limitation of Liability</h2>
             <div className="legal-section__body">
               <p>
-                To the maximum extent permitted by applicable law, EatsKart shall not be liable for:
+                To the maximum extent permitted by applicable law, eatskart shall not be liable for:
               </p>
               <ul className="legal-list">
                 {liabilityItems.map((item) => (
@@ -275,7 +275,7 @@ function TermsAndConditions({ onClose }) {
               <div className="legal-callout">
                 <span className="legal-callout__icon" aria-hidden="true">📌</span>
                 <p>
-                  <strong>Liability Cap:</strong> Total liability of EatsKart shall not exceed the amount paid by the
+                  <strong>Liability Cap:</strong> Total liability of eatskart shall not exceed the amount paid by the
                   user for the specific order giving rise to the claim.
                 </p>
               </div>
@@ -287,7 +287,7 @@ function TermsAndConditions({ onClose }) {
             <h2 className="legal-section__title">Indemnification</h2>
             <div className="legal-section__body">
               <p>
-                Users agree to indemnify, defend, and hold harmless EatsKart, its officers, directors, employees, and
+                Users agree to indemnify, defend, and hold harmless eatskart, its officers, directors, employees, and
                 agents from and against any claims, liabilities, damages, or expenses arising from:
               </p>
               <ul className="legal-list">
@@ -345,7 +345,7 @@ function TermsAndConditions({ onClose }) {
             <div className="legal-section__body">
               <p>For any queries, concerns, or notices regarding these Terms and Conditions, please contact:</p>
               <div className="legal-contact">
-                <p className="legal-contact__brand">EatsKart – A YAKA Brand</p>
+                <p className="legal-contact__brand">eatskart – A YAKA Brand</p>
                 <p>Sattva Knowledge City, Hi-Tech City, 500081, Telangana, India</p>
                 <a href="mailto:hello@eatskart.com" className="legal-contact__email">hello@eatskart.com</a>
               </div>

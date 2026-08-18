@@ -1,4 +1,4 @@
-const restaurants = [
+const uniqueRestaurants = [
   {
     id: 1,
     name: 'Moksh',
@@ -72,5 +72,36 @@ const restaurants = [
     image: '/restro/63 Degrees.png',
   },
 ];
+
+const COLS = 4;
+const ROWS = 2;
+const PAGE_SIZE = COLS * ROWS;
+
+function toColumnMajorPage(page) {
+  const ordered = [];
+  for (let col = 0; col < COLS; col += 1) {
+    for (let row = 0; row < ROWS; row += 1) {
+      const item = page[row * COLS + col];
+      if (item) ordered.push(item);
+    }
+  }
+  return ordered;
+}
+
+function paginateForGrid(list) {
+  const pages = [];
+  for (let i = 0; i < list.length; i += PAGE_SIZE) {
+    pages.push(...toColumnMajorPage(list.slice(i, i + PAGE_SIZE)));
+  }
+  return pages;
+}
+
+const uniquePage = paginateForGrid(uniqueRestaurants);
+const repeatedPage = uniquePage.map((restaurant) => ({
+  ...restaurant,
+  id: `${restaurant.id}-repeat`,
+}));
+
+const restaurants = [...uniquePage, ...repeatedPage];
 
 export default restaurants;
