@@ -121,25 +121,23 @@
   margin: 0 0 0.95rem;
 }
 
-.get-in-touch__banner {
+.get-in-touch__status {
   font-family: var(--font-family);
   font-size: 0.78rem;
+  font-weight: 500;
   line-height: 1.45;
   margin: 0 0 0.85rem;
-  padding: 0.7rem 0.85rem;
-  border-radius: 10px;
+  padding: 0;
+  background: none;
+  border: none;
 }
 
-.get-in-touch__banner--success {
-  color: #065f46;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
+.get-in-touch__status--success {
+  color: #067647;
 }
 
-.get-in-touch__banner--error {
-  color: #991b1b;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
+.get-in-touch__status--error {
+  color: #EC1420;
 }
 
 .get-in-touch__form {
@@ -178,16 +176,16 @@
 
 .get-in-touch__field input[aria-invalid='true'],
 .get-in-touch__field textarea[aria-invalid='true'] {
-  border-color: #fca5a5;
+  border-color: #EC1420;
   background: #fff7f7;
 }
 
 .get-in-touch__error {
   font-family: var(--font-family);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: #dc2626;
-  line-height: 1.3;
+  color: #EC1420;
+  line-height: 1.35;
 }
 
 .get-in-touch__field textarea {

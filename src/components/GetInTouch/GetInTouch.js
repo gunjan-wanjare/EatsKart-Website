@@ -2,8 +2,11 @@ import { useId, useState } from 'react';
 import { submitContactForm } from '../../services/contactService';
 import './GetInTouch.css';
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_PATTERN = /^[+]?[\d\s().-]{7,20}$/;
+const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const NAME_PATTERN = /^[a-zA-Z][a-zA-Z .'-]{1,79}$/;
+const MIN_MESSAGE_LENGTH = 10;
+const MAX_MESSAGE_LENGTH = 1000;
+const MAX_NAME_LENGTH = 80;
 
 const INITIAL_FORM = {
   fullName: '',
@@ -12,29 +15,70 @@ const INITIAL_FORM = {
   description: '',
 };
 
+function digitsOnly(value) {
+  return value.replace(/\D/g, '');
+}
+
+function validateField(name, rawValue) {
+  const value = rawValue.trim();
+
+  if (name === 'fullName') {
+    if (!value) return 'Please enter your name.';
+    if (value.length < 2) return 'Name should be at least 2 characters.';
+    if (value.length > MAX_NAME_LENGTH) return 'Name is too long.';
+    if (!NAME_PATTERN.test(value)) return 'Please enter a valid name using letters only.';
+    return '';
+  }
+
+  if (name === 'email') {
+    if (!value) return 'Please enter your email address.';
+    if (!EMAIL_PATTERN.test(value)) return 'Please enter a valid email, like name@example.com.';
+    const tld = value.split('.').pop()?.toLowerCase() || '';
+    if (['con', 'cmo', 'ocm', 'comm', 'cim'].includes(tld)) {
+      return 'Please check your email. Did you mean .com?';
+    }
+    return '';
+  }
+
+  if (name === 'phone') {
+    if (!value) return 'Please enter your phone number.';
+    const digits = digitsOnly(value);
+    const mobile =
+      digits.length === 12 && digits.startsWith('91')
+        ? digits.slice(2)
+        : digits.length === 11 && digits.startsWith('0')
+          ? digits.slice(1)
+          : digits;
+
+    if (mobile.length !== 10) {
+      return 'Please enter a valid 10-digit phone number.';
+    }
+    if (!/^[6-9]/.test(mobile)) {
+      return 'Please enter a valid mobile number starting with 6, 7, 8, or 9.';
+    }
+    return '';
+  }
+
+  if (name === 'description') {
+    if (!value) return 'Please enter your message.';
+    if (value.length < MIN_MESSAGE_LENGTH) {
+      return `Please write at least ${MIN_MESSAGE_LENGTH} characters so we can understand your request.`;
+    }
+    if (value.length > MAX_MESSAGE_LENGTH) {
+      return 'Message is too long. Please keep it under 1000 characters.';
+    }
+    return '';
+  }
+
+  return '';
+}
+
 function validate(form) {
   const errors = {};
-
-  if (!form.fullName.trim()) {
-    errors.fullName = 'Full name is required.';
-  }
-
-  if (!form.email.trim()) {
-    errors.email = 'Email is required.';
-  } else if (!EMAIL_PATTERN.test(form.email.trim())) {
-    errors.email = 'Enter a valid email address.';
-  }
-
-  if (!form.phone.trim()) {
-    errors.phone = 'Phone number is required.';
-  } else if (!PHONE_PATTERN.test(form.phone.trim()) || form.phone.replace(/\D/g, '').length < 7) {
-    errors.phone = 'Enter a valid phone number.';
-  }
-
-  if (!form.description.trim()) {
-    errors.description = 'Message is required.';
-  }
-
+  Object.keys(INITIAL_FORM).forEach((name) => {
+    const message = validateField(name, form[name]);
+    if (message) errors[name] = message;
+  });
   return errors;
 }
 
@@ -42,28 +86,53 @@ function GetInTouch() {
   const formId = useId();
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [status, setStatus] = useState('idle');
   const [statusMessage, setStatusMessage] = useState('');
 
   const isSubmitting = status === 'submitting';
 
+  const setFieldError = (name, value) => {
+    const message = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: message || undefined }));
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => (prev[name] ? { ...prev, [name]: undefined } : prev));
+    if (touched[name] || errors[name]) {
+      setFieldError(name, value);
+    }
     if (status === 'success' || status === 'error') {
       setStatus('idle');
       setStatusMessage('');
     }
   };
 
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setFieldError(name, value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (isSubmitting) return;
 
+    setTouched({
+      fullName: true,
+      email: true,
+      phone: true,
+      description: true,
+    });
+
     const validationErrors = validate(form);
     setErrors(validationErrors);
-    if (Object.keys(validationErrors).length > 0) return;
+    if (Object.keys(validationErrors).length > 0) {
+      setStatus('idle');
+      setStatusMessage('');
+      return;
+    }
 
     setStatus('submitting');
     setStatusMessage('');
@@ -76,11 +145,15 @@ function GetInTouch() {
         description: form.description,
       });
       setStatus('success');
-      setStatusMessage('Your message has been submitted successfully. Our team will get back to you shortly.');
+      setStatusMessage('Thank you. Your message has been sent. Our team will get back to you shortly.');
       setForm(INITIAL_FORM);
+      setErrors({});
+      setTouched({});
     } catch (error) {
       setStatus('error');
-      setStatusMessage(error.message || 'Something went wrong. Please try again.');
+      setStatusMessage(
+        error?.message || 'We could not connect right now. Please check your internet and try again.'
+      );
     }
   };
 
@@ -112,13 +185,13 @@ function GetInTouch() {
             back to you shortly.
           </p>
 
-          {status === 'success' && (
-            <p className="get-in-touch__banner get-in-touch__banner--success" role="status">
+          {status === 'success' && statusMessage && (
+            <p className="get-in-touch__status get-in-touch__status--success" role="status">
               {statusMessage}
             </p>
           )}
-          {status === 'error' && (
-            <p className="get-in-touch__banner get-in-touch__banner--error" role="alert">
+          {status === 'error' && statusMessage && (
+            <p className="get-in-touch__status get-in-touch__status--error" role="alert">
               {statusMessage}
             </p>
           )}
@@ -132,8 +205,10 @@ function GetInTouch() {
                 name="fullName"
                 autoComplete="name"
                 placeholder="Enter your full name"
+                maxLength={MAX_NAME_LENGTH}
                 value={form.fullName}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 disabled={isSubmitting}
                 aria-invalid={Boolean(errors.fullName)}
                 aria-describedby={errors.fullName ? `${formId}-fullName-error` : undefined}
@@ -154,6 +229,7 @@ function GetInTouch() {
                 placeholder="name@example.com"
                 value={form.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 disabled={isSubmitting}
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? `${formId}-email-error` : undefined}
@@ -171,9 +247,11 @@ function GetInTouch() {
                 type="tel"
                 name="phone"
                 autoComplete="tel"
-                placeholder="+1 (555) 000-0000"
+                inputMode="tel"
+                placeholder="9876543210"
                 value={form.phone}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 disabled={isSubmitting}
                 aria-invalid={Boolean(errors.phone)}
                 aria-describedby={errors.phone ? `${formId}-phone-error` : undefined}
@@ -191,8 +269,10 @@ function GetInTouch() {
                 name="description"
                 rows="4"
                 placeholder="How can we help you?"
+                maxLength={MAX_MESSAGE_LENGTH}
                 value={form.description}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 disabled={isSubmitting}
                 aria-invalid={Boolean(errors.description)}
                 aria-describedby={errors.description ? `${formId}-description-error` : undefined}

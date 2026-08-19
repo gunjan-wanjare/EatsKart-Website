@@ -1,15 +1,7 @@
-// CRA only exposes REACT_APP_-prefixed vars to the browser bundle.
-// scripts/sync-env.js mirrors NEXT_PUBLIC_API_URL (the value you edit in .env)
-// into REACT_APP_API_URL on every `npm start` / `npm run build`, but that only
-// works locally — Vercel's build never sees the gitignored .env file, so
-// REACT_APP_API_URL is undefined there unless set in the Vercel dashboard.
-// Falling back to the known base URL keeps the deployed build working either way.
-const DEFAULT_API_URL = 'https://task-twerp-pandemic.ngrok-free.dev/api/v1';
-const apiUrl = (process.env.REACT_APP_API_URL || DEFAULT_API_URL).replace(/\/$/, '');
+const API_URL = (process.env.REACT_APP_API_URL || '').replace(/\/+$/, '');
 
-const CONTACT_BRAND = 'eatskart';
 const REQUEST_TIMEOUT_MS = 15000;
-const DEFAULT_SUBJECT = 'Corporate website inquiry';
+const DEFAULT_SUBJECT = 'eatskart website enquiry';
 
 export async function submitContactForm({
   fullName,
@@ -23,38 +15,70 @@ export async function submitContactForm({
 
   let response;
   try {
-    response = await fetch(`${apiUrl}/contact`, {
+    response = await fetch(`${API_URL}/contact`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
       body: JSON.stringify({
         fullName: fullName.trim(),
         email: email.trim(),
         phone: phone.trim(),
         subject: (subject || DEFAULT_SUBJECT).trim(),
         description: description.trim(),
-        brand: CONTACT_BRAND,
       }),
       signal: controller.signal,
     });
   } catch (error) {
     if (error.name === 'AbortError') {
-      throw new Error('The request timed out. Please check your connection and try again.');
+      throw new Error('This is taking too long. Please check your connection and try again.');
     }
-    throw new Error('Unable to reach the server. Please check your connection and try again.');
+    throw new Error('We could not connect right now. Please check your internet and try again.');
   } finally {
     clearTimeout(timeoutId);
   }
 
   let data = null;
-  try {
-    data = await response.json();
-  } catch {
-    data = null;
+  const rawText = await response.text();
+  if (rawText) {
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      data = null;
+    }
   }
 
   if (!response.ok) {
-    throw new Error(data?.message || 'Something went wrong while sending your message. Please try again.');
+    throw new Error(getFriendlyErrorMessage(response.status, data));
   }
 
   return data;
+}
+
+function getFriendlyErrorMessage(status, data) {
+  const serverMessage = typeof data?.message === 'string' ? data.message : '';
+  const looksTechnical = /cannot post|not found|internal server|exception|api\/v1|econnrefused/i.test(
+    serverMessage
+  );
+
+  if (status === 400 || status === 422) {
+    if (serverMessage && !looksTechnical) return serverMessage;
+    return 'Some details look incorrect. Please check the form and try again.';
+  }
+
+  if (status === 404) {
+    return 'We could not send your message right now. Please try again in a little while.';
+  }
+
+  if (status === 429) {
+    return 'You have sent too many messages. Please wait a moment and try again.';
+  }
+
+  if (status >= 500) {
+    return 'Something went wrong on our side. Please try again later.';
+  }
+
+  if (serverMessage && !looksTechnical) return serverMessage;
+  return 'We could not send your message right now. Please try again.';
 }

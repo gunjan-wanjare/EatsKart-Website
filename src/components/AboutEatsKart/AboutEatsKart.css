@@ -59,7 +59,8 @@
 }
 
 .about-eatskart__card {
-  background: #f7f7f8;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
   border-radius: 16px;
   overflow: hidden;
   height: 100%;

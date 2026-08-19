@@ -1,6 +1,7 @@
 .insights {
   background: #FFFFFF;
   padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  scroll-margin-top: 108px;
 }
 
 .insights__header {

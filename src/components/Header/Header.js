@@ -12,7 +12,7 @@ const CORPORATE_LINKS = [
 const CORPORATE_SECTION_IDS = CORPORATE_LINKS.map((link) => link.href.slice(1));
 
 function getActiveCorporateHref() {
-  const offset = 100;
+  const offset = 120;
   let current = CORPORATE_SECTION_IDS[0];
 
   CORPORATE_SECTION_IDS.forEach((id) => {
