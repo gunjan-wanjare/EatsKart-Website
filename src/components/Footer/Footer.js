@@ -1,11 +1,11 @@
 import './Footer.css';
-import { getLegalModalHref } from '../../constants/routes';
+import { getLegalModalHref, GET_IN_TOUCH_HREF } from '../../constants/routes';
 
 const exploreLinks = [
   { label: 'Restaurants', href: '#restaurants' },
   { label: 'Popular Cuisines', href: '#popular-cuisines' },
-  { label: 'Offers & Deals', href: '#top' },
-  { label: 'New Arrivals', href: '#top' },
+  { label: 'Offers & Deals', href: GET_IN_TOUCH_HREF },
+  { label: 'New Arrivals', href: GET_IN_TOUCH_HREF },
 ];
 
 const legalLinks = [

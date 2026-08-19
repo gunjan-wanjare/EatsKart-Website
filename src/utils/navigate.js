@@ -9,10 +9,41 @@ export function getPath() {
 export function navigate(to) {
   const url = new URL(to, window.location.origin);
   const next = url.pathname.replace(/\/+$/, '') || '/';
-  if (getPath() === next && url.hash === window.location.hash) return;
+  const sameLocation = getPath() === next && url.hash === window.location.hash;
+
+  if (sameLocation) {
+    if (url.hash) {
+      scrollToHash(url.hash);
+    }
+    return;
+  }
 
   window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
   window.dispatchEvent(new PopStateEvent('popstate'));
+}
+
+export function scrollToHash(hash, options = {}) {
+  const id = (hash || '').replace(/^#/, '');
+  if (!id) return;
+
+  const { behavior = 'smooth', block = 'start' } = options;
+  let attempts = 0;
+  const maxAttempts = 40;
+
+  const tryScroll = () => {
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior, block });
+      return;
+    }
+
+    attempts += 1;
+    if (attempts < maxAttempts) {
+      requestAnimationFrame(tryScroll);
+    }
+  };
+
+  requestAnimationFrame(tryScroll);
 }
 
 export function isAppPath(pathname) {

@@ -19,8 +19,29 @@ const FOODS = [
 ];
 
 function CorporateBanner() {
+  const heroMask = `url(${process.env.PUBLIC_URL}/images/hero/Exclude.png)`;
+  const bannerImage = `${process.env.PUBLIC_URL}/images/hero/corporateBanner.png`;
+
   return (
-    <section className="corp-hero">
+    <section
+      className="corp-hero"
+      style={{
+        WebkitMaskImage: heroMask,
+        maskImage: heroMask,
+        WebkitMaskSize: '100% 100%',
+        maskSize: '100% 100%',
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center bottom',
+        maskPosition: 'center bottom',
+      }}
+    >
+      <img
+        src={bannerImage}
+        alt=""
+        className="corp-hero__bg"
+        aria-hidden="true"
+      />
       <div className="corp-hero__foods" aria-hidden="true">
         <div className="container corp-hero__foods-inner">
           {FOODS.map((food) => (
@@ -55,15 +76,6 @@ function CorporateBanner() {
             Explore eatskart
           </a>
         </div>
-      </div>
-
-      <div className="corp-hero__wave" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0 72C120 28 240 12 360 40C480 68 540 108 660 96C780 84 840 28 960 36C1080 44 1140 92 1260 88C1340 85 1400 62 1440 48V120H0V72Z"
-            fill="#ffffff"
-          />
-        </svg>
       </div>
     </section>
   );

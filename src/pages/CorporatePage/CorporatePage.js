@@ -25,7 +25,9 @@ function CorporatePage() {
 
   useEffect(() => {
     document.title = "Corporate — eatskart";
-    window.scrollTo(0, 0);
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
 
     return () => {
       document.title = DEFAULT_TITLE;

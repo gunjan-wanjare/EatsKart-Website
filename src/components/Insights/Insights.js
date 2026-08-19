@@ -1,4 +1,5 @@
 import './Insights.css';
+import { GET_IN_TOUCH_HREF } from '../../constants/routes';
 
 const STORIES = [
   {
@@ -7,7 +8,6 @@ const STORIES = [
     category: "Company News",
     title: "eatskart reaches milestone city coverage expansion",
     date: "Jan 12, 2026",
-    href: "#news-city-coverage",
   },
   {
     image: "/images/insights/image (1).png",
@@ -15,7 +15,6 @@ const STORIES = [
     category: "Product Updates",
     title: "Announcing predictive personalized search features",
     date: "Feb 05, 2026",
-    href: "#news-predictive-search",
   },
   {
     image: "/images/insights/image (2).png",
@@ -23,7 +22,6 @@ const STORIES = [
     category: "Restaurant Stories",
     title: "How a family-run diner grew sales by 150%",
     date: "Feb 20, 2026",
-    href: "#news-diner-growth",
   },
 ];
 
@@ -46,7 +44,7 @@ function Insights() {
               <h3 className="insights__card-title">{story.title}</h3>
               <div className="insights__footer">
                 <time className="insights__date">{story.date}</time>
-                <a href={story.href} className="insights__link">
+                <a href={GET_IN_TOUCH_HREF} className="insights__link">
                   Read story
                 </a>
               </div>

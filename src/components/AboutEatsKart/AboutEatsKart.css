@@ -1,4 +1,6 @@
 .about-eatskart {
+  position: relative;
+  z-index: 1;
   background: #ffffff;
   padding: clamp(3.5rem, 7vw, 5.5rem) 0;
   scroll-margin-top: 90px;

@@ -13,6 +13,13 @@ export const LEGAL_PATHS = {
 export const CORPORATE_PATH = '/corporate';
 
 export const HOME_SECTION_IDS = new Set(['restaurants', 'popular-cuisines']);
+export const CORPORATE_SECTION_IDS = new Set(['get-in-touch']);
+
+export const GET_IN_TOUCH_HREF = `${CORPORATE_PATH}#get-in-touch`;
+
+export const DOWNLOAD_APP_HREF = '#download-app';
+export const APP_STORE_HREF = '#app-store';
+export const GOOGLE_PLAY_HREF = '#google-play';
 
 export const LEGAL_LINKS = [
   { label: 'Privacy Policy', modalId: 'privacy-policy' },

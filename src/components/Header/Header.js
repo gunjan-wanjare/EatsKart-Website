@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CORPORATE_PATH } from '../../constants/routes';
+import { CORPORATE_PATH, DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
 import './Header.css';
 
 const CORPORATE_LINKS = [
@@ -180,7 +180,7 @@ function Header({ theme = 'default', variant = 'home' }) {
               </div>
               <div className="header__cta">
                 <a
-                  href="#app-promo"
+                  href={DOWNLOAD_APP_HREF}
                   className="header__btn header__btn--solid"
                   onClick={closeMenu}
                 >
@@ -192,7 +192,7 @@ function Header({ theme = 'default', variant = 'home' }) {
             <>
               <div className="header__links">
                 <a
-                  href="#location"
+                  href={GET_IN_TOUCH_HREF}
                   className="header__location"
                   onClick={closeMenu}
                 >
@@ -225,7 +225,7 @@ function Header({ theme = 'default', variant = 'home' }) {
                   Corporate
                 </a>
                 <a
-                  href="#partner-with-us"
+                  href={GET_IN_TOUCH_HREF}
                   className="header__btn header__btn--solid"
                   onClick={closeMenu}
                 >

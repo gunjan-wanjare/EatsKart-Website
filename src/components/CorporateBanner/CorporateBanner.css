@@ -1,16 +1,24 @@
 .corp-hero {
   position: relative;
+  width: 100%;
   background-color: #1f1f1f;
-  background-image:
-    radial-gradient(
-      ellipse 52% 48% at 50% 58%,
-      #4e171c 0%,
-      #3a1c1e 28%,
-      #2a1f20 55%,
-      #1f1f1f 100%
-    );
   overflow: hidden;
   max-width: 100%;
+  z-index: 2;
+}
+
+.corp-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  transform: scale(1.12);
+  transform-origin: center bottom;
+  pointer-events: none;
+  user-select: none;
 }
 
 .corp-hero__foods {
@@ -144,22 +152,6 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.corp-hero__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  z-index: 3;
-  line-height: 0;
-  pointer-events: none;
-}
-
-.corp-hero__wave svg {
-  display: block;
-  width: 100%;
-  height: 110px;
-}
-
 @media (max-width: 1024px) {
   .corp-hero__content {
     min-height: clamp(500px, 70vh, 620px);
@@ -227,10 +219,6 @@
   .corp-hero__food--tart {
     display: none;
   }
-
-  .corp-hero__wave svg {
-    height: 72px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -270,9 +258,5 @@
 
   .corp-hero__btn {
     width: 100%;
-  }
-
-  .corp-hero__wave svg {
-    height: 56px;
   }
 }

@@ -40,6 +40,7 @@
   border: none;
   border-radius: 50%;
   transition: color 0.2s, background 0.2s;
+  cursor: pointer;
 }
 
 .coming-soon-modal__close:hover {
@@ -69,15 +70,17 @@
 }
 
 .coming-soon-modal__title {
-  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-size: clamp(1.35rem, 4vw, 1.875rem);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-navy);
   margin: 0 0 0.75rem;
   line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .coming-soon-modal__desc {
-  font-size: 0.9375rem;
+  font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
   color: var(--color-text-muted);
   line-height: 1.65;
   margin: 0 0 1.75rem;
@@ -88,7 +91,9 @@
   align-items: center;
   justify-content: center;
   min-width: 140px;
-  padding: 0.75rem 1.75rem;
+  width: 100%;
+  max-width: 260px;
+  padding: 0.8rem 1.75rem;
   font-size: 0.9375rem;
   font-weight: var(--font-weight-semibold);
   color: var(--color-white);
@@ -96,6 +101,7 @@
   border: none;
   border-radius: 999px;
   transition: background 0.2s;
+  cursor: pointer;
 }
 
 .coming-soon-modal__btn:hover {
@@ -115,5 +121,97 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .coming-soon-modal__backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .coming-soon-modal {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 2rem 1.5rem calc(1.75rem + env(safe-area-inset-bottom));
+    max-height: 90dvh;
+    animation: coming-soon-slide-up-mobile 0.28s ease;
+  }
+
+  .coming-soon-modal__icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .coming-soon-modal__icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .coming-soon-modal__btn {
+    max-width: 100%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .coming-soon-modal {
+    padding: 1.75rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+  }
+
+  .coming-soon-modal__title {
+    font-size: 1.2rem;
+  }
+
+  .coming-soon-modal__desc {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (max-width: 900px) {
+  .coming-soon-modal__backdrop {
+    align-items: center;
+    padding: 0.75rem;
+  }
+
+  .coming-soon-modal {
+    border-radius: 16px;
+    max-height: 95dvh;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .coming-soon-modal__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.75rem;
+  }
+
+  .coming-soon-modal__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .coming-soon-modal__title {
+    margin-bottom: 0.4rem;
+  }
+
+  .coming-soon-modal__desc {
+    margin-bottom: 1.1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@keyframes coming-soon-slide-up-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

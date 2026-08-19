@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { LEGAL_PATHS, CORPORATE_PATH, HOME_SECTION_IDS } from '../constants/routes';
+import { LEGAL_PATHS, CORPORATE_PATH, HOME_SECTION_IDS, CORPORATE_SECTION_IDS, GET_IN_TOUCH_HREF } from '../constants/routes';
 import { navigate } from '../utils/navigate';
 
 const LEGAL_ROUTE_PATHS = new Set([...Object.values(LEGAL_PATHS), CORPORATE_PATH]);
@@ -38,6 +38,11 @@ function shouldShowComingSoon(anchor) {
     if (HOME_SECTION_IDS.has(id)) return false;
   }
 
+  if (href.startsWith(`${CORPORATE_PATH}#`)) {
+    const id = href.split('#')[1];
+    if (CORPORATE_SECTION_IDS.has(id)) return false;
+  }
+
   return href.startsWith('#') || href.startsWith('/');
 }
 
@@ -60,6 +65,12 @@ export default function useComingSoonLinks() {
       const href = anchor.getAttribute('href');
       if (!href) return;
 
+      if (href === GET_IN_TOUCH_HREF) {
+        event.preventDefault();
+        navigate(GET_IN_TOUCH_HREF);
+        return;
+      }
+
       const hashId = href.startsWith('#')
         ? href.slice(1)
         : href.startsWith('/#')
@@ -70,6 +81,16 @@ export default function useComingSoonLinks() {
         event.preventDefault();
         navigate(`/#${hashId}`);
         return;
+      }
+
+      const corporateHashMatch = href.match(/^\/corporate#(.+)$/);
+      if (corporateHashMatch) {
+        const id = corporateHashMatch[1];
+        if (CORPORATE_SECTION_IDS.has(id) && !document.getElementById(id)) {
+          event.preventDefault();
+          navigate(`${CORPORATE_PATH}#${id}`);
+          return;
+        }
       }
 
       if (!shouldShowComingSoon(anchor)) return;

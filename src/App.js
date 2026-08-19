@@ -6,14 +6,16 @@ import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
 import { LEGAL_PATHS, CORPORATE_PATH } from './constants/routes';
-import { getPath, isAppPath, navigate } from './utils/navigate';
+import { getPath, isAppPath, navigate, scrollToHash } from './utils/navigate';
 import './App.css';
 
 function App() {
-  const [path, setPath] = useState(getPath);
+  const [locationKey, setLocationKey] = useState(
+    () => `${getPath()}${window.location.hash}`
+  );
 
   useEffect(() => {
-    const onPopState = () => setPath(getPath());
+    const onPopState = () => setLocationKey(`${getPath()}${window.location.hash}`);
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
@@ -46,22 +48,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const hash = window.location.hash.slice(1);
+    const path = getPath();
+    const hash = window.location.hash;
 
-    if (path === '/' && hash) {
-      requestAnimationFrame(() => {
-        const target = document.getElementById(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-          window.scrollTo(0, 0);
-        }
-      });
+    if ((path === '/' || path === CORPORATE_PATH) && hash) {
+      scrollToHash(hash);
       return;
     }
 
     window.scrollTo(0, 0);
-  }, [path]);
+  }, [locationKey]);
+
+  const path = getPath();
 
   if (path === LEGAL_PATHS['privacy-policy']) {
     return <LegalStandalone Page={PrivacyPolicy} title="Privacy Policy" />;
