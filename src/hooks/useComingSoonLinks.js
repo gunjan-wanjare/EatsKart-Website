@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { LEGAL_PATHS, CORPORATE_PATH } from '../constants/routes';
+import { LEGAL_PATHS, CORPORATE_PATH, HOME_SECTION_IDS } from '../constants/routes';
+import { navigate } from '../utils/navigate';
 
 const LEGAL_ROUTE_PATHS = new Set([...Object.values(LEGAL_PATHS), CORPORATE_PATH]);
 
@@ -29,6 +30,12 @@ function shouldShowComingSoon(anchor) {
     const id = href.slice(1);
     if (id.startsWith('legal-')) return false;
     if (id && document.getElementById(id)) return false;
+    if (HOME_SECTION_IDS.has(id)) return false;
+  }
+
+  if (href.startsWith('/#')) {
+    const id = href.split('#')[1];
+    if (HOME_SECTION_IDS.has(id)) return false;
   }
 
   return href.startsWith('#') || href.startsWith('/');
@@ -48,10 +55,27 @@ export default function useComingSoonLinks() {
   useEffect(() => {
     const handleClick = (event) => {
       const anchor = event.target.closest('a');
-      if (!anchor || !shouldShowComingSoon(anchor)) return;
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+
+      const hashId = href.startsWith('#')
+        ? href.slice(1)
+        : href.startsWith('/#')
+          ? href.slice(2)
+          : null;
+
+      if (hashId && HOME_SECTION_IDS.has(hashId) && !document.getElementById(hashId)) {
+        event.preventDefault();
+        navigate(`/#${hashId}`);
+        return;
+      }
+
+      if (!shouldShowComingSoon(anchor)) return;
 
       event.preventDefault();
-      openModal(formatPageName(anchor.getAttribute('href'), anchor.textContent?.trim()));
+      openModal(formatPageName(href, anchor.textContent?.trim()));
     };
 
     document.addEventListener('click', handleClick);

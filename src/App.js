@@ -46,6 +46,20 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const hash = window.location.hash.slice(1);
+
+    if (path === '/' && hash) {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      });
+      return;
+    }
+
     window.scrollTo(0, 0);
   }, [path]);
 
