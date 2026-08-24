@@ -1,13 +1,39 @@
 .get-in-touch {
-  background: #F8F9FA;
-  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  position: relative;
+  width: 100%;
+  background: #1f1f1f;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: clamp(640px, 88vh, 880px);
+  display: flex;
+  align-items: center;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 clamp(5.5rem, 10vw, 8rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.get-in-touch__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  transform: scale(1.12);
+  transform-origin: center bottom;
+  pointer-events: none;
+  user-select: none;
 }
 
 .get-in-touch__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   column-gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  align-items: center;
+  margin-top: -1.75rem;
 }
 
 .get-in-touch__left {
@@ -16,158 +42,126 @@
   align-items: flex-start;
 }
 
-.get-in-touch__label {
-  display: inline-block;
-  font-family: 'Plus Jakarta Sans', var(--font-family);
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 100%;
-  letter-spacing: 2px;
-  margin: 0 0 0.3rem;
-  background: linear-gradient(90deg, #EC1420 0%, #06053A 100.3%);
+.get-in-touch__title {
+  font-family: var(--font-family);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+  color: #ffffff;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.55));
+}
+
+.get-in-touch__title-row {
+  display: block;
+}
+
+.get-in-touch__title-accent {
+  background: linear-gradient(90deg, #ff2b2b 0%, #ff9d9d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-.get-in-touch__title {
+.get-in-touch__desc {
   font-family: var(--font-family);
-  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 32rem;
+  margin: 0;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.get-in-touch__hi {
+  margin-top: clamp(2.25rem, 6vw, 4rem);
+}
+
+.get-in-touch__hi-label {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 0.5rem;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.get-in-touch__hi-email {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   font-weight: 700;
-  color: #1a1a1a;
-  margin: 0 0 2.5rem;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  max-width: none;
-  white-space: nowrap;
-}
-
-.get-in-touch__info {
-  background: #1a1a1a;
   color: #ffffff;
-  border-radius: 16px;
-  padding: 1.75rem 1.6rem 1.85rem;
-  width: 100%;
-  max-width: none;
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 
-.get-in-touch__info-name {
-  font-family: var(--font-family);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0 0 1.25rem;
-  line-height: 1.3;
-}
-
-.get-in-touch__info-label {
-  font-family: var(--font-family);
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0 0 0.4rem;
-  line-height: 1.3;
-  color: #ffffff;
-}
-
-.get-in-touch__info-text {
-  font-family: var(--font-family);
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.55;
-  color: #E5E7EB;
-  margin: 0 0 1.35rem;
-  width: 100%;
-  max-width: 100%;
-}
-
-.get-in-touch__info-email {
-  font-family: var(--font-family);
-  font-size: 0.875rem;
-  font-weight: 200;
-  color: #E5E7EB;
-  line-height: 1.4;
-}
-
-.get-in-touch__info-email:hover {
+.get-in-touch__hi-email:hover {
+  color: #ff8080;
   text-decoration: underline;
 }
 
 .get-in-touch__form-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(17, 17, 17, 0.08);
-  padding: 1.5rem 1.55rem 1.45rem;
+  background: rgba(14, 14, 17, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2rem 2.1rem;
   width: 100%;
-  max-width: 28rem;
+  max-width: 34rem;
   margin-left: auto;
-}
-
-.get-in-touch__form-title {
-  font-family: var(--font-family);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #111111;
-  margin: 0 0 0.35rem;
-  line-height: 1.3;
-}
-
-.get-in-touch__form-desc {
-  font-family: var(--font-family);
-  font-size: 0.78rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #6b7280;
-  margin: 0 0 0.95rem;
 }
 
 .get-in-touch__status {
   font-family: var(--font-family);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.45;
-  margin: 0 0 0.85rem;
-  padding: 0;
-  background: none;
-  border: none;
+  margin: 0 0 1.1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
 }
 
 .get-in-touch__status--success {
-  color: #067647;
-}
-
-.get-in-touch__status--error {
-  color: #EC1420;
+  color: #86efac;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .get-in-touch__form {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .get-in-touch__field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .get-in-touch__field span {
   font-family: var(--font-family);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #111111;
+  color: #f2f2f2;
 }
 
 .get-in-touch__field input,
-.get-in-touch__field textarea {
+.get-in-touch__field textarea,
+.get-in-touch__field select {
   font-family: var(--font-family);
-  font-size: 0.78rem;
-  color: #1a1a1a;
-  background: #f3f4f6;
-  border: 1px solid #E5E7EB;
+  font-size: 0.85rem;
+  color: #f2f2f2;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
-  padding: 0.7rem 0.85rem;
+  padding: 0.75rem 0.9rem;
   width: 100%;
   outline: none;
   resize: vertical;
@@ -175,16 +169,17 @@
 }
 
 .get-in-touch__field input[aria-invalid='true'],
-.get-in-touch__field textarea[aria-invalid='true'] {
-  border-color: #EC1420;
-  background: #fff7f7;
+.get-in-touch__field textarea[aria-invalid='true'],
+.get-in-touch__field select[aria-invalid='true'] {
+  border-color: #ff5c5c;
+  background: rgba(255, 60, 60, 0.08);
 }
 
 .get-in-touch__error {
   font-family: var(--font-family);
   font-size: 0.75rem;
   font-weight: 500;
-  color: #EC1420;
+  color: #ff8080;
   line-height: 1.35;
 }
 
@@ -194,19 +189,61 @@
 
 .get-in-touch__field input::placeholder,
 .get-in-touch__field textarea::placeholder {
-  color: #9ca3af;
+  color: #6b6b73;
 }
 
 .get-in-touch__field input:focus,
-.get-in-touch__field textarea:focus {
-  border-color: #E5E7EB;
-  background: #F4F4F6;
+.get-in-touch__field textarea:focus,
+.get-in-touch__field select:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.get-in-touch__field input[aria-invalid='true']:focus,
+.get-in-touch__field textarea[aria-invalid='true']:focus,
+.get-in-touch__field select[aria-invalid='true']:focus {
+  border-color: #ff5c5c;
 }
 
 .get-in-touch__field input:disabled,
-.get-in-touch__field textarea:disabled {
+.get-in-touch__field textarea:disabled,
+.get-in-touch__field select:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.get-in-touch__field input:-webkit-autofill,
+.get-in-touch__field input:-webkit-autofill:hover,
+.get-in-touch__field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f2f2f2;
+  -webkit-box-shadow: 0 0 0 1000px #141418 inset;
+  box-shadow: 0 0 0 1000px #141418 inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.get-in-touch__select-wrap {
+  position: relative;
+}
+
+.get-in-touch__field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+.get-in-touch__field select:invalid {
+  color: #6b6b73;
+}
+
+.get-in-touch__select-chevron {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  transform: translateY(-50%);
+  color: #9a9aa2;
+  pointer-events: none;
 }
 
 .get-in-touch__submit {
@@ -215,12 +252,13 @@
   background: #ec1420;
   color: #ffffff;
   font-family: var(--font-family);
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 600;
   border: none;
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
   cursor: pointer;
+  transition: background 0.15s ease;
 }
 
 .get-in-touch__submit:hover {
@@ -233,8 +271,8 @@
 }
 
 @media (max-width: 1024px) {
-  .get-in-touch__title {
-    white-space: normal;
+  .get-in-touch {
+    min-height: clamp(560px, 78vh, 720px);
   }
 
   .get-in-touch__inner {
@@ -246,22 +284,25 @@
   }
 
   .get-in-touch__field input,
-  .get-in-touch__field textarea {
+  .get-in-touch__field textarea,
+  .get-in-touch__field select {
     font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .get-in-touch__label {
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    line-height: 120%;
-    max-width: 100%;
+  .get-in-touch {
+    min-height: 0;
+    padding: 3rem 0 4.5rem;
+  }
+
+  .get-in-touch__title {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
   }
 
   .get-in-touch__inner {
     grid-template-columns: 1fr;
-    row-gap: 1.75rem;
+    row-gap: 2.25rem;
     max-width: 28rem;
     margin-inline: auto;
   }
@@ -272,16 +313,8 @@
     width: 100%;
   }
 
-  .get-in-touch__title {
-    max-width: none;
-    margin-bottom: 1.5rem;
-    margin-inline: auto;
-  }
-
-  .get-in-touch__info {
-    max-width: none;
-    text-align: left;
-    width: 100%;
+  .get-in-touch__hi {
+    margin-top: 1.75rem;
   }
 
   .get-in-touch__form-card {
@@ -293,11 +326,10 @@
 
 @media (max-width: 480px) {
   .get-in-touch {
-    padding: 2.75rem 0;
+    padding: 2.25rem 0 4rem;
   }
 
-  .get-in-touch__form-card,
-  .get-in-touch__info {
+  .get-in-touch__form-card {
     padding: 1.4rem 1.2rem;
   }
 

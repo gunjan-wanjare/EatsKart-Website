@@ -194,6 +194,17 @@
   line-height: 22px;
 }
 
+/* Same look as old Sign in on hero nav */
+.header--hero .header__btn--get-in-touch {
+  height: 38px;
+  padding: 0 1.35rem;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
 /* Corporate nav variant: logo left, links centered, CTAs right */
 .header--corporate {
   background: #ffffff;
@@ -337,6 +348,103 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  gap: 0.65rem;
+}
+
+.header__theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--color-navy);
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.header__theme-toggle:hover {
+  opacity: 0.7;
+}
+
+.header__theme-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.header--hero .header__theme-toggle {
+  color: #ffffff;
+}
+
+.header--hero .header__theme-toggle:hover {
+  opacity: 0.75;
+}
+
+.header__yaka {
+  display: none;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  text-decoration: none;
+  transition: opacity 0.15s linear;
+}
+
+.header__yaka-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.header__yaka--mobile {
+  width: 24px;
+  height: 24px;
+}
+
+.header__yaka--mobile .header__yaka-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.header__yaka-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
+}
+
+.header:not(.header--corporate) .header__cta .header__yaka {
+  display: block;
+  margin-left: 0.25rem;
+}
+
+.header__yaka--landed {
+  opacity: 1 !important;
+}
+
+.header__yaka--mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .header__yaka--mobile {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
 }
 
 .header__hamburger {
@@ -396,6 +504,14 @@
     display: flex;
     position: relative;
     z-index: 90;
+  }
+
+  .header:not(.header--corporate) .header__cta .header__yaka {
+    display: none;
+  }
+
+  .header__yaka--mobile {
+    display: block;
   }
 
   .header__hamburger {
@@ -558,6 +674,15 @@
     color: #4b5563;
   }
 
+  .header__theme-toggle {
+    flex-shrink: 0;
+    margin: 0.25rem 0 0.5rem 1.25rem;
+  }
+
+  .header--hero .header__theme-toggle {
+    color: #4b5563;
+  }
+
   .header--corporate .header__inner {
     display: flex;
     align-items: center;
@@ -644,5 +769,49 @@
 
   .header__links {
     min-width: 0;
+  }
+}
+
+/* Dark theme — default (non-hero, non-corporate) header only */
+[data-theme='dark'] .header:not(.header--hero):not(.header--corporate) {
+  background: #111114;
+  border-bottom: 1px solid #2b2b31;
+}
+
+[data-theme='dark'] .header--scrolled:not(.header--hero):not(.header--corporate) {
+  background: rgba(13, 13, 16, 0.94);
+  border-bottom: 1px solid #2b2b31;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .header:not(.header--hero):not(.header--corporate) .header__location {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .header:not(.header--hero):not(.header--corporate) .header__theme-toggle {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .header:not(.header--hero):not(.header--corporate) .header__hamburger span {
+  background: #f2f2f2;
+}
+
+@media (max-width: 1024px) {
+  [data-theme='dark'] .header:not(.header--corporate) .header__nav {
+    background: #111114;
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.55);
+  }
+
+  [data-theme='dark'] .header:not(.header--corporate) .header__drawer-top {
+    border-bottom: 1px solid #2b2b31;
+  }
+
+  [data-theme='dark'] .header:not(.header--corporate) .header__drawer-label {
+    color: #f2f2f2;
+  }
+
+  [data-theme='dark'] .header:not(.header--corporate) .header__drawer-close {
+    background: #1f1f24;
+    color: #f2f2f2;
   }
 }

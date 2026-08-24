@@ -611,3 +611,84 @@
     padding: 1.25rem;
   }
 }
+
+/* ── Dark theme ───────────────────────────────────────────── */
+[data-theme='dark'] .legal-page {
+  color: #c4c4ca;
+}
+
+[data-theme='dark'] .legal-page__breadcrumb {
+  background: #17171c;
+  border-color: #2b2b31;
+}
+
+[data-theme='dark'] .legal-page__breadcrumb a,
+[data-theme='dark'] .legal-page__breadcrumb-btn {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .legal-hero__title,
+[data-theme='dark'] .legal-section__title,
+[data-theme='dark'] .legal-subsection__title,
+[data-theme='dark'] .legal-card__title,
+[data-theme='dark'] .legal-highlight__title,
+[data-theme='dark'] .legal-tag {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .legal-hero__desc,
+[data-theme='dark'] .legal-section__body,
+[data-theme='dark'] .legal-card__text,
+[data-theme='dark'] .legal-highlight p,
+[data-theme='dark'] .legal-table td {
+  color: #b8b8be;
+}
+
+[data-theme='dark'] .legal-hero__updated {
+  background: #17171c;
+}
+
+[data-theme='dark'] .legal-section,
+[data-theme='dark'] .legal-tag {
+  background: #17171c;
+  border-color: #2b2b31;
+}
+
+[data-theme='dark'] .legal-card,
+[data-theme='dark'] .legal-card:hover {
+  background: #1c1c22;
+}
+
+[data-theme='dark'] .legal-highlight {
+  background: linear-gradient(135deg, #17171c 0%, #1c1c22 100%);
+  border-color: #2b2b31;
+}
+
+[data-theme='dark'] .legal-table-wrap {
+  border-color: #2b2b31;
+}
+
+[data-theme='dark'] .legal-table th,
+[data-theme='dark'] .legal-table td {
+  border-color: #2b2b31;
+}
+
+[data-theme='dark'] .legal-table tbody tr:nth-child(even) {
+  background: #1c1c22;
+}
+
+[data-theme='dark'] .legal-callout {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .legal-callout p {
+  color: #e4e4e8;
+}
+
+[data-theme='dark'] .legal-pill {
+  color: #d4d4d8;
+}
+
+[data-theme='dark'] .legal-pill:hover {
+  color: #f2f2f2;
+}

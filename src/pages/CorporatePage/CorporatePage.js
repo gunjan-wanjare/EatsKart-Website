@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Preloader from "../../components/Preloader/Preloader";
 import Header from "../../components/Header/Header";
 import CorporateBanner from "../../components/CorporateBanner/CorporateBanner";
 import AboutEatsKart from "../../components/AboutEatsKart/AboutEatsKart";
@@ -36,7 +35,6 @@ function CorporatePage() {
 
   return (
     <div className="app" id="top">
-      <Preloader />
       <Header variant="corporate" />
       <main>
         <CorporateBanner />

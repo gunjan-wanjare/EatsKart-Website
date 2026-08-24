@@ -1,6 +1,6 @@
-import { CORPORATE_PATH, LEGAL_PATHS } from '../constants/routes';
+import { CORPORATE_PATH, GET_IN_TOUCH_PATH, LEGAL_PATHS } from '../constants/routes';
 
-const APP_PATHS = new Set(['/', CORPORATE_PATH, ...Object.values(LEGAL_PATHS)]);
+const APP_PATHS = new Set(['/', CORPORATE_PATH, GET_IN_TOUCH_PATH, ...Object.values(LEGAL_PATHS)]);
 
 export function getPath() {
   return window.location.pathname.replace(/\/+$/, '') || '/';

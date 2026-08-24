@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage/HomePage';
 import CorporatePage from './pages/CorporatePage/CorporatePage';
+import GetInTouchPage from './pages/GetInTouchPage/GetInTouchPage';
 import LegalStandalone from './pages/legal/LegalStandalone';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy/RefundPolicy';
-import { LEGAL_PATHS, CORPORATE_PATH } from './constants/routes';
+import { LEGAL_PATHS, CORPORATE_PATH, GET_IN_TOUCH_PATH } from './constants/routes';
 import { getPath, isAppPath, navigate, scrollToHash } from './utils/navigate';
 import './App.css';
 
@@ -75,6 +76,10 @@ function App() {
 
   if (path === CORPORATE_PATH) {
     return <CorporatePage />;
+  }
+
+  if (path === GET_IN_TOUCH_PATH) {
+    return <GetInTouchPage />;
   }
 
   return <HomePage />;

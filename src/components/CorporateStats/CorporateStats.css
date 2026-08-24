@@ -112,3 +112,11 @@
     max-width: 7.5rem;
   }
 }
+
+[data-theme='dark'] .corp-stats {
+  background: #0f0f12;
+}
+
+[data-theme='dark'] .corp-stats__label {
+  color: #d4d4d8;
+}

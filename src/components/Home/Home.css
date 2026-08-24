@@ -6,6 +6,12 @@
   min-width: 0;
 }
 
+.home__hero-wrap {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
 .home .categories {
   position: relative;
   z-index: 1;

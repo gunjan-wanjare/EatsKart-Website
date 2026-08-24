@@ -1,0 +1,55 @@
+.hero-yaka-anchor {
+  display: none;
+  position: absolute;
+  top: 6.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  text-decoration: none;
+  transition: opacity 0.12s linear;
+}
+
+.hero-yaka-anchor__mark {
+  gap: 0.35rem;
+}
+
+.hero-yaka-anchor__icon {
+  width: 56px !important;
+  height: 56px !important;
+}
+
+.hero-yaka-anchor__tagline {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  .hero-yaka-anchor {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-yaka-anchor {
+    right: 2.5rem;
+    top: 6.75rem;
+  }
+
+  .hero-yaka-anchor__tagline {
+    font-size: 0.66rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-yaka-anchor {
+    right: 3rem;
+  }
+
+  .hero-yaka-anchor__icon {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .hero-yaka-anchor__tagline {
+    font-size: 0.7rem !important;
+  }
+}

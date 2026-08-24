@@ -1,0 +1,50 @@
+.floating-logo {
+  position: fixed;
+  z-index: 55;
+  pointer-events: none;
+  left: var(--fl-from-left);
+  top: var(--fl-from-top);
+  width: var(--fl-from-w);
+  height: var(--fl-from-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation:
+    floating-logo-x 1.1s cubic-bezier(0.22, 0.8, 0.28, 1) forwards,
+    floating-logo-y 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    floating-logo-size 1.1s cubic-bezier(0.22, 0.8, 0.28, 1) forwards;
+}
+
+.floating-logo__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes floating-logo-x {
+  to {
+    left: var(--fl-to-left);
+  }
+}
+
+@keyframes floating-logo-y {
+  to {
+    top: var(--fl-to-top);
+  }
+}
+
+@keyframes floating-logo-size {
+  to {
+    width: var(--fl-to-w);
+    height: var(--fl-to-h);
+  }
+}
+
+@media (max-width: 767px) {
+  .floating-logo {
+    display: none;
+  }
+}

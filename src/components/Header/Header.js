@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { CORPORATE_PATH, DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
+import { YAKA_ASSETS } from '../../constants/yakaAssets';
+import { useScrollHandoffProgress } from '../ScrollHandoff/ScrollHandoff';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
 
 const CORPORATE_LINKS = [
@@ -57,14 +60,31 @@ function Header({ theme = 'default', variant = 'home' }) {
   const [progress, setProgress] = useState(0);
   const [activeHref, setActiveHref] = useState(CORPORATE_LINKS[0].href);
   const [isMobileNav, setIsMobileNav] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
   const isCorporate = variant === 'corporate';
+  const isHomeHero = theme === 'hero' && !isCorporate;
+  const handoffProgress = useScrollHandoffProgress();
+  const navYakaOpacity = isHomeHero
+    ? isPhone
+      ? 1
+      : Math.min(1, Math.max(0, (handoffProgress - 0.85) / 0.15))
+    : 0;
+  const navYakaLanded = navYakaOpacity > 0.92;
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 1024px)');
-    const update = () => setIsMobileNav(media.matches);
+    const navMedia = window.matchMedia('(max-width: 1024px)');
+    const phoneMedia = window.matchMedia('(max-width: 767px)');
+    const update = () => {
+      setIsMobileNav(navMedia.matches);
+      setIsPhone(phoneMedia.matches);
+    };
     update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
+    navMedia.addEventListener('change', update);
+    phoneMedia.addEventListener('change', update);
+    return () => {
+      navMedia.removeEventListener('change', update);
+      phoneMedia.removeEventListener('change', update);
+    };
   }, []);
 
   useEffect(() => {
@@ -215,28 +235,81 @@ function Header({ theme = 'default', variant = 'home' }) {
                     />
                   </svg>
                 </a>
+                <ThemeToggle />
               </div>
               <div className="header__cta">
-                <a
+                {/* <a
                   href={CORPORATE_PATH}
                   className="header__btn header__btn--ghost"
                   onClick={closeMenu}
                 >
                   Corporate
-                </a>
+                </a> */}
                 <a
                   href={GET_IN_TOUCH_HREF}
-                  className="header__btn header__btn--solid"
+                  className="header__btn header__btn--solid header__btn--get-in-touch"
                   onClick={closeMenu}
                 >
-                  Sign in
+                  Get in touch
                 </a>
+                {isHomeHero && !isMobileNav ? (
+                  <a
+                    id="yaka-nav-anchor"
+                    href="https://yaka.group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="A YAKA Brand"
+                    className={`header__yaka${navYakaLanded ? ' header__yaka--landed' : ''}`}
+                    style={{
+                      opacity: navYakaOpacity,
+                      pointerEvents: navYakaLanded ? 'auto' : 'none',
+                    }}
+                  >
+                    <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
+                      <img
+                        src={YAKA_ASSETS.icon}
+                        alt=""
+                        className="header__yaka-img"
+                        width={573}
+                        height={512}
+                        decoding="async"
+                        draggable={false}
+                      />
+                    </span>
+                  </a>
+                ) : null}
               </div>
             </>
           )}
         </nav>
 
         <div className="header__actions">
+          {isHomeHero ? (
+            <a
+              id={isMobileNav ? 'yaka-nav-anchor' : undefined}
+              href="https://yaka.group"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="A YAKA Brand"
+              className={`header__yaka header__yaka--mobile${navYakaLanded ? ' header__yaka--landed' : ''}`}
+              style={{
+                opacity: navYakaOpacity,
+                pointerEvents: navYakaLanded || isPhone ? 'auto' : 'none',
+              }}
+            >
+              <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
+                <img
+                  src={YAKA_ASSETS.icon}
+                  alt=""
+                  className="header__yaka-img"
+                  width={573}
+                  height={512}
+                  decoding="async"
+                  draggable={false}
+                />
+              </span>
+            </a>
+          ) : null}
           <button
             type="button"
             className="header__hamburger"

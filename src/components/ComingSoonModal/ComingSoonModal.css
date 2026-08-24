@@ -215,3 +215,25 @@
     transform: translateY(0);
   }
 }
+
+[data-theme='dark'] .coming-soon-modal {
+  background: #17171c;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='dark'] .coming-soon-modal__close {
+  color: #a1a1aa;
+}
+
+[data-theme='dark'] .coming-soon-modal__close:hover {
+  color: #f2f2f2;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .coming-soon-modal__title {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .coming-soon-modal__desc {
+  color: #a1a1aa;
+}

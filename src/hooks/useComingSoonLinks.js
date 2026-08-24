@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { LEGAL_PATHS, CORPORATE_PATH, HOME_SECTION_IDS, CORPORATE_SECTION_IDS, GET_IN_TOUCH_HREF } from '../constants/routes';
+import { markHomeIntroCompleted } from '../lib/homeIntro';
 import { navigate } from '../utils/navigate';
 
 const LEGAL_ROUTE_PATHS = new Set([...Object.values(LEGAL_PATHS), CORPORATE_PATH]);
@@ -67,6 +68,7 @@ export default function useComingSoonLinks() {
 
       if (href === GET_IN_TOUCH_HREF) {
         event.preventDefault();
+        markHomeIntroCompleted();
         navigate(GET_IN_TOUCH_HREF);
         return;
       }

@@ -163,3 +163,14 @@
     border-radius: 16px;
   }
 }
+
+[data-theme='dark'] .legal-modal {
+  background: #0d0d10;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.6),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .legal-modal__content {
+  background: linear-gradient(180deg, #0d0d10 0%, #0d0d10 30%);
+}

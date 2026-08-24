@@ -26,6 +26,13 @@
   color: transparent;
 }
 
+[data-theme='dark'] .restaurants__subtitle {
+  background: linear-gradient(90deg, #ec1420 0%, #ffffff 53.3%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .restaurants__title {
   font-family: 'Plus Jakarta Sans', var(--font-family);
   font-size: clamp(1.5rem, 3.5vw, 2.125rem);
@@ -370,4 +377,53 @@
   .restaurants__header {
     gap: 0.35rem;
   }
+}
+
+[data-theme='dark'] .restaurants {
+  background: #0d0d10;
+}
+
+[data-theme='dark'] .restaurants__title {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .restaurants__nav-btn {
+  color: #67728780;
+}
+
+[data-theme='dark'] .restaurants__nav-btn--active,
+[data-theme='dark'] .restaurants__nav-btn--active:hover {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .restaurants__info {
+  color: #f2f2f2;
+  -webkit-text-fill-color: #f2f2f2;
+}
+
+[data-theme='dark'] .restaurants .restaurants__name,
+[data-theme='dark'] .restaurants h3.restaurants__name {
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+}
+
+[data-theme='dark'] .restaurants .restaurants__price,
+[data-theme='dark'] .restaurants p.restaurants__price {
+  color: #d4d4d8 !important;
+  -webkit-text-fill-color: #d4d4d8 !important;
+}
+
+[data-theme='dark'] .restaurants__meta {
+  color: #9a9aa2;
+  -webkit-text-fill-color: #9a9aa2;
+}
+
+[data-theme='dark'] .restaurants__location {
+  color: #9a9aa2;
+  -webkit-text-fill-color: #9a9aa2;
+}
+
+[data-theme='dark'] .restaurants__distance {
+  color: #f2f2f2;
+  -webkit-text-fill-color: #f2f2f2;
 }

@@ -1,0 +1,42 @@
+.yaka-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: none;
+}
+
+.yaka-mark__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.yaka-mark__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
+}
+
+.yaka-mark__tagline {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.yaka-mark__tagline-strong {
+  font-weight: 700;
+}

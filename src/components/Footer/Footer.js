@@ -9,10 +9,8 @@ const exploreLinks = [
 ];
 
 const legalLinks = [
-  { label: 'Privacy', modalId: 'privacy-policy' },
-  { label: 'Terms', modalId: 'terms-and-conditions' },
-  { label: 'Returns', modalId: 'refund-policy' },
-  { label: 'Refund Policy', modalId: 'refund-policy' },
+  { label: 'Privacy Policy', modalId: 'privacy-policy' },
+  { label: 'Terms of service', modalId: 'terms-and-conditions' },
 ];
 
 function PinIcon() {
@@ -47,16 +45,16 @@ function MailIcon() {
 function Footer() {
   return (
     <footer className="footer" id="contact">
-      <div className="container footer__shell">
+      <div className="footer__shell">
         <div className="footer__inner">
           <div className="footer__brand">
             <a href="/" className="footer__logo" aria-label="eatskart home">
               <img
-                src="/images/footer-pin.png"
-                alt=""
+                src="/images/eatskart-logo.png"
+                alt="eatskart"
                 className="footer__logo-img"
-                width={48}
-                height={58}
+                width={127}
+                height={35}
               />
             </a>
             <p className="footer__yaka">
@@ -85,11 +83,11 @@ function Footer() {
               <li>
                 <PinIcon />
                 <span className="footer__address">
-                  123 Food Street, Jubilee Hills,
+                  Sattva Knowledge City, Hi-Tec City,
                   <br />
-                  Hyderabad, Telangana 500033,
+                  Hyderabad – 500081
                   <br />
-                  India
+                  Telangana, India
                 </span>
               </li>
               <li>
@@ -101,13 +99,12 @@ function Footer() {
         </div>
 
         <div className="footer__bar">
-          <p className="footer__copy">&copy; 2024 eatskart. All rights reserved.</p>
+          <p className="footer__copy">&copy; 2026 eatskart. All rights reserved.</p>
           <nav className="footer__legal" aria-label="Legal">
-            {legalLinks.map((link, index) => (
-              <span key={`${link.label}-${index}`} className="footer__legal-item">
-                {index > 0 && <span className="footer__legal-sep" aria-hidden="true">·</span>}
-                <a href={getLegalModalHref(link.modalId)}>{link.label}</a>
-              </span>
+            {legalLinks.map((link) => (
+              <a key={link.label} href={getLegalModalHref(link.modalId)}>
+                {link.label}
+              </a>
             ))}
           </nav>
         </div>
