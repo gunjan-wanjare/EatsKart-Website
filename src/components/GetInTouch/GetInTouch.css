@@ -118,6 +118,9 @@
 }
 
 .get-in-touch__status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
   font-family: var(--font-family);
   font-size: 0.8rem;
   font-weight: 500;
@@ -128,9 +131,17 @@
 }
 
 .get-in-touch__status--success {
-  color: #86efac;
-  background: rgba(74, 222, 128, 0.12);
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #f2f2f2;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid var(--color-green);
+  box-shadow: 0 8px 24px rgba(40, 167, 69, 0.12);
+}
+
+.get-in-touch__status-icon {
+  flex: 0 0 auto;
+  margin-top: 0.05rem;
+  color: var(--color-green);
 }
 
 .get-in-touch__form {

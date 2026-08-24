@@ -100,7 +100,7 @@ function GetInTouch() {
         fullName: form.fullName,
         email: form.email,
         phone: form.phone,
-        subject: selectedQueryType ? selectedQueryType.label : undefined,
+        serviceInterestedIn: selectedQueryType ? selectedQueryType.label : undefined,
         description: form.description,
       });
     } catch (error) {
@@ -165,7 +165,24 @@ function GetInTouch() {
         <div className="get-in-touch__form-card">
           {status === 'success' && statusMessage && (
             <p className="get-in-touch__status get-in-touch__status--success" role="status">
-              {statusMessage}
+              <svg
+                className="get-in-touch__status-icon"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="12" fill="currentColor" />
+                <path
+                  d="M7 12.5l3 3 7-7"
+                  stroke="#1f1f1f"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>{statusMessage}</span>
             </p>
           )}
 

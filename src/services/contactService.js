@@ -2,16 +2,20 @@ const API_URL = (process.env.REACT_APP_API_URL || '').replace(/\/+$/, '');
 
 const REQUEST_TIMEOUT_MS = 15000;
 const DEFAULT_SUBJECT = 'eatskart website enquiry';
+const BRAND = 'eatskart';
 
 export async function submitContactForm({
   fullName,
   email,
   phone,
   subject = DEFAULT_SUBJECT,
+  serviceInterestedIn,
   description,
 }) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  const trimmedSubject = (subject || DEFAULT_SUBJECT).trim();
 
   let response;
   try {
@@ -22,10 +26,12 @@ export async function submitContactForm({
         Accept: 'application/json',
       },
       body: JSON.stringify({
+        brand: BRAND,
         fullName: fullName.trim(),
         email: email.trim(),
-        phone: phone.trim(),
-        subject: (subject || DEFAULT_SUBJECT).trim(),
+        phoneNumber: phone ? phone.trim() : '',
+        subject: trimmedSubject,
+        serviceInterestedIn: (serviceInterestedIn || trimmedSubject).trim(),
         description: description.trim(),
       }),
       signal: controller.signal,
