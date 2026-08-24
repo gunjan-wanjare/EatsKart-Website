@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CORPORATE_PATH, DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
+import { DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
 import { YAKA_ASSETS } from '../../constants/yakaAssets';
 import { useScrollHandoffProgress } from '../ScrollHandoff/ScrollHandoff';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
