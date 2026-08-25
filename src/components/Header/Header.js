@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
 import { YAKA_ASSETS } from '../../constants/yakaAssets';
+import useTheme from '../../hooks/useTheme';
 import { useScrollHandoffProgress } from '../ScrollHandoff/ScrollHandoff';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
@@ -63,6 +64,7 @@ function Header({ theme = 'default', variant = 'home' }) {
   const [isPhone, setIsPhone] = useState(false);
   const isCorporate = variant === 'corporate';
   const isHomeHero = theme === 'hero' && !isCorporate;
+  const { theme: colorTheme, toggleTheme: toggleColorTheme } = useTheme();
   const handoffProgress = useScrollHandoffProgress();
   const navYakaOpacity = isHomeHero
     ? isPhone
@@ -211,47 +213,52 @@ function Header({ theme = 'default', variant = 'home' }) {
           ) : (
             <>
               <div className="header__links">
-                <a
-                  href={GET_IN_TOUCH_HREF}
-                  className="header__location"
-                  onClick={closeMenu}
-                >
-                  <LocationPin />
-                  <span>South bopal</span>
-                  <svg
-                    className="header__chevron"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
+                {isHomeHero ? (
+                  <a
+                    href={GET_IN_TOUCH_HREF}
+                    className="header__location"
+                    onClick={closeMenu}
                   >
-                    <path
-                      d="M6 9l6 6 6-6"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-                <ThemeToggle />
+                    <LocationPin />
+                    <span>South bopal</span>
+                    <svg
+                      className="header__chevron"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 9l6 6 6-6"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                ) : null}
+                <ThemeToggle theme={colorTheme} toggleTheme={toggleColorTheme} />
               </div>
               <div className="header__cta">
-                {/* <a
-                  href={CORPORATE_PATH}
-                  className="header__btn header__btn--ghost"
-                  onClick={closeMenu}
-                >
-                  Corporate
-                </a> */}
-                <a
-                  href={GET_IN_TOUCH_HREF}
-                  className="header__btn header__btn--solid header__btn--get-in-touch"
-                  onClick={closeMenu}
-                >
-                  Get in touch
-                </a>
+                {isHomeHero ? (
+                  <a
+                    href={GET_IN_TOUCH_HREF}
+                    className="header__btn header__btn--solid header__btn--get-in-touch"
+                    onClick={closeMenu}
+                  >
+                    Get In Touch
+                  </a>
+                ) : (
+                  <a
+                    href={DOWNLOAD_APP_HREF}
+                    className="header__btn header__btn--solid header__btn--get-in-touch"
+                    onClick={closeMenu}
+                  >
+                    Download App
+                  </a>
+                )}
                 {isHomeHero && !isMobileNav ? (
                   <a
                     id="yaka-nav-anchor"
@@ -270,6 +277,27 @@ function Header({ theme = 'default', variant = 'home' }) {
                         src={YAKA_ASSETS.icon}
                         alt=""
                         className="header__yaka-img"
+                        width={573}
+                        height={512}
+                        decoding="async"
+                        draggable={false}
+                      />
+                    </span>
+                  </a>
+                ) : null}
+                {!isHomeHero ? (
+                  <a
+                    href="https://yaka.group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="A YAKA Brand"
+                    className="header__yaka header__yaka--landed"
+                  >
+                    <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
+                      <img
+                        src={colorTheme === 'dark' ? YAKA_ASSETS.icon : '/images/Vector (1).png'}
+                        alt=""
+                        className={`header__yaka-img${colorTheme === 'dark' ? '' : ' header__yaka-img--natural'}`}
                         width={573}
                         height={512}
                         decoding="async"
@@ -310,6 +338,28 @@ function Header({ theme = 'default', variant = 'home' }) {
               </span>
             </a>
           ) : null}
+          {!isHomeHero && !isCorporate ? (
+            <a
+              href="https://yaka.group"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="A YAKA Brand"
+              className="header__yaka header__yaka--mobile header__yaka--landed"
+            >
+              <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
+                <img
+                  src={colorTheme === 'dark' ? YAKA_ASSETS.icon : '/images/Vector (1).png'}
+                  alt=""
+                  className={`header__yaka-img${colorTheme === 'dark' ? '' : ' header__yaka-img--natural'}`}
+                  width={573}
+                  height={512}
+                  decoding="async"
+                  draggable={false}
+                />
+              </span>
+            </a>
+          ) : null}
+          {!isCorporate ? <ThemeToggle theme={colorTheme} toggleTheme={toggleColorTheme} /> : null}
           <button
             type="button"
             className="header__hamburger"

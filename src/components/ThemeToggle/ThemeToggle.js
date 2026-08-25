@@ -1,5 +1,3 @@
-import useTheme from '../../hooks/useTheme';
-
 function SunIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -27,8 +25,7 @@ function MoonIcon() {
   );
 }
 
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+function ThemeToggle({ theme, toggleTheme }) {
   const isDark = theme === 'dark';
 
   return (
@@ -39,7 +36,7 @@ function ThemeToggle() {
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       aria-pressed={isDark}
     >
-      {isDark ? <MoonIcon /> : <SunIcon />}
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 }

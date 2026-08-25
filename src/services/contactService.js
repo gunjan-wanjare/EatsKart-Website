@@ -4,6 +4,14 @@ const REQUEST_TIMEOUT_MS = 15000;
 const DEFAULT_SUBJECT = 'eatskart website enquiry';
 const BRAND = 'eatskart';
 
+function normalizePhone(value) {
+  if (!value) return '';
+  const stripped = value.trim().replace(/[^\d+]/g, '').replace(/^\+/, '');
+  if (stripped.length === 12 && stripped.startsWith('91')) return stripped.slice(2);
+  if (stripped.length === 11 && stripped.startsWith('0')) return stripped.slice(1);
+  return stripped;
+}
+
 export async function submitContactForm({
   fullName,
   email,
@@ -29,7 +37,7 @@ export async function submitContactForm({
         brand: BRAND,
         fullName: fullName.trim(),
         email: email.trim(),
-        phoneNumber: phone ? phone.trim() : '',
+        phoneNumber: normalizePhone(phone),
         subject: trimmedSubject,
         serviceInterestedIn: (serviceInterestedIn || trimmedSubject).trim(),
         description: description.trim(),

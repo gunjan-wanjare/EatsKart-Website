@@ -427,6 +427,11 @@
   filter: brightness(0) invert(1);
 }
 
+/* Vector (1).png is already dark navy — don't force it white on light headers */
+.header__yaka-img--natural {
+  filter: none;
+}
+
 .header:not(.header--corporate) .header__cta .header__yaka {
   display: block;
   margin-left: 0.25rem;
@@ -679,6 +684,12 @@
     margin: 0.25rem 0 0.5rem 1.25rem;
   }
 
+  /* Toggle now lives in the persistent top bar (.header__actions) on mobile —
+     hide the duplicate copy inside the collapsible drawer. */
+  .header__links .header__theme-toggle {
+    display: none;
+  }
+
   .header--hero .header__theme-toggle {
     color: #4b5563;
   }
@@ -811,6 +822,51 @@
   }
 
   [data-theme='dark'] .header:not(.header--corporate) .header__drawer-close {
+    background: #1f1f24;
+    color: #f2f2f2;
+  }
+}
+
+/* Dark theme — corporate header, matching the default header's dark treatment */
+[data-theme='dark'] .header--corporate {
+  background: #111114;
+  border-bottom: 1px solid #2b2b31;
+}
+
+[data-theme='dark'] .header--corporate.header--scrolled {
+  background: rgba(13, 13, 16, 0.94);
+  border-bottom: 1px solid #2b2b31;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .header--corporate .header__nav-link {
+  color: rgba(242, 242, 242, 0.7);
+}
+
+[data-theme='dark'] .header--corporate .header__nav-link--active,
+[data-theme='dark'] .header--corporate .header__nav-link:hover {
+  color: #f2f2f2;
+}
+
+[data-theme='dark'] .header--corporate .header__hamburger span {
+  background: #f2f2f2;
+}
+
+@media (max-width: 1024px) {
+  [data-theme='dark'] .header--corporate .header__nav {
+    background: #111114;
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.55);
+  }
+
+  [data-theme='dark'] .header--corporate .header__drawer-top {
+    border-bottom: 1px solid #2b2b31;
+  }
+
+  [data-theme='dark'] .header--corporate .header__drawer-label {
+    color: #f2f2f2;
+  }
+
+  [data-theme='dark'] .header--corporate .header__drawer-close {
     background: #1f1f24;
     color: #f2f2f2;
   }

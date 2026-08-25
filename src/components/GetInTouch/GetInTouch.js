@@ -25,14 +25,24 @@ const INITIAL_FORM = {
 const SUCCESS_MESSAGE =
   'Thank you. Your message has been sent. Our team will get back to you shortly.';
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_PATTERN = /^[+\d][\d\s()-]{6,17}$/;
+const NAME_PATTERN = /^[A-Za-z][A-Za-z\s.'-]{1,79}$/;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+const PHONE_PATTERN = /^[6-9]\d{9}$/;
+
+function normalizePhone(value) {
+  const stripped = value.trim().replace(/[^\d+]/g, '').replace(/^\+/, '');
+  if (stripped.length === 12 && stripped.startsWith('91')) return stripped.slice(2);
+  if (stripped.length === 11 && stripped.startsWith('0')) return stripped.slice(1);
+  return stripped;
+}
 
 function validate(form) {
   const errors = {};
 
   if (!form.fullName.trim()) {
     errors.fullName = 'Please enter your name.';
+  } else if (!NAME_PATTERN.test(form.fullName.trim())) {
+    errors.fullName = 'Name should only contain letters.';
   }
 
   if (!form.email.trim()) {
@@ -43,8 +53,8 @@ function validate(form) {
 
   if (!form.phone.trim()) {
     errors.phone = 'Please enter your phone number.';
-  } else if (!PHONE_PATTERN.test(form.phone.trim())) {
-    errors.phone = 'Please enter a valid phone number.';
+  } else if (!PHONE_PATTERN.test(normalizePhone(form.phone))) {
+    errors.phone = 'Please enter a valid 10-digit mobile number.';
   }
 
   if (!form.queryType) {
@@ -228,7 +238,8 @@ function GetInTouch() {
                 name="phone"
                 autoComplete="tel"
                 inputMode="tel"
-                placeholder="+91 98765 43210"
+                placeholder="+1 (555) 000-0000"
+                maxLength={16}
                 value={form.phone}
                 onChange={handleChange}
                 disabled={isSubmitting}
@@ -243,6 +254,7 @@ function GetInTouch() {
                 <select
                   id={`${formId}-queryType`}
                   name="queryType"
+                  required
                   value={form.queryType}
                   onChange={handleChange}
                   disabled={isSubmitting}

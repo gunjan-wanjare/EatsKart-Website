@@ -4,7 +4,7 @@ import { APP_STORE_HREF, GET_IN_TOUCH_HREF, GOOGLE_PLAY_HREF } from '../../const
 function AppPromo() {
   return (
     <section className="app-promo" id="app-promo" aria-labelledby="app-promo-heading">
-      <div className="container app-promo__layout">
+      <div className="app-promo__layout">
         <div className="app-promo__content">
           <h2 id="app-promo-heading" className="app-promo__title">
             <span className="app-promo__title-accent">Discover eatskart,</span>
@@ -61,11 +61,13 @@ function AppPromo() {
         </div>
 
         <div className="app-promo__visual">
-          <img
-            src="/images/promo/phone-mockup.png"
-            alt="eatskart app on phone with burger, sandwich and dessert"
-            className="app-promo__phone"
-          />
+          <div className="app-promo__phone-wrap">
+            <img
+              src="/images/promo/phone-mockup.png"
+              alt="eatskart app on phone with burger, sandwich and dessert"
+              className="app-promo__phone"
+            />
+          </div>
         </div>
       </div>
     </section>
