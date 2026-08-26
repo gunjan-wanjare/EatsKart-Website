@@ -18,10 +18,40 @@
       gtag('config', 'G-WKDE3L0F7T');
     </script>
 
+    <!--
+      Set data-theme before paint so there's no light/dark flash on load.
+      Cross-brand domains (eatskart.com, lawvix.com, loankonnekt.com, crediple.com, ...)
+      can't share localStorage/cookies, so a link handing off to another brand appends
+      ?theme=dark|light — read that first, persist it, then strip it from the URL.
+      Falls back to the saved preference (migrating the legacy 'eatskart-theme' key if
+      present), then the existing default (light).
+    -->
     <script>
       (function () {
         try {
-          var theme = window.localStorage.getItem('eatskart-theme');
+          var params = new URLSearchParams(window.location.search);
+          var urlTheme = params.get('theme');
+          var theme;
+          if (urlTheme === 'dark' || urlTheme === 'light') {
+            theme = urlTheme;
+            window.localStorage.setItem('theme', theme);
+            params.delete('theme');
+            var query = params.toString();
+            window.history.replaceState(
+              null,
+              '',
+              window.location.pathname + (query ? '?' + query : '') + window.location.hash
+            );
+          } else {
+            theme = window.localStorage.getItem('theme');
+            if (theme !== 'dark' && theme !== 'light') {
+              var legacyTheme = window.localStorage.getItem('eatskart-theme');
+              if (legacyTheme === 'dark' || legacyTheme === 'light') {
+                theme = legacyTheme;
+                window.localStorage.setItem('theme', theme);
+              }
+            }
+          }
           if (theme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
           }

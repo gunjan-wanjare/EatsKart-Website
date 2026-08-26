@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
+import { BRAND_URL, DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
 import { YAKA_ASSETS } from '../../constants/yakaAssets';
-import useTheme from '../../hooks/useTheme';
+import useTheme, { withThemeParam } from '../../hooks/useTheme';
 import { useScrollHandoffProgress } from '../ScrollHandoff/ScrollHandoff';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
@@ -262,7 +262,7 @@ function Header({ theme = 'default', variant = 'home' }) {
                 {isHomeHero && !isMobileNav ? (
                   <a
                     id="yaka-nav-anchor"
-                    href="https://yaka.group"
+                    href={withThemeParam(BRAND_URL, colorTheme)}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="A YAKA Brand"
@@ -287,7 +287,7 @@ function Header({ theme = 'default', variant = 'home' }) {
                 ) : null}
                 {!isHomeHero ? (
                   <a
-                    href="https://yaka.group"
+                    href={withThemeParam(BRAND_URL, colorTheme)}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="A YAKA Brand"
@@ -315,7 +315,7 @@ function Header({ theme = 'default', variant = 'home' }) {
           {isHomeHero ? (
             <a
               id={isMobileNav ? 'yaka-nav-anchor' : undefined}
-              href="https://yaka.group"
+              href={withThemeParam(BRAND_URL, colorTheme)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"
@@ -340,7 +340,7 @@ function Header({ theme = 'default', variant = 'home' }) {
           ) : null}
           {!isHomeHero && !isCorporate ? (
             <a
-              href="https://yaka.group"
+              href={withThemeParam(BRAND_URL, colorTheme)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"

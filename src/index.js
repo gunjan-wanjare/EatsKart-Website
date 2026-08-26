@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './responsive.css';
 import App from './App';
+import { ThemeProvider } from './hooks/useTheme';
 import reportWebVitals from './reportWebVitals';
 
 if ('scrollRestoration' in window.history) {
@@ -13,7 +14,9 @@ window.scrollTo(0, 0);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

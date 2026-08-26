@@ -18,6 +18,8 @@ export const CORPORATE_SECTION_IDS = new Set(['get-in-touch']);
 
 export const GET_IN_TOUCH_HREF = GET_IN_TOUCH_PATH;
 
+export const BRAND_URL = 'https://yaka.group';
+
 export const DOWNLOAD_APP_HREF = '#download-app';
 export const APP_STORE_HREF = '#app-store';
 export const GOOGLE_PLAY_HREF = '#google-play';
