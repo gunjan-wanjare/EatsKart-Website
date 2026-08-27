@@ -18,18 +18,18 @@
 
 .preloader__glow {
   position: absolute;
-  width: min(420px, 75vw);
-  height: min(420px, 75vw);
+  width: min(400px, 75vw);
+  height: min(400px, 75vw);
   border-radius: 50%;
   pointer-events: none;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.22) 0%,
-    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(255, 255, 255, 0.16) 45%,
     transparent 70%
   );
-  filter: blur(36px);
-  opacity: 0.9;
+  filter: blur(28px);
+  opacity: 1;
   transform: scale(0.4);
   animation: preloader-glow-in 1s ease-out forwards;
 }
@@ -57,23 +57,39 @@
   animation: preloader-panel-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.preloader__logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min(126px, 30vw);
+}
+
+.preloader__logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(220px, 55vw);
+  height: 100%;
+}
+
 .preloader__eatskart {
-  width: clamp(160px, 42vw, 220px);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
 .preloader__yaka {
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .preloader__yaka-icon {
-  width: 84px !important;
-  height: 75px !important;
+  width: min(88px, 22vw) !important;
+  height: min(78px, 19.6vw) !important;
 }
 
 .preloader__yaka-tagline {
-  font-size: clamp(0.75rem, 2.2vw, 0.9rem) !important;
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem) !important;
   letter-spacing: 0.06em;
 }
 
