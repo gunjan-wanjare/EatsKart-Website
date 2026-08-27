@@ -308,7 +308,7 @@ function GetInTouch() {
             </label>
 
             <button type="submit" className="get-in-touch__submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending…' : status === 'success' ? 'Inquiry sent' : 'Submit Inquiry'}
+              {isSubmitting ? 'Sending…' : status === 'success' ? 'Request sent' : 'Submit Request'}
             </button>
           </form>
         </div>

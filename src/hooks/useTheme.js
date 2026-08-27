@@ -15,7 +15,7 @@ function readStoredTheme() {
   } catch {
     // storage unavailable (private browsing, etc.) — theme still works for this session
   }
-  return LIGHT;
+  return DARK;
 }
 
 /**

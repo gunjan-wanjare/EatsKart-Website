@@ -24,7 +24,7 @@
       can't share localStorage/cookies, so a link handing off to another brand appends
       ?theme=dark|light — read that first, persist it, then strip it from the URL.
       Falls back to the saved preference (migrating the legacy 'eatskart-theme' key if
-      present), then the existing default (light).
+      present), then defaults first-time visitors to dark.
     -->
     <script>
       (function () {
@@ -49,6 +49,8 @@
               if (legacyTheme === 'dark' || legacyTheme === 'light') {
                 theme = legacyTheme;
                 window.localStorage.setItem('theme', theme);
+              } else {
+                theme = 'dark';
               }
             }
           }
