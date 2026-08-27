@@ -8,10 +8,6 @@ import Footer from '../../components/Footer/Footer';
 import ComingSoonModal from '../../components/ComingSoonModal/ComingSoonModal';
 import LegalModal from '../../components/LegalModal/LegalModal';
 import FloatingLogo from '../../components/FloatingLogo/FloatingLogo';
-import {
-  ScrollHandoffProvider,
-  ScrollHandoffLogo,
-} from '../../components/ScrollHandoff/ScrollHandoff';
 import { IntroContext } from '../../components/Intro/IntroContext';
 import useComingSoonLinks from '../../hooks/useComingSoonLinks';
 import useLegalModal from '../../hooks/useLegalModal';
@@ -50,35 +46,31 @@ function HomePage() {
 
   return (
     <IntroContext.Provider value={{ phase }}>
-      <ScrollHandoffProvider>
-        <div className="app" id="top">
-          {showIntro && phase === 'loading' ? (
-            <Preloader onComplete={handleLoaderComplete} />
-          ) : null}
+      <div className="app" id="top">
+        {showIntro && phase === 'loading' ? (
+          <Preloader onComplete={handleLoaderComplete} />
+        ) : null}
 
-          {showIntro && phase === 'flying' ? (
-            <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
-          ) : null}
+        {showIntro && phase === 'flying' ? (
+          <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
+        ) : null}
 
-          {phase === 'ready' ? <ScrollHandoffLogo /> : null}
-
-          <Header theme="hero" />
-          <main>
-            <Home />
-            <Restaurants />
-            <div className="promo-footer">
-              <AppPromo />
-              <Footer />
-            </div>
-          </main>
-          <ComingSoonModal
-            isOpen={isOpen}
-            pageName={pageName}
-            onClose={closeModal}
-          />
-          <LegalModal activePage={activePage} onClose={closeLegal} />
-        </div>
-      </ScrollHandoffProvider>
+        <Header theme="hero" />
+        <main>
+          <Home />
+          <Restaurants />
+          <div className="promo-footer">
+            <AppPromo />
+            <Footer />
+          </div>
+        </main>
+        <ComingSoonModal
+          isOpen={isOpen}
+          pageName={pageName}
+          onClose={closeModal}
+        />
+        <LegalModal activePage={activePage} onClose={closeLegal} />
+      </div>
     </IntroContext.Provider>
   );
 }

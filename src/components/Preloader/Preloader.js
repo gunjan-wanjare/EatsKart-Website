@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import YakaBrandMark from '../YakaBrandMark/YakaBrandMark';
 import './Preloader.css';
 
-const BRAND_MS = 1400;
-const YAKA_MS = 1600;
+const BRAND_MS = 1500;
+const YAKA_MS = 1500;
 const EXIT_MS = 600;
 
 /** Two-part dark intro: eatskart wordmark, then YAKA logo. */
@@ -42,13 +42,17 @@ function Preloader({ onComplete }) {
       <div className="preloader__stage">
         {stage === 'brand' ? (
           <div key="brand" className="preloader__panel preloader__panel--enter">
-            <img
-              src="/images/eatskart-logo.png"
-              alt="eatskart"
-              className="preloader__eatskart"
-              width={220}
-              height={60}
-            />
+            <div className="preloader__logo-area">
+              <div className="preloader__logo-box">
+                <img
+                  src="/images/eatskart-logo.png"
+                  alt="eatskart"
+                  className="preloader__eatskart"
+                  width={220}
+                  height={60}
+                />
+              </div>
+            </div>
             <div className="preloader__bar">
               <span className="preloader__bar-fill" />
             </div>
@@ -58,12 +62,14 @@ function Preloader({ onComplete }) {
             key="yaka"
             className={`preloader__panel${stage === 'yaka' ? ' preloader__panel--enter' : ''}`}
           >
-            <YakaBrandMark
-              logoClassName="preloader__yaka-icon"
-              taglineClassName="preloader__yaka-tagline"
-              className="preloader__yaka"
-              showTagline
-            />
+            <div className="preloader__logo-area">
+              <YakaBrandMark
+                logoClassName="preloader__yaka-icon"
+                taglineClassName="preloader__yaka-tagline"
+                className="preloader__yaka"
+                showTagline
+              />
+            </div>
             <div className="preloader__bar">
               <span className="preloader__bar-fill" />
             </div>
