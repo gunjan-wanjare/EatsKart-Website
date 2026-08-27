@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { BRAND_URL, DOWNLOAD_APP_HREF, GET_IN_TOUCH_HREF } from '../../constants/routes';
 import { YAKA_ASSETS } from '../../constants/yakaAssets';
 import useTheme, { withThemeParam } from '../../hooks/useTheme';
-import { useScrollHandoffProgress } from '../ScrollHandoff/ScrollHandoff';
+import { useIntroPhase } from '../Intro/IntroContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
+
+const YAKA_DOCK_SCROLL_Y = 40;
 
 const CORPORATE_LINKS = [
   { label: 'About Us', href: '#about' },
@@ -62,16 +64,15 @@ function Header({ theme = 'default', variant = 'home' }) {
   const [activeHref, setActiveHref] = useState(CORPORATE_LINKS[0].href);
   const [isMobileNav, setIsMobileNav] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
+  const [yakaDocked, setYakaDocked] = useState(false);
   const isCorporate = variant === 'corporate';
   const isHomeHero = theme === 'hero' && !isCorporate;
   const { theme: colorTheme, toggleTheme: toggleColorTheme } = useTheme();
-  const handoffProgress = useScrollHandoffProgress();
-  const navYakaOpacity = isHomeHero
-    ? isPhone
-      ? 1
-      : Math.min(1, Math.max(0, (handoffProgress - 0.85) / 0.15))
-    : 0;
-  const navYakaLanded = navYakaOpacity > 0.92;
+  const { phase: introPhase } = useIntroPhase();
+  // Guard against the navbar mark appearing while the post-splash flight is
+  // still mid-air (a real scroll during that ~1.1s window) — would otherwise
+  // show two logos on screen at once.
+  const showNavYaka = isHomeHero && introPhase !== 'flying' && (isPhone || yakaDocked);
 
   useEffect(() => {
     const navMedia = window.matchMedia('(max-width: 1024px)');
@@ -112,6 +113,7 @@ function Header({ theme = 'default', variant = 'home' }) {
         document.documentElement.scrollHeight - document.documentElement.clientHeight;
       setScrolled(scrollTop > 20);
       setProgress(height > 0 ? scrollTop / height : 0);
+      setYakaDocked(scrollTop > YAKA_DOCK_SCROLL_Y);
     };
 
     onScroll();
@@ -259,18 +261,14 @@ function Header({ theme = 'default', variant = 'home' }) {
                     Download App
                   </a>
                 )}
-                {isHomeHero && !isMobileNav ? (
+                {isHomeHero && !isMobileNav && showNavYaka ? (
                   <a
                     id="yaka-nav-anchor"
                     href={withThemeParam(BRAND_URL, colorTheme)}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="A YAKA Brand"
-                    className={`header__yaka${navYakaLanded ? ' header__yaka--landed' : ''}`}
-                    style={{
-                      opacity: navYakaOpacity,
-                      pointerEvents: navYakaLanded ? 'auto' : 'none',
-                    }}
+                    className="header__yaka header__yaka--landed header__yaka--pop-in"
                   >
                     <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
                       <img
@@ -319,10 +317,10 @@ function Header({ theme = 'default', variant = 'home' }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"
-              className={`header__yaka header__yaka--mobile${navYakaLanded ? ' header__yaka--landed' : ''}`}
+              className={`header__yaka header__yaka--mobile${showNavYaka ? ' header__yaka--landed header__yaka--pop-in' : ''}`}
               style={{
-                opacity: navYakaOpacity,
-                pointerEvents: navYakaLanded || isPhone ? 'auto' : 'none',
+                opacity: showNavYaka ? 1 : 0,
+                pointerEvents: showNavYaka ? 'auto' : 'none',
               }}
             >
               <span data-yaka-icon className="header__yaka-icon" aria-hidden="true">
